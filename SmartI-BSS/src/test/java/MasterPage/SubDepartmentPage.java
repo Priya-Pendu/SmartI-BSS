@@ -1,4 +1,4 @@
-package PageObject;
+package MasterPage;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import LoginTest.LoginPage;
+import PageObject.BasePage;
 
 public class SubDepartmentPage extends BasePage
 {

@@ -1,7 +1,6 @@
-package testcases;
+package MasterTest;
 
 import java.time.Duration;
-
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,43 +9,42 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import LoginTest.LoginPage;
-import PageObject.UserPageObject;
+import MasterPage.DesignationPage;
 
-
-public class UserTest 
+public class DesginationTest 
 {
 	WebDriver driver;
-	UserPageObject UP;
+	DesignationPage DP;
 	
 	@BeforeTest
-	public void setup()
+	void login()
 	{
 		driver = new ChromeDriver();
-		driver.get("http://localhost:5231/");
+		driver.get("http://localhost:170/");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		UP = new UserPageObject(driver);
+		DP = new DesignationPage(driver);
 	}
 	
 	@Test(priority=1)
-	public void AddUser() throws InterruptedException
+	void Designation() throws InterruptedException
 	{
 		LoginPage lp = new LoginPage(driver);
-		lp.loginCredentials("Smarti", "Smarti@123");
-		UP.AddUser("Test", "Priya", "priyapendu", "Priya@12345");
+		lp.loginCredentials("Crisil", "Smarti@123");
+		
+		DP.AddDesignation("Soft-01", "Software Developer", "Add");
+		
 	}
 	
 	@Test(priority=2)
-	public void UpdateUser() throws InterruptedException
+	public void updateDesignation() throws InterruptedException
 	{
-		UP.EditUser("Test", "Test1", "Test1", "50");
+		DP.EditDesignation("ACS Team", "0002", "ACS Team");
 	}
 	
 	@AfterTest
-	public void TearDown()
+	void logut()
 	{
 		driver.quit();
 	}
-	
-
 }

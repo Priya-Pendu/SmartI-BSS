@@ -1,4 +1,4 @@
-package testcases;
+package ReportsTestCases;
 
 import java.time.Duration;
 
@@ -9,42 +9,40 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import LoginTest.LoginPage;
-import MasterPage.CityPage;
+import LoginTest.LoginTest;
+import ReportsPageObject.MasterReports;
 
-public class CityTest 
+public class MasterReportsTest 
 {
 	WebDriver driver;
-	CityPage cp;
+	MasterReports MR;
+	
 	
 	@BeforeTest
-	public void login()
+	public void Login()
 	{
 		driver= new ChromeDriver();
-		driver.get("http://localhost:170/");
+		driver.get("http://192.168.0.4:5292/Account/Login?ReturnUrl=%2f");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		cp = new CityPage(driver);
+		MR = new MasterReports(driver);
+		
 	}
 	
-	@Test(priority=1)
-	public void AddNewCity() throws InterruptedException
+	
+	@Test
+	public void ReportOrganization() throws InterruptedException
 	{
 		LoginPage lp = new LoginPage(driver);
-		lp.loginCredentials("Crisil", "Smarti@123");
-		cp.AddCity("Bhiwandi", "India", "Maharashtra");
+		lp.loginCredentials("One96", "Smarti@123");
+		MR.MasterOrgReport("Access");
+		
+		
 	}
 	
-	@Test(priority=2)
-	public void UpdateCity()
-	{
-		cp.EditState("Bhiwandi", "Bhiwandi1");
-	}
 	@AfterTest
-	public void teardown()
+	public void TearDown()
 	{
 		driver.quit();
 	}
-	
-	
-
 }

@@ -1,4 +1,4 @@
-package testcases;
+package MasterTest;
 
 import java.time.Duration;
 
@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 import LoginTest.LoginPage;
 import LoginTest.LoginTest;
-import PageObject.RolePageObject;
+import MasterPage.RolePageObject;
 
 public class RoleTest 
 {

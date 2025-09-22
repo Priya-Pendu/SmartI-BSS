@@ -1,16 +1,14 @@
-package testcases;
+package MasterTest;
 
 import java.time.Duration;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
 import LoginTest.LoginPage;
-import PageObject.LocationPage;
+import MasterPage.LocationPage;
+
 
 public class LocationTest {
 
@@ -23,22 +21,32 @@ LocationPage locp;
 	{
 		driver=new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		driver.get("http://localhost:170/");
+		driver.get("http://localhost:915/");
 		driver.manage().window().maximize();
+		LoginPage lp = new LoginPage(driver);
+	    lp.LginCredentials("tata", "Smarti@123");
+	    locp = new LocationPage(driver);
 		
 	}
 
+	@Test(priority=0)
+	public void InitialSetup()
+	{
+		locp.InitialSteps();
+	}
 	
+	@Test (priority = 1)
+	public void TS0001()
+	{
+		locp.CheckLocationInOtherCompany("Delhi", "101");
+	}
+	
+	/*
 	@Test (priority = 1)
 	void AddLocation() throws InterruptedException
 	{
 		locp = new LocationPage(driver);
-		
-		LoginPage lp = new LoginPage(driver);
-	    lp.loginCredentials("Crisil", "Smarti@123");
 	    locp.click_Location_btn("Jallgaon", "JL1");
-		
-		
 	}
 	
 	@Test(priority= 2)
@@ -52,6 +60,7 @@ LocationPage locp;
 	{
 		locp.DeleteLocation("Kalyan");
 	}
+	*/
 	
 	
 	@AfterTest

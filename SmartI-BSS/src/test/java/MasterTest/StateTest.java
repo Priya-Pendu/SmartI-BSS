@@ -1,4 +1,4 @@
-package testcases;
+package MasterTest;
 
 import java.time.Duration;
 
@@ -9,7 +9,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import LoginTest.LoginPage;
-import PageObject.StatePage;
+import MasterPage.StatePage;
 
 public class StateTest
 {

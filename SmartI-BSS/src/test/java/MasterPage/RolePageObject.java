@@ -1,4 +1,4 @@
-package PageObject;
+package MasterPage;
 
 import java.time.Duration;
 import java.util.List;
@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import TestBase.BasePage;
+import Utilities.BasePage;
 
 public class RolePageObject extends BasePage
 {

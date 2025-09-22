@@ -1,4 +1,4 @@
-package testcases;
+package ExternalEmployeeTest;
 
 import java.time.Duration;
 
@@ -8,9 +8,9 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import ExternalEmployeePage.ExternalEmoployees;
 import LoginTest.LoginPage;
 import LoginTest.LoginTest;
-import PageObject.ExternalEmoployees;
 
 public class ExternalEmployeeTest
 {

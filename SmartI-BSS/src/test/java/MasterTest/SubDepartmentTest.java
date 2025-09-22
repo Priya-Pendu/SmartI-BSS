@@ -1,10 +1,6 @@
-package testcases;
+package MasterTest;
 
 import java.time.Duration;
-
-
-import LoginTest.LoginPage;
-import MasterPage.DepartmentPage;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,37 +8,41 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class DepartmentTest 
+import LoginTest.LoginPage;
+import MasterPage.SubDepartmentPage;
+
+public class SubDepartmentTest
 {
 	WebDriver driver;
-	DepartmentPage Dp;
-
+	SubDepartmentPage SD;
+	
 	@BeforeTest
-	public void setup()
+	public void login()
 	{
 		driver = new ChromeDriver();
 		driver.get("http://localhost:170/");
-		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		Dp = new DepartmentPage(driver);
+		driver.manage().window().maximize();
+		SD = new SubDepartmentPage(driver);
 	}
-
-	@Test(priority=1)
-	public void AddDepartment() throws InterruptedException
+	
+	@Test (priority=1)
+	public void SubDepartment()
 	{
 		LoginPage lp = new LoginPage(driver);
-	    lp.loginCredentials("Crisil", "Smarti@123");
-		Dp.AddDepartment("Pune", "ACS", "Ac-01", "Account Department", "Test");
+		lp.loginCredentials("Crisil", "Smarti@123");
+		SD.AddSubDepartment("Account Department", "SubD-01", "Salaries & Tax", "Remark");
 	}
 	
 	@Test(priority=2)
 	public void UpdateDepartment() throws InterruptedException
 	{
-		Dp.EditDepartment("Account Department", "London", "Software-01", "New Code", "Software Department");
+		SD.EditDeparment("ACS KIAM", "Account Department", "150", "ACS KIAM");
 	}
 	
+	
 	@AfterTest
-	public void teardown()
+	public void Logout()
 	{
 		driver.quit();
 	}

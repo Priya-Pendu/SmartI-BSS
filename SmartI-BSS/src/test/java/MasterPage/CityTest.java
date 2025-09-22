@@ -1,4 +1,4 @@
-package testcases;
+package MasterPage;
 
 import java.time.Duration;
 
@@ -9,41 +9,41 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import LoginTest.LoginPage;
-import PageObject.SubDepartmentPage;
 
-public class SubDepartmentTest
+public class CityTest 
 {
 	WebDriver driver;
-	SubDepartmentPage SD;
+	CityPage cp;
 	
 	@BeforeTest
 	public void login()
 	{
-		driver = new ChromeDriver();
+		driver= new ChromeDriver();
 		driver.get("http://localhost:170/");
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.manage().window().maximize();
-		SD = new SubDepartmentPage(driver);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		cp = new CityPage(driver);
 	}
 	
-	@Test (priority=1)
-	public void SubDepartment()
+	@Test(priority=1)
+	public void AddNewCity() throws InterruptedException
 	{
 		LoginPage lp = new LoginPage(driver);
 		lp.loginCredentials("Crisil", "Smarti@123");
-		SD.AddSubDepartment("Account Department", "SubD-01", "Salaries & Tax", "Remark");
+		cp.AddCity("Bhiwandi", "India", "Maharashtra");
 	}
 	
 	@Test(priority=2)
-	public void UpdateDepartment() throws InterruptedException
+	public void UpdateCity()
 	{
-		SD.EditDeparment("ACS KIAM", "Account Department", "150", "ACS KIAM");
+		cp.EditState("Bhiwandi", "Bhiwandi1");
 	}
-	
-	
 	@AfterTest
-	public void Logout()
+	public void teardown()
 	{
 		driver.quit();
 	}
+	
+	
+
 }
