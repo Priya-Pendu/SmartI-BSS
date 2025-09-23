@@ -2,11 +2,14 @@ package MasterPage;
 
 import java.util.List;
 
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import PageObject.BasePage;
+import Utilities.BasePage;
+
+
 
 public class DivisionPage extends BasePage
 

@@ -31,7 +31,7 @@ public class DepartmentTest
 	public void AddDepartment() throws InterruptedException
 	{
 		LoginPage lp = new LoginPage(driver);
-	    lp.loginCredentials("Crisil", "Smarti@123");
+	    lp.LginCredentials("Crisil", "Smarti@123");
 		Dp.AddDepartment("Pune", "ACS", "Ac-01", "Account Department", "Test");
 	}
 	

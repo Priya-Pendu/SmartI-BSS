@@ -34,7 +34,7 @@ public class MasterReportsTest
 	public void ReportOrganization() throws InterruptedException
 	{
 		LoginPage lp = new LoginPage(driver);
-		lp.loginCredentials("One96", "Smarti@123");
+		lp.LginCredentials("One96", "Smarti@123");
 		MR.MasterOrgReport("Access");
 		
 		

@@ -30,7 +30,7 @@ public class StateTest
 	void State() throws InterruptedException
 	{
 		LoginPage LP = new LoginPage(driver);
-		LP.loginCredentials("Crisil", "Smarti@123");
+		LP.LginCredentials("Crisil", "Smarti@123");
 		SP.AddState("ABC", "India");
 	}
 	

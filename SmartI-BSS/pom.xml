@@ -29,6 +29,7 @@
   
   
   <dependencies>
+
 <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 <dependency>
     <groupId>org.seleniumhq.selenium</groupId>
@@ -110,11 +111,6 @@
     <artifactId>slf4j-simple</artifactId>
     <version>1.7.32</version>
 </dependency>
-  	<dependency>
-  		<groupId>SCMD</groupId>
-  		<artifactId>SCMD</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  	</dependency>
   </dependencies>
   
    <!-- Add this AFTER dependencies -->
@@ -124,5 +120,5 @@
             <url>https://github.com/Priya-Pendu/SmartI-BSS.git</url>
         </repository>
     </repositories>
- 
+
 </project>

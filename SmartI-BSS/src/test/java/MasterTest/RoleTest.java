@@ -32,7 +32,7 @@ public class RoleTest
 	public void NewRole() throws InterruptedException
 	{
 		LoginPage lp = new LoginPage(driver);
-		lp.loginCredentials("Smarti", "Smarti@123");
+		lp.LginCredentials("Smarti", "Smarti@123");
 		RP.AddRole("Recipients");
 	}
 	

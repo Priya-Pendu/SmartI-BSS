@@ -32,7 +32,7 @@ public class OrganizationTest {
     public void AddOrganization() throws InterruptedException 
     {
     	LoginPage lp = new LoginPage(driver);
-	    lp.loginCredentials("Crisil", "Smarti@123");
+	    lp.LginCredentials("Crisil", "Smarti@123");
         organizationPage.AddOrganization("OEM","WHO", "WHO-01","Kalyan","Bhumi World", "priyapendu", "1234567889","01/16/2025", "01/16/2026", "15", "Cleaning", "Verified");  
     
      }

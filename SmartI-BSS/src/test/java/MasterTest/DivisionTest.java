@@ -33,7 +33,7 @@ public class DivisionTest
 		{
 			
 			LoginPage lp = new LoginPage(driver);
-		    lp.loginCredentials("Crisil", "Smarti@123");
+		    lp.LginCredentials("Crisil", "Smarti@123");
 		    DP.AddDivision("Kalyan", "New-Divi01", "R&D", "Testing Purpose");
 		    
 			

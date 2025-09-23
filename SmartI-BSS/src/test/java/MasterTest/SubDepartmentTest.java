@@ -30,7 +30,7 @@ public class SubDepartmentTest
 	public void SubDepartment()
 	{
 		LoginPage lp = new LoginPage(driver);
-		lp.loginCredentials("Crisil", "Smarti@123");
+		lp.LginCredentials("Crisil", "Smarti@123");
 		SD.AddSubDepartment("Account Department", "SubD-01", "Salaries & Tax", "Remark");
 	}
 	

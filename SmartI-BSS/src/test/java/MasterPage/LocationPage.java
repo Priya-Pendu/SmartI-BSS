@@ -1,14 +1,19 @@
-package MasterPage;
+	package MasterPage;
 import java.util.List;
+
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
+
+import LoginTest.LoginPage;
 import Utilities.BasePage;
 
 public class LocationPage extends BasePage {
     WebDriver driver;
+    LoginPage lp;
     
     public LocationPage(WebDriver driver) {
         super(driver);
@@ -42,24 +47,46 @@ public class LocationPage extends BasePage {
     @FindBy(xpath="//div[@class=\"slick-cell l5 r5\"]/span") WebElement IsActive;
     @FindBy(xpath="//button[normalize-space()='Yes']") WebElement Yes;
     @FindBy(xpath="//div[@class='ui-dialog ui-corner-all ui-widget ui-widget-content ui-front s-MessageDialog s-ConfirmDialog ui-dialog-buttons ui-draggable']") WebElement ConfirmationMSG;
+    @FindBy(xpath="//a[@class='dropdown-toggle']") WebElement UserProfile;
+    @FindBy(xpath="//a[normalize-space()='Logout']") WebElement Logout;
+    @FindBy(xpath="//input[@class='s-Serenity-QuickSearchInput s-QuickSearchInput']") WebElement SearchLocation;
+	@FindBy(xpath = "//input[@id='BuildingSolutionSuite_Membership_LoginPanel0_Username']") WebElement Username;
+	@FindBy(xpath ="//input[@id='BuildingSolutionSuite_Membership_LoginPanel0_Password']") WebElement Password;
+	@FindBy(xpath = "//button[@id='BuildingSolutionSuite_Membership_LoginPanel0_LoginButton']") WebElement LoginButton;
+	@FindBy(xpath="//input[@id='BuildingSolutionSuite_Master_LocationMasterDialog8_IsShared']") WebElement IsShared;
     
     
     //ActionMethods
     public void InitialSteps()
     {
+    	LoginPage lp = new LoginPage(driver);
     	AccessManagment.click();
     	wait.until(ExpectedConditions.elementToBeClickable(Master)).click();
     	Location.click();
     }
     
     //TS0001 - check location added in one company admin gets reflected in another company admin or not 
-	public void CheckLocationInOtherCompany(String Name, String Code) 
+	public void CheckLocationInOtherCompany(String Name, String Code) throws InterruptedException 
 	{
 		NewLocationMaster.click();
 		wait.until(ExpectedConditions.elementToBeClickable(LocationName)).sendKeys(Name);
         wait.until(ExpectedConditions.elementToBeClickable(LocationCode)).sendKeys(Code);
+        IsShared.click();
         wait.until(ExpectedConditions.elementToBeClickable(save)).click();
+        Thread.sleep(2000);
         logger.info("Location Added in First Company");
+        UserProfile.click();
+        Logout.click();
+        Thread.sleep(2000);
+        Username.sendKeys("enviro");
+	    Password.sendKeys("Smarti@123");
+	    LoginButton.click();
+	    Thread.sleep(2000);
+	    InitialSteps();
+	    Thread.sleep(2000);
+	    SearchLocation.sendKeys(Name);
+	   Assert.assertTrue(FirstColumn.getText().equals(Name), "Location not found in second company");
+        
 	}
 	
 	

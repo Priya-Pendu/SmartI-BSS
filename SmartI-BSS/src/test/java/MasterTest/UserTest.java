@@ -32,7 +32,7 @@ public class UserTest
 	public void AddUser() throws InterruptedException
 	{
 		LoginPage lp = new LoginPage(driver);
-		lp.loginCredentials("Smarti", "Smarti@123");
+		lp.LginCredentials("Smarti", "Smarti@123");
 		UP.AddUser("Test", "Priya", "priyapendu", "Priya@12345");
 	}
 	

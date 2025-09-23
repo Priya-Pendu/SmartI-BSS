@@ -40,7 +40,7 @@ public class ExternalEmployeeTest
 			String BloodG, String AdharNumber  ) throws Exception */
 		
 		LoginPage lp = new LoginPage(driver);
-		lp.loginCredentials("One96", "Chirag@123");
+		lp.LginCredentials("One96", "Chirag@123");
 		EP.AddEMP( "vivo","Default","Default", "Default","Default","junior devloper", "Emp-01", "Miss", 
 				"Swapnali", "radheshyam", "Yadav", "Female","Unmarried",
 				"Employee", "Chirag","5656565656", "swapnaliyadav",

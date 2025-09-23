@@ -29,7 +29,7 @@ public class CityTest
 	public void AddNewCity() throws InterruptedException
 	{
 		LoginPage lp = new LoginPage(driver);
-		lp.loginCredentials("Crisil", "Smarti@123");
+		lp.LginCredentials("Crisil", "Smarti@123");
 		cp.AddCity("Bhiwandi", "India", "Maharashtra");
 	}
 	

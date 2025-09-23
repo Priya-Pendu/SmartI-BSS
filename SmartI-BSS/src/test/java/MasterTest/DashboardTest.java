@@ -30,7 +30,7 @@ public class DashboardTest
 	public void InActiveEmpCheck()
 	{
 		LoginPage lp = new LoginPage(driver);
-		lp.loginCredentials("Smarti", "Smarti@123");
+		lp.LginCredentials("Smarti", "Smarti@123");
 		DP.InActiveEmp();
 	}
 	

@@ -30,7 +30,7 @@ public class DesginationTest
 	void Designation() throws InterruptedException
 	{
 		LoginPage lp = new LoginPage(driver);
-		lp.loginCredentials("Crisil", "Smarti@123");
+		lp.LginCredentials("Crisil", "Smarti@123");
 		
 		DP.AddDesignation("Soft-01", "Software Developer", "Add");
 		

@@ -5,11 +5,9 @@
     <classes>
       <class name="MasterTest.LocationTest">
         <methods>
-          <include name="AddLocation"/>
           <include name="setup"/>
+          <include name="TS0001"/>
           <include name="teardown"/>
-          <include name="UpdateLocation"/>
-          <include name="DeleteLocation"/>
         </methods>
       </class> <!-- MasterTest.LocationTest -->
     </classes>

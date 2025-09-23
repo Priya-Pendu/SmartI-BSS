@@ -36,9 +36,9 @@ LocationPage locp;
 	}
 	
 	@Test (priority = 1)
-	public void TS0001()
+	public void TS0001() throws InterruptedException
 	{
-		locp.CheckLocationInOtherCompany("Delhi", "101");
+		locp.CheckLocationInOtherCompany("Test6", "1006");
 	}
 	
 	/*
