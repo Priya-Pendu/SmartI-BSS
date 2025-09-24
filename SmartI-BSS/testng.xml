@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Test">
+    <classes>
+      <!-- <class name="MasterTest.DashboardTest"/> 
+      <class name="LoginTest.LoginTest"/>
+      <class name="MasterTest.OrganizationTest"/>
+      <class name="ReportsTestCases.MasterReportsTest"/>
+      <class name="MasterPage.CityTest"/>
+      <class name="MasterTest.DepartmentTest"/>
+      <class name="MasterTest.StateTest"/>
+      <class name="MasterTest.RoleTest"/>
+      <class name="ExternalEmployeeTest.ExternalEmployeeTest"/> -->
+      <class name="MasterTest.LocationTest">
+      <methods>
+          <include name="MasterTest.LocationTest.TS0002"/>
+      </methods>
+      	</class>
+      <!-- <class name="MasterTest.UserTest"/>
+      <class name="MasterTest.DivisionTest"/>
+      <class name="MasterTest.SubDepartmentTest"/>
+      <class name="MasterTest.DesginationTest"/> -->
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

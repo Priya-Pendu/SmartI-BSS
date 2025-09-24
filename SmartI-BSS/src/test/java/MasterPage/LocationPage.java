@@ -10,6 +10,7 @@ import org.testng.Assert;
 
 import LoginTest.LoginPage;
 import Utilities.BasePage;
+import Utilities.MaxCharacterLenght;
 
 public class LocationPage extends BasePage {
     WebDriver driver;
@@ -54,6 +55,9 @@ public class LocationPage extends BasePage {
 	@FindBy(xpath ="//input[@id='BuildingSolutionSuite_Membership_LoginPanel0_Password']") WebElement Password;
 	@FindBy(xpath = "//button[@id='BuildingSolutionSuite_Membership_LoginPanel0_LoginButton']") WebElement LoginButton;
 	@FindBy(xpath="//input[@id='BuildingSolutionSuite_Master_LocationMasterDialog8_IsShared']") WebElement IsShared;
+	@FindBy(xpath="//div[@class='panel-titlebar-text']") WebElement NewLocTitle;
+	@FindBy(xpath = "//div[@class='slick-cell l0 r0']/a") WebElement SLocationResult;
+	@FindBy(xpath="//div[@title='Excel']//div[@class='button-outer']") WebElement Excelbtn;
     
     
     //ActionMethods
@@ -68,6 +72,7 @@ public class LocationPage extends BasePage {
     //TS0001 - check location added in one company admin gets reflected in another company admin or not 
 	public void CheckLocationInOtherCompany(String Name, String Code) throws InterruptedException 
 	{
+		InitialSteps();
 		NewLocationMaster.click();
 		wait.until(ExpectedConditions.elementToBeClickable(LocationName)).sendKeys(Name);
         wait.until(ExpectedConditions.elementToBeClickable(LocationCode)).sendKeys(Code);
@@ -89,29 +94,71 @@ public class LocationPage extends BasePage {
         
 	}
 	
+	//TS0002 - Verify whether "New Location" page displayed or not
+	public void VerifyNewLocationPage()
+	{
+		InitialSteps();
+		NewLocationMaster.click();
+		Assert.assertTrue(NewLocTitle.getText().contains("New Location Master"), "New Location Page is not displayed");
+		logger.info("New Location Page is displayed");
+	}
 	
-    public void click_Location_btn(String Name, String code) throws InterruptedException
+	//TS0003 - Verify the functionality of location
+    public void VerifyAddLocation(String Name, String code) throws InterruptedException
     {
-    	
-    	
+        InitialSteps();   	
         NewLocationMaster.click();
-
         // Enter location name and code
         wait.until(ExpectedConditions.elementToBeClickable(LocationName)).sendKeys(Name);
+        Thread.sleep(2000);
         wait.until(ExpectedConditions.elementToBeClickable(LocationCode)).sendKeys(code);
-
+        Thread.sleep(2000);
         // Save the location
         wait.until(ExpectedConditions.elementToBeClickable(save)).click();
-        
-        System.out.println(Alert.getText());
-        ok.click();
-        BackArrow.click();
-        
+        Thread.sleep(2000);
+        Assert.assertTrue(NewLocationMaster.isDisplayed(), "Location not saved");
     }
     
-   
+   //TS0004 - Verify adding location with using maximum character limit of the text field.
+    public void VerifyMaxCharLimit() throws InterruptedException
+    {
+		InitialSteps();
+		NewLocationMaster.click();
+		MaxCharacterLenght.getMaxInputLength(LocationName, "C", 200);	
+		Thread.sleep(2000);
+		logger.info("Maximum character limit for Location Name is: " + LocationName.getAttribute("value").length());
+		MaxCharacterLenght.getMaxInputLength(LocationCode, "3", 100);
+		Thread.sleep(2000);
+		logger.info("Maximum character limit for Location Code is :" + LocationCode.getAttribute("value").length());
+		wait.until(ExpectedConditions.elementToBeClickable(save)).click();
+		
+    }
+    
+    //TS0005 - View an existing Location
+    public void viewExistingLocation(String name) throws InterruptedException {
+        InitialSteps();
+        SearchLocation.clear();
+        SearchLocation.sendKeys(name);
+        Thread.sleep(2000);
+        if (SLocationResult.getText().trim().equalsIgnoreCase(name)) {
+        	Thread.sleep(2000);
+            SLocationResult.click();
+
+            String locName = LocationName.getAttribute("value");
+            String locCode = LocationCode.getAttribute("value");
+
+            System.out.println("Location Name: " + locName);
+            System.out.println("Location Code: " + locCode);
+
+            Assert.assertEquals(locName, name, "Location name does not match");
+        } else {
+            Assert.fail("Search result did not match the expected name");
+        }
+    }
+
+    //TS0006 - Edit an existing Location
     public void EditLocation(String SearchLocation, String Name, String Code, String Details) throws InterruptedException {
-        
+    	InitialSteps();
     	SLocation.sendKeys(SearchLocation);
     	Thread.sleep(3000);
     	
@@ -121,7 +168,6 @@ public class LocationPage extends BasePage {
     	{
     		UpdatedLocation.click();
         	Thread.sleep(3000);
-        	
     	}
     	
     	EditLocationN.clear();
@@ -131,12 +177,19 @@ public class LocationPage extends BasePage {
     	EditDetails.sendKeys(Details);
         ApplyChanges.click();
         Thread.sleep(3000);
-        System.out.println(Alert.getText());
-        ok.click();
         BackButton.click();
-        
+        Thread.sleep(3000);
+        Assert.assertTrue(NewLocationMaster.isDisplayed(), "Location not updated");
     }
 
+    
+    //TS0008 - Export Location list to Excel
+    public void VerifyExcelbtn() throws InterruptedException
+    {
+    	InitialSteps();
+    	Excelbtn.click();
+    	Thread.sleep(10000);
+    }
     
    
     public void DeleteLocation(String LocationName) throws InterruptedException

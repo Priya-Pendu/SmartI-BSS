@@ -8,6 +8,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import LoginTest.LoginPage;
 import MasterPage.LocationPage;
+import Utilities.DownloadUtil;
 
 
 public class LocationTest {
@@ -19,42 +20,64 @@ LocationPage locp;
 	@BeforeTest
 	void setup()
 	{
-		driver=new ChromeDriver();
+		
+		driver = DownloadUtil.getChromeDriverWithDownloadFolder();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.get("http://localhost:915/");
 		driver.manage().window().maximize();
 		LoginPage lp = new LoginPage(driver);
 	    lp.LginCredentials("tata", "Smarti@123");
 	    locp = new LocationPage(driver);
+	    
 		
 	}
 
-	@Test(priority=0)
-	public void InitialSetup()
-	{
-		locp.InitialSteps();
-	}
 	
-	@Test (priority = 1)
+	//@Test (priority = 1)
 	public void TS0001() throws InterruptedException
 	{
 		locp.CheckLocationInOtherCompany("Test6", "1006");
 	}
 	
+	//@Test(priority=2)
+	public void TS0002() 
+	{
+		locp.VerifyNewLocationPage();
+	}
+	
+	
+	//@Test (priority = 3)
+	void TS0003() throws InterruptedException
+	{
+		
+	    locp.VerifyAddLocation("Test8", "1008");
+	}
+	
+	//@Test (priority = 4)
+	public void TS0004() throws InterruptedException
+	{
+		locp.VerifyMaxCharLimit();
+	}
+	
+	//@Test (priority = 5)
+	public void TS0005() throws InterruptedException
+	{
+		locp.viewExistingLocation("Mumbai");
+	}
+	
+	
+	//@Test(priority= 6)
+	public void TS0006() throws InterruptedException
+	{
+		locp.EditLocation("Banglore", "Banglore","BNGL", "Test");
+	}
+	
+	@Test(priority=8)
+	public void TS0008() throws InterruptedException
+	{
+		locp.VerifyExcelbtn();
+	}
 	/*
-	@Test (priority = 1)
-	void AddLocation() throws InterruptedException
-	{
-		locp = new LocationPage(driver);
-	    locp.click_Location_btn("Jallgaon", "JL1");
-	}
-	
-	@Test(priority= 2)
-	public void UpdateLocation() throws InterruptedException
-	{
-		locp.EditLocation("Kalyan", "Kalyan", "BWD01", "Test");
-	}
-	
 	@Test (priority = 3 )
 	void DeleteLocation() throws InterruptedException
 	{
