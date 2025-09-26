@@ -18,6 +18,7 @@ public class LocationPage extends BasePage {
     
     public LocationPage(WebDriver driver) {
         super(driver);
+        this.driver = driver;
     }
 
     // Locators
@@ -58,6 +59,11 @@ public class LocationPage extends BasePage {
 	@FindBy(xpath="//div[@class='panel-titlebar-text']") WebElement NewLocTitle;
 	@FindBy(xpath = "//div[@class='slick-cell l0 r0']/a") WebElement SLocationResult;
 	@FindBy(xpath="//div[@title='Excel']//div[@class='button-outer']") WebElement Excelbtn;
+	@FindBy(xpath="//div[@title='PDF']") WebElement PDFbtn;
+	@FindBy(xpath="//div[@class='slick-cell l1 r1']") WebElement SearchResultCode;
+	@FindBy(tagName = "iframe")WebElement iframeElement;
+	@FindBy(xpath="//font[@color='black']") WebElement AlertMsg;
+	@FindBy(xpath="//span[@id='select2-chosen-1']") WebElement CustomerField;
     
     
     //ActionMethods
@@ -190,8 +196,61 @@ public class LocationPage extends BasePage {
     	Excelbtn.click();
     	Thread.sleep(10000);
     }
-    
    
+    //TS0009 - Export Location list to PDF
+	public void VerifyPDFbtn() throws InterruptedException {
+		InitialSteps();
+		PDFbtn.click();
+		Thread.sleep(10000);
+	}
+   
+	
+	//TS0010 - Search Location by Code or Name
+	public void VerifySearchLocation(String Name, String Code) throws InterruptedException
+	{
+		InitialSteps();
+		SearchLocation.clear();
+		SearchLocation.sendKeys(Name);
+		Thread.sleep(2000);
+		Assert.assertTrue(SLocationResult.getText().equals(Name), "Location not found by Name");
+		Thread.sleep(2000);
+		SearchLocation.clear();
+		SearchLocation.sendKeys(Code);
+		Thread.sleep(2000);
+		Assert.assertTrue(SearchResultCode.getText().equals(Code), "Location not found by Code");
+		Thread.sleep(2000);
+		
+	}
+	
+	//TS0011 - check duplicate location should not added
+	public void VerifyDuplicateLocAdd(String Name, String Code) throws InterruptedException
+	{
+		InitialSteps();
+		NewLocationMaster.click();
+		LocationName.sendKeys(Name);
+		LocationCode.sendKeys(Code);
+		save.click();
+		Thread.sleep(2000);
+		driver.switchTo().frame(iframeElement);
+		Assert.assertTrue(AlertMsg.getText().contains("exists"), "Duplicate Location added");
+		Thread.sleep(2000);
+		
+	}
+	
+	//TS0012 - check whether customer field is view only field
+	public void VerifyCustomerField() throws InterruptedException
+	{
+		InitialSteps();
+		NewLocationMaster.click();
+		Thread.sleep(2000);
+		Assert.assertFalse(CustomerField.isEnabled(), "Customer field is not displayed");
+		Thread.sleep(2000);
+		logger.info("Customer field is view only field");
+		Thread.sleep(2000);
+		BackArrowButton.click();
+		Thread.sleep(2000);
+	}
+	
     public void DeleteLocation(String LocationName) throws InterruptedException
     {
     	SLocation.clear();

@@ -72,11 +72,36 @@ LocationPage locp;
 		locp.EditLocation("Banglore", "Banglore","BNGL", "Test");
 	}
 	
-	@Test(priority=8)
+	//@Test(priority=7)
 	public void TS0008() throws InterruptedException
 	{
 		locp.VerifyExcelbtn();
 	}
+	
+	//@Test(priority=8)
+	public void TS0009() throws InterruptedException
+	{
+		locp.VerifyPDFbtn();
+	}
+	
+	//@Test(priority=9)
+	public  void TS0010() throws InterruptedException 
+	{
+		locp.VerifySearchLocation("Mumbai", "BWD01");
+	}
+	
+	//@Test(priority=10)
+	public void TS0011() throws InterruptedException
+	{
+		locp.VerifyDuplicateLocAdd("Mumbai", "BWD01");
+	}
+	
+	@Test(priority=11)
+	public void TS0012() throws InterruptedException
+	{
+		locp.VerifyCustomerField();
+	}
+	
 	/*
 	@Test (priority = 3 )
 	void DeleteLocation() throws InterruptedException
