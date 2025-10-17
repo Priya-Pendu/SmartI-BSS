@@ -6,3 +6,7 @@
 11:55:38.658 [main] INFO  MasterPage.LocationPage - Maximum character limit for Location Code is :10
 12:19:31.055 [main] INFO  MasterPage.LocationPage - Location not found
 12:20:13.612 [main] INFO  MasterPage.LocationPage - Location not found
+10:51:37.329 [main] INFO  MasterPage.LocationPage - Caught InvalidElementStateException – field is not editable as expected.
+11:16:33.661 [main] INFO  MasterPage.LocationPage - Is Shared checkbox is clickable.
+11:17:05.551 [main] INFO  MasterPage.LocationPage - Is Shared checkbox is clickable.
+11:34:26.251 [main] INFO  MasterPage.LocationPage - Checkbox is not clickable – as expected.

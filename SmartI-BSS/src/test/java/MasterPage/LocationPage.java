@@ -1,7 +1,7 @@
 	package MasterPage;
 import java.util.List;
 
-
+import org.openqa.selenium.InvalidElementStateException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -64,7 +64,8 @@ public class LocationPage extends BasePage {
 	@FindBy(tagName = "iframe")WebElement iframeElement;
 	@FindBy(xpath="//font[@color='black']") WebElement AlertMsg;
 	@FindBy(xpath="//span[@id='select2-chosen-1']") WebElement CustomerField;
-    
+	@FindBy(xpath="//label[@class=\"error\"]") WebElement SignofUnfilledMandatoryField;
+    //@FindBy(xpath="//label[@id='BuildingSolutionSuite_Master_LocationMasterDialog38_LocationCode-error']") WebElement SignofUnfilledMandatoryFieldCode;
     
     //ActionMethods
     public void InitialSteps()
@@ -238,20 +239,96 @@ public class LocationPage extends BasePage {
 	}
 	
 	//TS0012 - check whether customer field is view only field
-	public void VerifyCustomerField() throws InterruptedException
+	public void verifyCustomerFieldIsNotEditable(String companyName) throws InterruptedException {
+	    InitialSteps();
+	    NewLocationMaster.click();
+	    Thread.sleep(2000); // Optional: Use WebDriverWait in real tests
+
+	    try {
+	        CustomerField.sendKeys("test123"); // Try sending dummy input
+	        String currentValue = CustomerField.getAttribute("value");
+
+	        if (currentValue.contains("test123")) {
+	            Assert.fail("Customer field is editable, but it should be view-only.");
+	        } else {
+	            logger.info("Customer field did not accept input – likely not editable.");
+	        }
+	    } catch (InvalidElementStateException e) {
+	        logger.info("Caught InvalidElementStateException – field is not editable as expected.");
+	    } catch (Exception e) {
+	        logger.error("Unexpected error when trying to type in Customer field", e);
+	        Assert.fail("Unexpected exception occurred");
+	    }
+
+	    Thread.sleep(2000);
+	    BackArrowButton.click();
+	    Thread.sleep(2000);
+	}
+
+	//TS0013 - check whether Is Shared checkbox is clickable
+	public void verifyIsSharedCheckbox() throws InterruptedException {
+        InitialSteps();
+        NewLocationMaster.click();
+        Thread.sleep(2000); // Optional: Use WebDriverWait in real tests
+
+        if (IsShared.isEnabled()) {
+        	IsShared.click();
+            logger.info("Is Shared checkbox is clickable.");
+        } else {
+            Assert.fail("Is Shared checkbox is not clickable.");
+        }
+
+        Thread.sleep(2000);
+        BackArrowButton.click();
+        Thread.sleep(2000);
+        
+	}
+
+	//TS0014 - check whether Is Active checkbox is view only
+	public void verifyIsActiveCheckbox() throws InterruptedException {
+	    InitialSteps();
+	    SLocation.sendKeys("Mumbai");
+	    Thread.sleep(3000);
+	    UpdatedLocation.click();
+	    Thread.sleep(2000);
+
+	    boolean initialState = IsActive.isSelected();
+	    try {
+	        IsActive.click();
+	        Thread.sleep(500); // Small wait for DOM update
+	        Assert.assertEquals(IsActive.isSelected(), initialState, "Checkbox state changed – should be view-only.");
+	    } catch (Exception e) {
+	        logger.info("Checkbox is not clickable – as expected.");
+	    }
+
+	    BackArrowButton.click();
+	    Thread.sleep(2000);
+	}
+
+	//TS0015 - check if mandatory field is not provided then error/pop up message is displayed or not
+	public void verifyMandatoryFields()
 	{
 		InitialSteps();
 		NewLocationMaster.click();
-		Thread.sleep(2000);
-		Assert.assertFalse(CustomerField.isEnabled(), "Customer field is not displayed");
-		Thread.sleep(2000);
-		logger.info("Customer field is view only field");
-		Thread.sleep(2000);
-		BackArrowButton.click();
-		Thread.sleep(2000);
+		save.click();
+		if (SignofUnfilledMandatoryField.isDisplayed()) {
+			System.out.println("Mandatory field validation is working");
+		} else {
+			Assert.fail("Mandatory field validation is not working");
+		}
 	}
 	
-    public void DeleteLocation(String LocationName) throws InterruptedException
+	//TS0016 - check whether page gets refresh when click on refresh button
+	public void VerifyRefreshButton() throws InterruptedException {
+		InitialSteps();
+		
+		
+
+	}
+	
+
+	// TS0017 - Delete existing Location
+	public void DeleteLocation(String LocationName) throws InterruptedException
     {
     	SLocation.clear();
     	SLocation.sendKeys(LocationName);

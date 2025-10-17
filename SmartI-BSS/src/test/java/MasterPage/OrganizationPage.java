@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
+import LoginTest.LoginPage;
 import Utilities.BasePage;
 
 
@@ -21,8 +22,6 @@ public class OrganizationPage extends BasePage
 	   public OrganizationPage (WebDriver driver)
 	   {
 	        super(driver);
-	        
-	        
 	    }
 
 	   // Locators of Add Organization
@@ -88,6 +87,8 @@ public class OrganizationPage extends BasePage
 	    WebElement Organization;
 	    @FindBy(xpath="//input[@class='s-Serenity-QuickSearchInput s-QuickSearchInput']")
 	    WebElement SearchOrganizationName;
+	    @FindBy(xpath="//div[@class='panel-titlebar-text']")
+	    WebElement NewOrgPageTitle;
 	        
 	    
 	    //Locators of Edit Organization
@@ -138,6 +139,27 @@ public class OrganizationPage extends BasePage
 	    WebElement Yes;
 	    
 	    //ActionMethod 
+	    
+	    public void InitialSteps()
+	    {
+	    	LoginPage lp = new LoginPage(driver);
+	    	AccessManagment.click();
+	    	wait.until(ExpectedConditions.elementToBeClickable(Master)).click();
+	    	
+	    }
+	    
+	    //TS0017 - Verify wheather "New Organization' page display or not
+		public void VerifyNewOrganizationPage() throws InterruptedException {
+			InitialSteps();
+			OrganizationMenubtn.click();
+			NewOrganization.click();
+			Thread.sleep(3000);
+			Assert.assertEquals(NewOrgPageTitle.getText(), "New Organization");
+			System.out.println("New Organization page is displayed");
+			BackButton.click();
+		}
+		
+		//TS0018 - Fill Organization Details
 	    public void AddOrganization(String Org, String OrgName, String OrgCode, String Location, String Address, String EmailId, String ContactNo, 
 	    		                    String StartDate, String EndDate, String EmployeeStrength, String TypeofService, String AuditRemark) throws InterruptedException 
 	    {
@@ -201,9 +223,7 @@ public class OrganizationPage extends BasePage
 	    	   save.click();
 		    
 	    	   Thread.sleep(3000);
-	    	   System.out.println(Alert.getText());
-	    	   ok.click();
-	    	   BackButton.click();
+	    	   Assert.assertTrue(NewOrganization.isDisplayed());
 	    	    
 	    }
 	    

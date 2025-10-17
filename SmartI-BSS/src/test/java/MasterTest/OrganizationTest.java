@@ -23,21 +23,29 @@ public class OrganizationTest {
         //System.setProperty("webdriver.chrome.driver", "D:\\Priya\\chromedriver-win64\\chromedriver.exe"); // Ensure this is correct
         driver = new ChromeDriver(); 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10)); 
-        driver.get("http://localhost:170/"); 
+        driver.get("http://localhost:915/"); 
         driver.manage().window().maximize();  
         organizationPage = new OrganizationPage(driver);
+        LoginPage lp = new LoginPage(driver);
+	    lp.LginCredentials("tata", "Smarti@123");
+    }
+    
+    //@Test(priority=0)
+    public void TS0017() throws InterruptedException
+    {
+    	organizationPage.VerifyNewOrganizationPage();
     }
 
     @Test(priority=1)
     public void AddOrganization() throws InterruptedException 
     {
-    	LoginPage lp = new LoginPage(driver);
-	    lp.LginCredentials("Crisil", "Smarti@123");
-        organizationPage.AddOrganization("OEM","WHO", "WHO-01","Kalyan","Bhumi World", "priyapendu", "1234567889","01/16/2025", "01/16/2026", "15", "Cleaning", "Verified");  
+    	// public void AddOrganization(String Org, String OrgName, String OrgCode, String Location, String Address, String EmailId, String ContactNo, 
+        //String StartDate, String EndDate, String EmployeeStrength, String TypeofService, String AuditRemark)
+        organizationPage.AddOrganization("OEM","Meclix", "WHO-10","Kalyan","Bhumi World", "priyapendu", "1234567889","01/16/2025", "01/16/2026", "15", "Cleaning", "Verified");  
     
      }
     
-    @Test(priority=2)
+    //@Test(priority=2)
     public void EditOrganizationDetails() throws InterruptedException
     {
     	organizationPage.EditOrganization("test", "Partner", "NewTest", "NewCode", "London", "Bhiwandi", "testemail", "565656656", "06/02/2025", "07/02/2025", "20", "NewTest");

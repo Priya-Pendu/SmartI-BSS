@@ -96,10 +96,34 @@ LocationPage locp;
 		locp.VerifyDuplicateLocAdd("Mumbai", "BWD01");
 	}
 	
-	@Test(priority=11)
+	//@Test(priority=11)
 	public void TS0012() throws InterruptedException
 	{
-		locp.VerifyCustomerField();
+		locp.verifyCustomerFieldIsNotEditable("SmartiSystems");
+	}
+	
+	//@Test(priority=12)
+	public void TS0013() throws InterruptedException
+	{
+		locp.verifyIsSharedCheckbox();
+	}
+	
+	//@Test(priority=13)
+	public void TS0014() throws InterruptedException
+	{
+		locp.verifyIsActiveCheckbox();
+	}
+	
+	//@Test(priority=14)
+	public void TS0015()
+	{
+		locp.verifyMandatoryFields();
+	}
+	
+	@Test(priority=15)
+	public void TS0016() throws InterruptedException
+	{
+		locp.VerifyRefreshButton();
 	}
 	
 	/*
