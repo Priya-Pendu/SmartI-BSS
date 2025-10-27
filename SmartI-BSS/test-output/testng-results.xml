@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-10-16T17:19:59 IST" name="Default suite" finished-at="2025-10-16T17:20:14 IST" duration-ms="15821">
+  <suite started-at="2025-10-24T15:59:09 IST" name="Default suite" finished-at="2025-10-24T15:59:24 IST" duration-ms="15093">
     <groups>
     </groups>
-    <test started-at="2025-10-16T17:19:59 IST" name="Default test" finished-at="2025-10-16T17:20:14 IST" duration-ms="15821">
+    <test started-at="2025-10-24T15:59:09 IST" name="Default test" finished-at="2025-10-24T15:59:24 IST" duration-ms="15093">
       <class name="MasterTest.OrganizationTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:MasterTest.OrganizationTest@1c5920df]" started-at="2025-10-16T17:19:59 IST" name="setup" finished-at="2025-10-16T17:20:01 IST" duration-ms="2139" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:MasterTest.OrganizationTest@196a42c3]" started-at="2025-10-24T15:59:09 IST" name="setup" finished-at="2025-10-24T15:59:12 IST" duration-ms="2727" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="AddOrganization()[pri:1, instance:MasterTest.OrganizationTest@1c5920df]" started-at="2025-10-16T17:20:01 IST" name="AddOrganization" finished-at="2025-10-16T17:20:14 IST" duration-ms="13490" status="PASS">
+        <test-method signature="TS0023()[pri:5, instance:MasterTest.OrganizationTest@196a42c3]" started-at="2025-10-24T15:59:12 IST" name="TS0023" finished-at="2025-10-24T15:59:24 IST" duration-ms="12150" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- AddOrganization -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:MasterTest.OrganizationTest@1c5920df]" started-at="2025-10-16T17:20:14 IST" name="tearDown" finished-at="2025-10-16T17:20:14 IST" duration-ms="160" status="PASS">
+        </test-method> <!-- TS0023 -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:MasterTest.OrganizationTest@196a42c3]" started-at="2025-10-24T15:59:24 IST" name="tearDown" finished-at="2025-10-24T15:59:24 IST" duration-ms="162" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

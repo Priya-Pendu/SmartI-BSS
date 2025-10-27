@@ -83,8 +83,8 @@ public class OrganizationPage extends BasePage
 	    WebElement ok;
 	    @FindBy(xpath="//button[@class='panel-titlebar-close']") 
 	    WebElement BackButton;
-	    @FindBy(xpath="//div[@class='slick-cell l1 r1']/a")
-	    WebElement Organization;
+	    @FindBy(xpath="//div[@class=\"slick-cell l0 r0\"]/a")
+	    List <WebElement> Organization;
 	    @FindBy(xpath="//input[@class='s-Serenity-QuickSearchInput s-QuickSearchInput']")
 	    WebElement SearchOrganizationName;
 	    @FindBy(xpath="//div[@class='panel-titlebar-text']")
@@ -98,45 +98,46 @@ public class OrganizationPage extends BasePage
 	    WebElement EditSearchOrg;
 	    @FindBy(xpath="//ul[@class=\"select2-results\"]/*")
 	    WebElement EditdropdownOptions;
-	    @FindBy(xpath="//input[@id='BuildingSolutionSuite_Organization_OrganizationDialog30_OrganizationName']")
+	    @FindBy(name="OrganizationName")
 	    WebElement EditOrgName;
-	    @FindBy(xpath="//input[@id='BuildingSolutionSuite_Organization_OrganizationDialog30_OrganizationCode']")
+	    @FindBy(name="OrganizationCode")
 	    WebElement EditOrgCode;
-	    @FindBy(xpath="//div[@id='s2id_BuildingSolutionSuite_Organization_OrganizationDialog30_Location']//b[@role='presentation']")
+	    @FindBy(css="div[id='s2id_BuildingSolutionSuite_Organization_OrganizationDialog50_Location'] b[role='presentation']")
 	    WebElement EditLocationDrop;
-	    @FindBy(xpath="//input[@id='s2id_autogen5_search']")
+	    @FindBy(xpath="//input[@id='s2id_autogen7_search']")
 	    WebElement EditLocationSearch;
 	    @FindBy(xpath="//ul[@id='select2-results-5']/*")
 	    List <WebElement> EditLocationOptions;
-	    @FindBy(xpath="//input[@id='BuildingSolutionSuite_Organization_OrganizationDialog30_Address']")
+	    @FindBy(name="Address")
 	    WebElement EditAdd;
-	    @FindBy (xpath="//input[@id='BuildingSolutionSuite_Organization_OrganizationDialog30_EmailId']")
+	    @FindBy (name="EmailId")
 	    WebElement EditEmail;
 	    @FindBy (xpath="//input[@class='emaildomain']")
 	    WebElement EditMailDomain;
-	    @FindBy(xpath="//input[@id='BuildingSolutionSuite_Organization_OrganizationDialog30_StartDate']")
+	    @FindBy(name="StartDate")
 	    WebElement EditSDate;
-	    @FindBy(xpath="//input[@id='BuildingSolutionSuite_Organization_OrganizationDialog30_EndDate']")
+	    @FindBy(name="EndDate")
 	    WebElement EditEDate;
-	    @FindBy(xpath="//input[@id='BuildingSolutionSuite_Organization_OrganizationDialog30_EmployeeStrength']")
+	    @FindBy(name="EmployeeStrength")
 	    WebElement EditEmpStregnth;
-	    @FindBy(xpath="//textarea[@id='BuildingSolutionSuite_Organization_OrganizationDialog30_TypeofService']")
+	    @FindBy(name="TypeofService")
 	    WebElement EditSeervice;
-	    @FindBy (xpath="//textarea[@id='BuildingSolutionSuite_Organization_OrganizationDialog30_AuditRemark']")
+	    @FindBy (name="AuditRemark")
 	    WebElement EditRemark;
 	    @FindBy(xpath="//span[normalize-space()='Save']")
 	    WebElement EditSaveDetails;
 	    @FindBy(xpath="//div[@id='s2id_BuildingSolutionSuite_Organization_OrganizationDialog10_OrganizationTypeId']//abbr[@class='select2-search-choice-close']")
 	    WebElement Cross;
-	    
-	    //Delete Organization Locators
-	    
-	    @FindBy(xpath="//span[normalize-space()='Delete']")
-	    WebElement DeleteOrganization;
-	    @FindBy(xpath="//div[@class='ui-dialog ui-corner-all ui-widget ui-widget-content ui-front s-MessageDialog s-ConfirmDialog ui-dialog-buttons ui-draggable']")
-	    WebElement ConfirmationMSG;
-	    @FindBy(xpath="//button[normalize-space()='Yes']")
-	    WebElement Yes;
+	    @FindBy(xpath ="//div[@id='s2id_BuildingSolutionSuite_Organization_OrganizationDialog10_Location']//abbr[@class='select2-search-choice-close']")
+	    WebElement EditCross;
+	    @FindBy(xpath="//span[@id='select2-chosen-2']")
+	    WebElement SelectedOrgType;
+	    @FindBy(xpath="//span[@id='select2-chosen-3']")
+	    WebElement SelectedLocation;
+	    @FindBy(xpath="//div[@title='Excel']//span[@class='button-inner']")
+	    WebElement Excelbtn;
+	    @FindBy(xpath ="//div[@title='PDF']//span[@class='button-inner']")
+	    WebElement Pdfbtn;
 	    
 	    //ActionMethod 
 	    
@@ -145,7 +146,7 @@ public class OrganizationPage extends BasePage
 	    	LoginPage lp = new LoginPage(driver);
 	    	AccessManagment.click();
 	    	wait.until(ExpectedConditions.elementToBeClickable(Master)).click();
-	    	
+	    	OrganizationMenubtn.click();;
 	    }
 	    
 	    //TS0017 - Verify wheather "New Organization' page display or not
@@ -227,116 +228,152 @@ public class OrganizationPage extends BasePage
 	    	    
 	    }
 	    
-	    
-	    
-	    public void EditOrganization(String ORG, String NewORGType, String NewORGName, String NewORGCode, String NewLocation, 
-	    							String NewAdd, String NewEmail, String NStartD, String NEndD, String EmployeeS, String TypeofS, String NAudit) throws InterruptedException
+	    //TS0019 - View an existing Organization
+	    public void viewOrg(String ORG) throws InterruptedException
+
 	    {
+	    	InitialSteps();
 	    	SearchOrganizationName.sendKeys(ORG);
 	    	Thread.sleep(3000);
 	    	
 	    	//Clicking on organization to edit
-	    	if(Organization.getText().equals(ORG))
+	    	/*if(Organization.getText().equals(ORG))
 	    	{
 	    		Organization.click();
 	    		Thread.sleep(3000);
-	    		
-	    	}
-	    	else
-	    	{
-	    		System.out.println("The organization is not available.");
-	    	}
-	    	
-	    	/*
-	    	//change organization 
-	    	EditOrgType.click(); 
-	    	EditSearchOrg.sendKeys(NewORGType);
-	    	
+	    	}*/
+	    	System.out.println(SelectedOrgType.getText());
+	    	System.out.println(EditOrgName.getAttribute("value"));
+	    	System.out.println(EditOrgCode.getAttribute("value"));
+	    	System.out.println(SelectedLocation.getAttribute("value"));
+	    	System.out.println(EditAdd.getAttribute("value"));
+	    	System.out.println(EditEmail.getAttribute("value"));
+	    	System.out.println(EditSDate.getAttribute("value"));
+	    	System.out.println(EditEDate.getAttribute("value"));
+	    	System.out.println(EditEmpStregnth.getAttribute("value"));
+	    	System.out.println(EditSeervice.getAttribute("value"));
+	    	System.out.println(EditRemark.getAttribute("value"));
 			
-		       for (WebElement value : dropdownOptions ) 
-		       {
-			
-			    if(value.getText().trim().equalsIgnoreCase(NewORGType))
-			    	{
-			    		value.click();
-			    		break;
-			    	}
-		       }  */
-	    	
-		       //Change Org name and code 
-		       EditOrgName.sendKeys(NewORGName);
-		       EditOrgCode.sendKeys(NewORGCode);
-		    	
-		       //Change Location
-		       Cross.click();
-		       EditLocationDrop.click(); 
-	    	      
-		       EditLocationSearch.sendKeys(NewLocation);
-		    	Thread.sleep(3000);
-			       for (WebElement value : EditLocationOptions ) 
-			       {
-				
-				    if(value.getText().trim().equals(NewLocation))
-				    	{
-				    		value.click();
-				    		break;
-				    	}
-				    else
-				    {
-				    	System.out.println("The given location is not matched");
-				    }
-			       }
-			       
-			       
-			   //Change address,email id, 
-			       EditAdd.sendKeys(NewAdd);
-			       EditEmail.sendKeys(NewEmail);
-			       EditMailDomain.sendKeys("gmail.com");
-			       
-		    //change start date, end date, employeee strength, type of service, audit remark
-			       EditSDate.sendKeys(NStartD);
-			       EditEDate.sendKeys(NEndD);
-			       EditEmpStregnth.sendKeys(EmployeeS);
-			       EditSeervice.sendKeys(TypeofS);
-			       EditRemark.sendKeys(NAudit);
-		    	   
-		    //save details
-			       EditSaveDetails.click();
-				    
-		    	   Thread.sleep(3000);
-		    	   
 	    }
-	    	
-	      
 	    
-	    public void DeleteOrganization(String ORG) throws InterruptedException
+	    //TS0020 - Edit an existing Organization
+	    public void EditOrganization(String orgName, String newOrgType, String newOrgName, String newOrgCode, String newLocation,
+                String newAddress, String newEmail, String contact, int newStartDate, int newEndDate,
+                String employeeStrength, String typeOfService, String newAuditRemark) throws InterruptedException {
+
+		InitialSteps();
+		
+		SearchOrganizationName.clear();
+		SearchOrganizationName.sendKeys(orgName);
+		Thread.sleep(3000);
+		
+		// Clicking on organization to edit
+		boolean found = false;
+		for (WebElement orgElement : Organization) {
+		if (orgElement.getText().equalsIgnoreCase(orgName)) {
+		orgElement.click();
+		Thread.sleep(3000);
+		found = true;
+		break; // stop after finding and clicking
+		}
+		}
+		
+		if (!found) {
+		System.out.println("Organization not found: " + orgName);
+		return;
+		}
+		
+		// Change Org name and code
+		EditOrgName.clear();
+		EditOrgName.sendKeys(newOrgName);
+		
+		EditOrgCode.clear();
+		EditOrgCode.sendKeys(newOrgCode);
+		
+		// Change address, email ID, etc.
+		EditAdd.clear();
+		EditAdd.sendKeys(newAddress);
+		
+		EditEmail.clear();
+		EditEmail.sendKeys(newEmail);
+		
+		EditMailDomain.clear();
+		EditMailDomain.sendKeys("gmail.com");
+		
+		// Update contact number
+		Number.clear();
+		Number.sendKeys(contact);
+		
+		// Change start and end date
+		EditSDate.clear();
+		EditSDate.sendKeys(String.valueOf(newStartDate));
+		
+		EditEDate.clear();
+		EditEDate.sendKeys(String.valueOf(newEndDate));
+		
+		// Update employee strength, type of service, audit remark
+		EditEmpStregnth.clear();
+		EditEmpStregnth.sendKeys(employeeStrength);
+		
+		EditSeervice.clear();
+		EditSeervice.sendKeys(typeOfService);
+		
+		EditRemark.clear();
+		EditRemark.sendKeys(newAuditRemark);
+		
+		// Save details
+		EditSaveDetails.click();
+		Thread.sleep(5000);
+		
+		System.out.println("Organization details updated successfully for: " + newOrgName);
+		}
+
+	    private CharSequence Stirngof(int nStartD) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+	    //TS0022 - Export Organization list to Excel
+		public void ExportToExcel() throws InterruptedException 
+		{
+			InitialSteps();
+			Excelbtn.click();
+			Thread.sleep(10000);
+		}
+
+		//TS0023 - Export Organization list to PDF
+	     public void PdfExport() throws InterruptedException
+	     {
+	    	 InitialSteps();
+	    	 Pdfbtn.click();
+	    	 Thread.sleep(10000);
+	     }
+	      
+	     //TS0024 - Search Organization using Search bar
+	    public void SearchBar(String orgName) throws InterruptedException
 	    {
-	    	//search organization 
-	    	SearchOrganizationName.sendKeys(ORG);
-	    	Thread.sleep(3000);
-	    	
-	    	//Clicking on organization to edit
-	    	if(Organization.getText().equals(ORG))
-	    	{
-	    		Organization.click();
-	    		Thread.sleep(3000);
-	    		
-	    	}
-	    	else
-	    	{
-	    		System.out.println("The organization is not available.");
-	    	}
-	    	
-	    	DeleteOrganization.click();
-	    	
-	    	System.out.println(ConfirmationMSG.getText());
-	    	Yes.click();
-	    	
-	    	 JavascriptExecutor js = (JavascriptExecutor) driver;
-	    	 js.executeScript("window.scrollBy(1000, 0);");
+	    	InitialSteps();
+	    	SearchOrganizationName.clear();
+			SearchOrganizationName.sendKeys(orgName);
+			Thread.sleep(3000);
+			
+			// Clicking on organization to edit
+			boolean found = false;
+			for (WebElement orgElement : Organization) {
+			if (orgElement.getText().equalsIgnoreCase(orgName)) {
+			System.out.println("Organization details: " +orgElement.getText());
+			Thread.sleep(3000);
+			found = true;
+			break; // stop after finding and clicking
+			}
+			}
+			
+			if (!found) {
+			System.out.println("Organization not found: " + orgName);
+			return;
+			}
+			
+			//Se
 	    }
-	      
-	      
-	      
 	       
 }

@@ -1,9 +1,11 @@
 package MasterTest;
 import java.time.Duration;
-
+import java.util.HashMap;
+import java.util.Map;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -21,7 +23,17 @@ public class OrganizationTest {
     public void setup() {
        
         //System.setProperty("webdriver.chrome.driver", "D:\\Priya\\chromedriver-win64\\chromedriver.exe"); // Ensure this is correct
-        driver = new ChromeDriver(); 
+    	// Set Chrome preferences for download
+        Map<String, Object> prefs = new HashMap<>();
+        prefs.put("download.default_directory", "D:\\Priya\\BSS_Automation_Files\\Eclipse-Workspace\\SmartISystems-BSS\\SmartI-BSS\\SmartI-BSS\\download");
+        prefs.put("download.prompt_for_download", false);
+        prefs.put("download.directory_upgrade", true);
+        prefs.put("plugins.always_open_pdf_externally", true); // auto-download PDFs
+
+        ChromeOptions options = new ChromeOptions();
+        options.setExperimentalOption("prefs", prefs); 
+        
+        driver = new ChromeDriver(options); 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10)); 
         driver.get("http://localhost:915/"); 
         driver.manage().window().maximize();  
@@ -36,8 +48,8 @@ public class OrganizationTest {
     	organizationPage.VerifyNewOrganizationPage();
     }
 
-    @Test(priority=1)
-    public void AddOrganization() throws InterruptedException 
+    //@Test(priority=1)
+    public void TS0018() throws InterruptedException 
     {
     	// public void AddOrganization(String Org, String OrgName, String OrgCode, String Location, String Address, String EmailId, String ContactNo, 
         //String StartDate, String EndDate, String EmployeeStrength, String TypeofService, String AuditRemark)
@@ -46,12 +58,31 @@ public class OrganizationTest {
      }
     
     //@Test(priority=2)
-    public void EditOrganizationDetails() throws InterruptedException
+    public void TS0019() throws InterruptedException
     {
-    	organizationPage.EditOrganization("test", "Partner", "NewTest", "NewCode", "London", "Bhiwandi", "testemail", "565656656", "06/02/2025", "07/02/2025", "20", "NewTest");
+        organizationPage.viewOrg("Meclix");
     }
-    	
+    
+   // @Test(priority=3) - pending
+    public void TS0020() throws InterruptedException
+    {
+    	// public void EditOrganization(String ORG, String NewORGType, String NewORGName, String NewORGCode, String NewLocation, 
+		//String NewAdd, String NewEmail, String Contact, String NStartD, String NEndD, String EmployeeS, String TypeofS, String NAudit)
+    	//organizationPage.EditOrganization("test", "Partner", "NewTest", "NewCode", "London", "Bhiwandi", "testemail", "565656656", "18-10-2025", "18-12-2025", "20", "NewTest", "TestAuditRemark");
+    }
+    
+    //@Test(priority=4)
+    public void TS0022() throws InterruptedException
+    {
+    	organizationPage.ExportToExcel();
+    }
 
+    //@Test(priority=5)
+    public void TS0023() throws InterruptedException
+    {
+    	organizationPage.PdfExport();
+    }
+    
     @AfterTest
     public void tearDown() {
         // Close the browser after tests are done
