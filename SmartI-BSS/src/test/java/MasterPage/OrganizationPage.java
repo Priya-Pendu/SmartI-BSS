@@ -1,7 +1,8 @@
 package MasterPage;
+import java.util.Arrays;
 import java.util.List;
 
-
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -89,8 +90,12 @@ public class OrganizationPage extends BasePage
 	    WebElement SearchOrganizationName;
 	    @FindBy(xpath="//div[@class='panel-titlebar-text']")
 	    WebElement NewOrgPageTitle;
-	        
-	    
+	    @FindBy(xpath="//div[@class='slick-cell l2 r2']")
+	    List<WebElement> OrgCodeList;
+	    @FindBy(xpath="//b[@role='presentation']")
+	    WebElement LocationFilterDrop;
+	    @FindBy(xpath="//input[@id='s2id_autogen1_search']")
+	    WebElement LocationFilterSearch;
 	    //Locators of Edit Organization
 	    @FindBy(xpath="//div[@id='s2id_BuildingSolutionSuite_Organization_OrganizationDialog30_OrganizationTypeId']//b[@role='presentation']")
 	    WebElement EditOrgType;
@@ -138,8 +143,24 @@ public class OrganizationPage extends BasePage
 	    WebElement Excelbtn;
 	    @FindBy(xpath ="//div[@title='PDF']//span[@class='button-inner']")
 	    WebElement Pdfbtn;
+	    @FindBy(xpath="//div[@class=\"select2-result-label\"]")
+	    List<WebElement> FilterLocOptions;
+	    @FindBy(xpath="//div[@class=\"slick-cell l5 r5\"]")
+	    WebElement OrgLocfilter;
+	    @FindBy(xpath="//a[@class='dropdown-toggle']")
+	    WebElement profile;
+	    @FindBy(xpath="//a[normalize-space()='Logout']")
+	    WebElement logout;
+	    @FindBy(xpath="//sup[@title='this field is required']")
+	    List<WebElement> MandatorySign;
+	    @FindBy(xpath="//a[@title='Define New']//b")
+	    WebElement DefineNewBtn;
+	    @FindBy(xpath="//span[@class=\"ui-dialog-title\"]")
+	    WebElement NewOrgTypeForm;
+	    
 	    
 	    //ActionMethod 
+	   
 	    
 	    public void InitialSteps()
 	    {
@@ -165,9 +186,9 @@ public class OrganizationPage extends BasePage
 	    		                    String StartDate, String EndDate, String EmployeeStrength, String TypeofService, String AuditRemark) throws InterruptedException 
 	    {
 	    	//Step1
-	    	AccessManagment.click();
+	    	/*AccessManagment.click();
 	    	wait.until(ExpectedConditions.elementToBeClickable(Master)).click();
-	    	OrganizationMenubtn.click();
+	    	OrganizationMenubtn.click();*/
 	    	NewOrganization.click();  
 	    	OrganizationType.click(); 
 			
@@ -350,7 +371,7 @@ public class OrganizationPage extends BasePage
 	     }
 	      
 	     //TS0024 - Search Organization using Search bar
-	    public void SearchBar(String orgName) throws InterruptedException
+	    public void SearchBar(String orgName, String orgCode) throws InterruptedException
 	    {
 	    	InitialSteps();
 	    	SearchOrganizationName.clear();
@@ -368,12 +389,117 @@ public class OrganizationPage extends BasePage
 			}
 			}
 			
+			SearchOrganizationName.clear();
+			SearchOrganizationName.sendKeys(orgCode);
+			Thread.sleep(3000);
+			
+			// Clicking on organization to edit
+			boolean foundCode = false;
+			for (WebElement orgElement : OrgCodeList) {
+			if (orgElement.getText().equalsIgnoreCase(orgCode)) {
+			System.out.println("Organization details: " +orgElement.getText());
+			Thread.sleep(3000);
+			foundCode = true;
+			break; // stop after finding and clicking
+			}
+			}
+			
 			if (!found) {
 			System.out.println("Organization not found: " + orgName);
 			return;
 			}
 			
-			//Se
 	    }
-	       
+	    
+	    //TS0025 - check whether location wise selection data gets filtered or not
+		public void LocationFilter(String Location) throws InterruptedException {
+			InitialSteps();
+			// Click on location dropdown
+			LocationFilterDrop.click();
+
+			LocationFilterSearch.sendKeys(Location);
+			Thread.sleep(3000);
+			for (WebElement value : FilterLocOptions) {
+
+				if (value.getText().trim().equals(Location)) {
+					value.click();
+					Thread.sleep(3000);
+					if(OrgLocfilter.getText().equals(Location));
+					{
+						System.out.println("Location filter is applied successfully");
+					}
+					break;
+				} else {
+					System.out.println("The given location is not matched");
+				}
+			}
+
+		}
+
+		public void CheckOrgINDiffComp() throws InterruptedException
+		{
+			InitialSteps();
+			Thread.sleep(2000);
+			AddOrganization("OEM","TestOrg02", "TestOrgCode_02","Kalyan","Bhumi World", "priyapendu", "1234567889","01/16/2025", "01/16/2026", "15", "Cleaning", "Verified");
+			Thread.sleep(2000);
+			profile.click();
+			logout.click();
+			 Username.sendKeys("enviro");
+			 Password.sendKeys("Smarti@123");
+			 LoginButton.click();
+			Thread.sleep(2000);
+			SearchBar("TestOrg", "WHO-TestOrgCode");
+		}
+		
+		//TS0026 - check whether mandatory sign is displayed or not in organization type,organization name,Organization Code,Location,Start Date,End Date,contact number field
+		public void MandatorySign() throws InterruptedException
+		{
+			InitialSteps();
+			NewOrganization.click();
+			Thread.sleep(2000);
+			List<String> fieldNames = Arrays.asList(
+				    "Organization Type",
+				    "Organization Name",
+				    "Organization Code",
+				    "Location",
+				    "Contact No",
+				    "Start Date"
+				    
+				);
+			
+			int i = 0;
+			for (WebElement AstrickSign : MandatorySign) {
+			    if (AstrickSign.isDisplayed()) {
+			        System.out.println("Mandatory sign is displayed for: " + fieldNames.get(i));
+			    } else {
+			        System.out.println("Mandatory sign is NOT displayed for: " + fieldNames.get(i));
+			    }
+			    i++;
+			}
+			
+		}
+
+		//TS0027 - check whether new organization type form gets open or not when click on define new button
+		public void VerifyNOrgTypeForm() throws InterruptedException
+		{
+			InitialSteps();
+			NewOrganization.click();
+			Thread.sleep(2000);
+			if(DefineNewBtn.isDisplayed())
+			{
+				DefineNewBtn.click();
+                Thread.sleep(2000);
+                WebElement dialogTitle = wait.until(ExpectedConditions
+                        .visibilityOfElementLocated(By.className("ui-dialog-title")));
+                Assert.assertEquals(NewOrgTypeForm.getText(), "New Organization Type");
+                System.out.println("New Organization Type form is displayed");
+            }
+            else
+            {
+                System.out.println("Define New button is not displayed");
+			}
+					
+			
+		}
+
 }

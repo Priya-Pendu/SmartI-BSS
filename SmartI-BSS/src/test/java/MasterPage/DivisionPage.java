@@ -6,7 +6,10 @@ import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
+import LoginTest.LoginPage;
 import Utilities.BasePage;
 
 
@@ -21,7 +24,7 @@ public class DivisionPage extends BasePage
 	}
 	
 	//AddLocation Locators
-	@FindBy (xpath="//div[contains(@class,'row')]//div[2]//div[1]//div[1]//div[1]//div[1]//div[2]//div[1]")
+	@FindBy (xpath="//p[normalize-space()='Access']")
 	WebElement AccessManagement;
 	@FindBy(xpath="//b[@role='presentation']") 
 	WebElement LocationDrop ;
@@ -55,7 +58,6 @@ public class DivisionPage extends BasePage
 	WebElement Yes;
 	@FindBy(xpath="//button[@class='panel-titlebar-close']")
 	WebElement BackArrow;
-
 	//UpdateDivision locators
 	@FindBy(xpath="//input[@class='s-Serenity-QuickSearchInput s-QuickSearchInput']")
 	WebElement EditSearchDivi;
@@ -63,28 +65,53 @@ public class DivisionPage extends BasePage
 	WebElement Division;
 	@FindBy(xpath="//b[@role='presentation']")
 	WebElement EditLocationDrop;
-	@FindBy(xpath="//input[@id='s2id_autogen13_search']")
+	@FindBy(css="s#s2id_autogen1_search")
 	WebElement EditSearchLocation;
 	@FindBy (xpath="//ul[@class='select2-results']/*")
 	List <WebElement> EditLocationOptions;
-	@FindBy(xpath="//input[@id='BuildingSolutionSuite_Master_DivisionDialog16_DivisionCode']")
+	@FindBy(xpath="//input[@name=\"DivisionCode\"]")
 	WebElement EditCode;
-	@FindBy(xpath="//input[@id='BuildingSolutionSuite_Master_DivisionDialog16_DivisionName']")
+	@FindBy(xpath="//input[@name=\"DivisionName\"]")
 	WebElement EditName;
 	@FindBy(xpath="//div[@title='Apply Changes']//div[@class='button-outer']")
 	WebElement Applychange;
 	@FindBy(xpath="//button[@class='panel-titlebar-close']")
 	WebElement BackArrowbtn;
-	
+	@FindBy (xpath = "//a[@href='/Organization/Organization']//span[contains(text(),'Organization')]") 
+    WebElement OrganizationMenubtn;
+	@FindBy(xpath="//div[@class='panel-titlebar-text']")
+	WebElement NDivisionPageTitle;
+	@FindBy(xpath="//span[@id='select2-chosen-1']")
+	WebElement ExistLocation;
+	@FindBy(xpath="//button[@class='panel-titlebar-close']")
+	WebElement BacktoDivi;
 	
 	//ActionMethods
 	
-	public void AddDivision(String Location, String Code, String DivisionName, String AuditRemark) throws InterruptedException
-	{
+	 public void InitialSteps()
+	    {
+	    	//LoginPage lp = new LoginPage(driver);
+	    	AccessManagement.click();
+	    	wait.until(ExpectedConditions.elementToBeClickable(MasterDropBtn)).click();
+	    	MasterDropBtn.click();
+	    	Divisionbtn.click();
+	    }
+	 
+	   
+	 //TS0030 - Create a new Division
+		public void VerifyNewDivisionPage() throws InterruptedException 
+		{
+			InitialSteps();
+			NewDivision.click();
+			Thread.sleep(2000);
+			Assert.assertTrue(NDivisionPageTitle.getText().contains("New Division"));
+		}
+	 
+		//TS0031 - Fill Division Details
+	   public void AddDivision(String Location, String Code, String DivisionName, String AuditRemark) throws InterruptedException
+	  {
 		//open the division page
-		AccessManagement.click();
-		MasterDropBtn.click();
-		Divisionbtn.click();
+		InitialSteps();
 		NewDivision.click();
 		
 		//select the location
@@ -101,56 +128,70 @@ public class DivisionPage extends BasePage
 		}
 		
 		//fill the other fields
-		
 		CodeText.sendKeys(Code);
 		Name.sendKeys(DivisionName);
 		Remark.sendKeys(AuditRemark);
-		
 		//save the details
 		savebutton.click();
-		
-		//if not save to handle warning
-		System.out.println(Alert.getText());
-		Yes.click();
-		BackArrow.click();
+		Thread.sleep(2000);
+		Assert.assertTrue(NewDivision.isDisplayed());
+		System.out.println("Division Added Successfully..");
 		
 	}
-	
-	
-	public void updateDivision(String Divi,String NewLocation, String NewCode, String NewName ) throws InterruptedException
-	{
-		EditSearchDivi.sendKeys(Divi);
-		Thread.sleep(3000);
-		
-		if(Division.getText().equals(Divi))
-		{
-			Division.click();
+
+	   //TS0032 - View an existing Division
+	   public void ViewExistDivi(String Divi) throws InterruptedException
+	   {
+		   InitialSteps() ;
+		   EditSearchDivi.sendKeys(Divi);
+			Thread.sleep(3000);
 			
-		}
-		else
-		{
-			System.out.println("Division is not available");
-		}
-		
-		//change the location
-		EditLocationDrop.click();
-		EditSearchLocation.sendKeys(NewLocation);
-		
-		for(WebElement value : EditLocationOptions)
-		{
-			if(value.getText().trim() .equals(NewLocation))
+			if(Division.getText().equals(Divi))
 			{
-				value.click();
-				break;
+				Division.click();
+				System.out.println("Division details are:" + ExistLocation.getText() +", "+EditCode.getAttribute("value")
+				+", "+EditName.getAttribute("value"));
 			}
+			BacktoDivi.click();
+			Assert.assertTrue(NewDivision.isDisplayed());
+	   }
+	
+	   //TS0033 - Edit an existing Division
+	   public void EditDivision(String Divi,String NewLocation, String NewCode, String NewName ) throws InterruptedException
+		{
+		    InitialSteps();
+			EditSearchDivi.sendKeys(Divi);
+			Thread.sleep(3000);
+			
+			if(Division.getText().equals(Divi))
+			{
+				Division.click();	
+			}
+			else
+			{
+				System.out.println("Division is not available");
+			}
+			
+			//change the location
+			/*EditLocationDrop.click();
+			wait.until(ExpectedConditions.elementToBeClickable(EditSearchLocation));
+			EditSearchLocation.sendKeys(NewLocation);
+			
+			for(WebElement value : EditLocationOptions)
+			{
+				if(value.getText().trim() .equals(NewLocation))
+				{
+					value.click();
+					break;
+				}
+			}*/
+			
+			EditCode.clear();
+			EditCode.sendKeys(NewCode);
+			
+			EditName.clear();
+			EditName.sendKeys(NewName);
+			Applychange.click();
+			BackArrowbtn.click();
 		}
-		
-		EditCode.clear();
-		EditCode.sendKeys(NewCode);
-		
-		EditName.clear();
-		EditName.sendKeys(NewName);
-		Applychange.click();
-		BackArrowbtn.click();
-	}
 }

@@ -1,5 +1,6 @@
 package MasterTest;
 import java.time.Duration;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -63,7 +64,7 @@ public class OrganizationTest {
         organizationPage.viewOrg("Meclix");
     }
     
-   // @Test(priority=3) - pending
+  // @Test(priority=3) - pending
     public void TS0020() throws InterruptedException
     {
     	// public void EditOrganization(String ORG, String NewORGType, String NewORGName, String NewORGCode, String NewLocation, 
@@ -81,6 +82,37 @@ public class OrganizationTest {
     public void TS0023() throws InterruptedException
     {
     	organizationPage.PdfExport();
+    }
+    
+    
+    //@Test(priority=6)
+    public void TS0024() throws InterruptedException
+    {
+    	organizationPage.SearchBar("Meclix", "342");
+    }
+    
+    //@Test(priority=7)
+    public void TS0025() throws InterruptedException
+    {
+    	organizationPage.LocationFilter("Mumbai");
+    }
+    
+   // @Test(priority=8)
+    public void TS0026() throws InterruptedException
+    {
+    	organizationPage.CheckOrgINDiffComp();
+    }
+    
+    //@Test(priority=9)
+	public void TS0027() throws InterruptedException 
+    {
+		organizationPage.MandatorySign();
+	}
+    
+    //@Test(priority=10)
+    public void TS0028() throws InterruptedException
+    {
+    	organizationPage.VerifyNOrgTypeForm();
     }
     
     @AfterTest
