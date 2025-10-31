@@ -2,24 +2,24 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-10-30T16:00:22 IST" name="Default suite" finished-at="2025-10-30T16:00:29 IST" duration-ms="7421">
+  <suite started-at="2025-10-31T16:54:23 IST" name="Default suite" finished-at="2025-10-31T16:54:37 IST" duration-ms="14160">
     <groups>
     </groups>
-    <test started-at="2025-10-30T16:00:22 IST" name="Default test" finished-at="2025-10-30T16:00:29 IST" duration-ms="7421">
-      <class name="MasterTest.DivisionTest">
-        <test-method is-config="true" signature="Login()[pri:0, instance:MasterTest.DivisionTest@17f9d882]" started-at="2025-10-30T16:00:22 IST" name="Login" finished-at="2025-10-30T16:00:24 IST" duration-ms="2227" status="PASS">
+    <test started-at="2025-10-31T16:54:23 IST" name="Default test" finished-at="2025-10-31T16:54:37 IST" duration-ms="14160">
+      <class name="MasterTest.DepartmentTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:MasterTest.DepartmentTest@79e4c792]" started-at="2025-10-31T16:54:23 IST" name="setup" finished-at="2025-10-31T16:54:25 IST" duration-ms="2256" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Login -->
-        <test-method signature="TS0033()[pri:4, instance:MasterTest.DivisionTest@17f9d882]" started-at="2025-10-30T16:00:24 IST" name="TS0033" finished-at="2025-10-30T16:00:29 IST" duration-ms="4991" status="PASS">
+        </test-method> <!-- setup -->
+        <test-method signature="TS0043()[pri:5, instance:MasterTest.DepartmentTest@79e4c792]" started-at="2025-10-31T16:54:25 IST" name="TS0043" finished-at="2025-10-31T16:54:37 IST" duration-ms="11721" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TS0033 -->
-        <test-method is-config="true" signature="Logout()[pri:0, instance:MasterTest.DivisionTest@17f9d882]" started-at="2025-10-30T16:00:29 IST" name="Logout" finished-at="2025-10-30T16:00:29 IST" duration-ms="174" status="PASS">
+        </test-method> <!-- TS0043 -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:MasterTest.DepartmentTest@79e4c792]" started-at="2025-10-31T16:54:37 IST" name="teardown" finished-at="2025-10-31T16:54:37 IST" duration-ms="150" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Logout -->
-      </class> <!-- MasterTest.DivisionTest -->
+        </test-method> <!-- teardown -->
+      </class> <!-- MasterTest.DepartmentTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

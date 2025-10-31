@@ -1,13 +1,15 @@
 package MasterTest;
 
 import java.time.Duration;
-
+import java.util.HashMap;
+import java.util.Map;
 
 import LoginTest.LoginPage;
 import MasterPage.DepartmentPage;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -20,25 +22,52 @@ public class DepartmentTest
 	@BeforeTest
 	public void setup()
 	{
-		driver = new ChromeDriver();
-		driver.get("http://localhost:170/");
+		Map<String, Object> prefs = new HashMap<>();
+        prefs.put("download.default_directory", "D:\\Priya\\BSS_Automation_Files\\Eclipse-Workspace\\SmartISystems-BSS\\SmartI-BSS\\SmartI-BSS\\download");
+        prefs.put("download.prompt_for_download", false);
+        prefs.put("download.directory_upgrade", true);
+        prefs.put("plugins.always_open_pdf_externally", true); // auto-download PDFs
+
+        ChromeOptions options = new ChromeOptions();
+        options.setExperimentalOption("prefs", prefs); 
+        
+		driver = new ChromeDriver(options);
+		driver.get("http://localhost:915/");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		Dp = new DepartmentPage(driver);
+		LoginPage lp = new LoginPage(driver);
+	    lp.LginCredentials("tata", "Smarti@123");
 	}
 
-	@Test(priority=1)
-	public void AddDepartment() throws InterruptedException
+	//@Test(priority=1)
+	public void TS0039() throws InterruptedException
 	{
-		LoginPage lp = new LoginPage(driver);
-	    lp.LginCredentials("Crisil", "Smarti@123");
-		Dp.AddDepartment("Pune", "ACS", "Ac-01", "Account Department", "Test");
+		
+		Dp.AddDepartment("Thane", "Division B", "Sales-02", "Sales Department", "Test");
 	}
 	
-	@Test(priority=2)
-	public void UpdateDepartment() throws InterruptedException
+	//@Test(priority=2)
+	public void TS0040() throws InterruptedException 
 	{
-		Dp.EditDepartment("Account Department", "London", "Software-01", "New Code", "Software Department");
+		Dp.ViewExistDepa("Sales Department");
+	}
+	
+	//@Test(priority=3)
+	public void TS0041() throws InterruptedException
+	{
+		Dp.EditDepartment("Account Department", "Thane", "Division C", "New1 Code", "Software1 Department");
+	}
+	
+	//@Test(priority=4)
+	public void TS0042() throws InterruptedException 
+	{
+		Dp.ExportExcel();
+	}
+	
+	@Test(priority=5)
+	public void TS0043() throws InterruptedException {
+		Dp.ExportPDF();
 	}
 	
 	@AfterTest

@@ -4,8 +4,10 @@ import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
 import Utilities.BasePage;
+import Utilities.DropDownMethod;
 
 
 
@@ -51,22 +53,18 @@ public class DepartmentPage extends BasePage
 	WebElement Alertok;
 	@FindBy(xpath="//button[@class='panel-titlebar-close']")
 	WebElement BackArrow;
-	
-	
-	
-	
 	//Edit Division
 	@FindBy(xpath="//input[@class='s-Serenity-QuickSearchInput s-QuickSearchInput']") 
-	WebElement SearchDivi;
-	@FindBy(xpath="//div[@class='ui-widget-content slick-row even']//div[@class='slick-cell l3 r3']/a") 
-	WebElement DeptName;
-	@FindBy(xpath="//div[@id='s2id_BuildingSolutionSuite_Master_DepartmentDialog28_LocationMasterId']//b[@role='presentation']")
+	WebElement SearchDepart;
+	@FindBy(xpath="//div[@class=\"slick-cell l3 r3\"]/a") 
+	List<WebElement> DepartmentOptions;
+	@FindBy(xpath="//div[@id='s2id_BuildingSolutionSuite_Master_DepartmentDialog10_LocationMasterId']//b[@role='presentation']")
 	WebElement EditLocDrop; 
 	@FindBy(xpath="#s2id_autogen2_search") 
 	WebElement SearchDept;
 	@FindBy(xpath="//ul[@class=\"select2-results\"]/*")
 	List <WebElement> EditLocOptions;
-	@FindBy (xpath="//div[@id='s2id_BuildingSolutionSuite_Master_DepartmentDialog19_Division']//b[@role='presentation']")
+	@FindBy (xpath="//div[@id='s2id_BuildingSolutionSuite_Master_DepartmentDialog10_Division']//b[@role='presentation']")
 	WebElement EditDiviDrop;
 	@FindBy(xpath="//ul[@class='select2-results']/*")
 	List <WebElement> EditDiviOptions;
@@ -82,17 +80,37 @@ public class DepartmentPage extends BasePage
 	WebElement cross;
 	@FindBy(xpath="//span[@id='select2-chosen-2']")
 	WebElement EditLocationDrop;
-	
+	@FindBy(xpath="//input[@id='s2id_autogen2_search']")
+	WebElement SearchLoc;
+	@FindBy(xpath ="//span[@id='select2-chosen-2']")
+	WebElement SelectedLoc;
+	@FindBy(xpath="//span[@id='select2-chosen-3']")
+	WebElement SelectedDiv;
+	@FindBy(xpath="//button[@class='panel-titlebar-close']")
+	WebElement BacktoDeptList;
+	@FindBy(xpath="//input[@id='s2id_autogen3_search']")
+	WebElement SearchDiv;
+	@FindBy(xpath="//div[@title='Excel']//span[@class='button-inner']")
+	WebElement ExcelExport;
+	@FindBy(xpath="//div[@title='PDF']//span[@class='button-inner']")
+	WebElement pdfExport;
+	DropDownMethod ddm = new DropDownMethod();
 	//ActionMethods.
 	
-	public void AddDepartment(String Location, String Division, String DepartmentCode, String DepartmentName, String AuditRemark ) throws InterruptedException
+	public void InitialStep()
 	{
 		AccessManagement.click();
 		Master.click();
-		Department.click();	
+		Department.click();
+	}
+	
+	//TS0039 - Fill Department Details
+	public void AddDepartment(String Location, String Division, String DepartmentCode, String DepartmentName, String AuditRemark ) throws InterruptedException
+	{
+		InitialStep();
 		NewDepartment.click();
 		LocationDrp.click();
-		
+		SearchLoc.sendKeys(Location);
 		for(WebElement value : LocationOptions) 
 		{
 			if(value.getText().trim().equals(Location))
@@ -116,72 +134,80 @@ public class DepartmentPage extends BasePage
 		DepartName.sendKeys(DepartmentName);
 		AuditRmk.sendKeys(AuditRemark);
 		Savebtn.click();
-		System.out.println(Alert.getText());
-		Alertok.click();
-		BackArrow.click();
+		Assert.assertTrue(NewDepartment.isDisplayed(), "New Department page is not displayed after saving department.");
 	}
 
-	
-	public void EditDepartment(String Divi, String EditLoc, String EditDivision, String Departcode, String DepartName ) throws InterruptedException
+	//TS0040 - View an existing Department
+	public void ViewExistDepa(String DeptN) throws InterruptedException
 	{
-		SearchDivi.sendKeys(Divi);
-		Thread.sleep(3000);
-		System.out.println(DeptName.getText());
+		InitialStep();
+		SearchDepart.sendKeys(DeptN);
+		Thread.sleep(3000); 
 		
-		if(DeptName.getText().equals(Divi))
-		{
-			DeptName.click();
-			Thread.sleep(0);
-		}
-		else
-		{
-			System.out.println("Department is not available");
-		}
-		
-		//change information of department
-		
-		
-		/*
-		 * Editing location and division is not possible because xpath is changing everytime.
-		//div[@id='s2id_BuildingSolutionSuite_Master_DepartmentDialog10_LocationMasterId']//span[@role='presentation']
-		//div[@id='s2id_BuildingSolutionSuite_Master_DepartmentDialog19_LocationMasterId']//b[@role='presentation']
-		//div[@id='s2id_BuildingSolutionSuite_Master_DepartmentDialog19_LocationMasterId']//b[@role='presentation']
-		//span[@id='select2-chosen-4']
-		//span[@id='select2-chosen-6']
-		 
-		
-		//EditLocation.clear();
-		//EditLocDrop.click();
-		cross.click();
-		//EditLocationDrop.click();
-		EditLocDrop.click();
-		SearchDept.sendKeys(EditLoc);
-		for(WebElement SelectLoc:EditLocOptions)
-		{
-			if(SelectLoc.getText().trim().equals(EditLoc))
-			{
-				SelectLoc.click();
-				Thread.sleep(3000);
+		for (WebElement dept : DepartmentOptions) {
+			if (dept.getText().trim().equals(DeptN)) {
+				dept.click();
+				Thread.sleep(2000);
+				System.out.println("Department details are as : " +"+\n"+"Location : "+ SelectedLoc.getText() + "," +"\n"
+				        + "Division : " + SelectedDiv.getText() + "," + "\n"
+						 +"Department Code : "+ DepartCode.getAttribute("value") + "," + "\n"
+						+ "DepartmentName"+DepartName.getAttribute("value"));
+				BacktoDeptList.click();
 				break;
 			}
 		}
-		
-		EditDiviDrop.click();
-		//selectDivision(Division);
-		for (WebElement EditdiviOption : EditDiviOptions) 
-		{
-            if (EditdiviOption.getText().trim().equals(EditDivision)) 
-            {
-            	EditdiviOption.click();
-                Thread.sleep(3000);
-                break;
-            }
-        } */
-		
-		EditDeprtC.sendKeys(Departcode);
-		EditDeptN.sendKeys(DepartName);
-		saveApply.click();
+		Assert.assertTrue(NewDepartment.isDisplayed());
 	}
 	
+	
+	//TS0041 - Edit an existing Department
+	public void EditDepartment(String DeptN, String EditLoc, String EditDivision, String Departcode, String DepartName ) throws InterruptedException
+	{
+		InitialStep();
+		SearchDepart.sendKeys(DeptN);
+		Thread.sleep(3000); 
+		
+		for (WebElement dept : DepartmentOptions) {
+			if (dept.getText().trim().equals(DeptN)) {
+				dept.click();
+				Thread.sleep(2000);
+				//Select Location
+				EditLocDrop.click();
+				SearchLoc.sendKeys(EditLoc);
+				ddm.selectFromDropdown(EditLocOptions, EditLoc, "Location");
+				
+				//Select Division
+				EditDiviDrop.click();
+				SearchDiv.sendKeys(EditDivision);
+				ddm.selectFromDropdown(EditDiviOptions, EditDivision, "Division");
+				//Edit Department Code and Name
+				EditDeprtC.clear();
+				EditDeprtC.sendKeys(Departcode);
+				EditDeptN.clear();
+				EditDeptN.sendKeys(DepartName);
+				saveApply.click();
+				Thread.sleep(2000);
+				BacktoDeptList.click();
+				break;
+			}
+		}
+		Assert.assertTrue(NewDepartment.isDisplayed());
+	
+	} 
+	
 
+	//TS0042 - Export Department list to Excel
+	public void ExportExcel() throws InterruptedException {
+		InitialStep();
+		ExcelExport.click();
+		Thread.sleep(10000);
+	}
+	
+	//TS0043 - Export Department list to PDF
+	public void ExportPDF() throws InterruptedException {
+		InitialStep();
+		pdfExport.click();
+		Thread.sleep(10000);
+	}
+	
 }

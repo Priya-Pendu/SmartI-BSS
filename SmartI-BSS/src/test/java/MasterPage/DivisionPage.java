@@ -65,7 +65,7 @@ public class DivisionPage extends BasePage
 	WebElement Division;
 	@FindBy(xpath="//b[@role='presentation']")
 	WebElement EditLocationDrop;
-	@FindBy(css="s#s2id_autogen1_search")
+	@FindBy(xpath="//input[@id='s2id_autogen1_search']")
 	WebElement EditSearchLocation;
 	@FindBy (xpath="//ul[@class='select2-results']/*")
 	List <WebElement> EditLocationOptions;
@@ -85,6 +85,14 @@ public class DivisionPage extends BasePage
 	WebElement ExistLocation;
 	@FindBy(xpath="//button[@class='panel-titlebar-close']")
 	WebElement BacktoDivi;
+	@FindBy(xpath="//div[@title='Excel']//span[@class='button-inner']")
+	WebElement excelbtn;
+	@FindBy(xpath="//div[@title='PDF']//div[@class='button-outer']")
+	WebElement pdfbtn;
+	@FindBy(xpath="//div[@class=\"slick-cell l2 r2\"]")
+	WebElement searchDiviN;
+	@FindBy(xpath="//div[@class=\"slick-cell l1 r1\"]")
+	WebElement searchDiviC;
 	
 	//ActionMethods
 	
@@ -173,7 +181,7 @@ public class DivisionPage extends BasePage
 			}
 			
 			//change the location
-			/*EditLocationDrop.click();
+			EditLocationDrop.click();
 			wait.until(ExpectedConditions.elementToBeClickable(EditSearchLocation));
 			EditSearchLocation.sendKeys(NewLocation);
 			
@@ -184,7 +192,7 @@ public class DivisionPage extends BasePage
 					value.click();
 					break;
 				}
-			}*/
+			}
 			
 			EditCode.clear();
 			EditCode.sendKeys(NewCode);
@@ -194,4 +202,34 @@ public class DivisionPage extends BasePage
 			Applychange.click();
 			BackArrowbtn.click();
 		}
+
+	   //TS0034 - Export Division list to Excel
+	   public void ExportExcel() throws InterruptedException
+	   {
+		   InitialSteps();
+		   excelbtn.click();
+		   Thread.sleep(10000);		   
+	   }
+	   
+	   //TS0035 - Export Division list to PDF
+	   public void ExportPDF() throws InterruptedException
+	   {
+		   InitialSteps();
+		   pdfbtn.click();
+		   Thread.sleep(10000);
+	   }
+	   
+	   public void VerifySearchBar(String DiviName, String DiviCode) throws InterruptedException
+	   {
+		   InitialSteps();
+		   EditSearchDivi.sendKeys(DiviName);
+			Thread.sleep(3000);
+			Assert.assertTrue(searchDiviN.getText().equals(DiviName));
+			
+			EditSearchDivi.clear();
+			EditSearchDivi.sendKeys(DiviCode);
+			Thread.sleep(3000);
+			Assert.assertTrue(searchDiviC.getText().equals(DiviCode));
+		   
+	   }
 }
