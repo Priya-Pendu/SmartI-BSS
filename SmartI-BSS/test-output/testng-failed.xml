@@ -5,9 +5,9 @@
     <classes>
       <class name="MasterTest.DepartmentTest">
         <methods>
-          <include name="UpdateDepartment"/>
           <include name="teardown"/>
           <include name="setup"/>
+          <include name="TS0047"/>
         </methods>
       </class> <!-- MasterTest.DepartmentTest -->
     </classes>

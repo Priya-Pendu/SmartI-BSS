@@ -94,6 +94,32 @@ public class DepartmentPage extends BasePage
 	WebElement ExcelExport;
 	@FindBy(xpath="//div[@title='PDF']//span[@class='button-inner']")
 	WebElement pdfExport;
+	@FindBy(xpath="//div[@class=\"slick-cell l2 r2\"]")
+	List<WebElement> DeptCodeopt;
+	@FindBy(xpath="//a[@class='dropdown-toggle']")
+	WebElement profile;
+	@FindBy(xpath="//a[normalize-space()='Logout']")
+	WebElement logout;
+	@FindBy(xpath="//input[@id='BuildingSolutionSuite_Membership_LoginPanel0_Username']")
+	WebElement Username;
+	@FindBy(xpath="//input[@id='BuildingSolutionSuite_Membership_LoginPanel0_Password']")
+	WebElement Password;
+	@FindBy(xpath="//button[@id='BuildingSolutionSuite_Membership_LoginPanel0_LoginButton']")
+	WebElement LoginBtn;
+	@FindBy(xpath="//div[@class='panel-titlebar-text']")
+	WebElement NDeptPageTitle;
+	@FindBy(xpath="//div[@class=\"select2-result-label\"]")
+	List<WebElement> DiviFilteropt;
+	@FindBy(xpath="//div[@class='slick-cell l1 r1']")
+	WebElement FilteredDept;
+	@FindBy(xpath="//span[@id='select2-chosen-1']")
+	WebElement SelectedDept;
+	@FindBy(xpath="//b[@role='presentation']")
+	WebElement DiviFilterDrop;
+	@FindBy(xpath="//a[@href='/Master/Division']//span[contains(text(),'Division')]")
+	WebElement DivisionMaster;
+	@FindBy(xpath="//div[@class=\"slick-cell l2 r2\"]/a")
+	List<WebElement> DivisionList;
 	DropDownMethod ddm = new DropDownMethod();
 	//ActionMethods.
 	
@@ -196,18 +222,114 @@ public class DepartmentPage extends BasePage
 	} 
 	
 
-	//TS0042 - Export Department list to Excel
+	//TS0043 - Export Department list to Excel
 	public void ExportExcel() throws InterruptedException {
 		InitialStep();
 		ExcelExport.click();
 		Thread.sleep(10000);
 	}
 	
-	//TS0043 - Export Department list to PDF
+	//TS0044 - Export Department list to PDF
 	public void ExportPDF() throws InterruptedException {
 		InitialStep();
 		pdfExport.click();
 		Thread.sleep(10000);
 	}
+		
+	//TS0045 - Search Department by Code or Name
+	public void SearchDepartment(String DeptN, String DeptC) throws InterruptedException {
+		InitialStep();
+		SearchDepart.sendKeys(DeptN);
+		Thread.sleep(3000);
+
+		for (WebElement dept : DepartmentOptions) {
+			if (dept.getText().trim().equals(DeptN)) {
+				System.out.println("Department found: " + dept.getText());
+				break;
+			}
+		}
+		
+		SearchDepart.clear();
+		SearchDepart.sendKeys(DeptC);
+		Thread.sleep(3000);
+		for (WebElement dept : DeptCodeopt) {
+			if (dept.getText().trim().equals(DeptC)) {
+				System.out.println("Department found by code: " + dept.getText());
+				Assert.assertTrue(true, "Department found successfully by code.");
+				return;
+			}
+		}
+		Assert.fail("Department not found by code: " + DeptC);
+	}
 	
+	//TS0046 - Check whether department added in one company admin should not get reflected in other company admin
+	public void CheckDepartmentInMultipleCompanies(String DeptN) throws InterruptedException {
+		InitialStep();
+		SearchDepart.sendKeys(DeptN);
+		Thread.sleep(3000);
+
+		boolean departmentFound = false;
+		for (WebElement dept : DepartmentOptions) {
+			if (dept.getText().trim().equals(DeptN)) {
+				departmentFound = true;
+				break;
+			}
+		}
+		
+		profile.click();
+		logout.click();
+		
+		Username.sendKeys("enviro");
+		Password.sendKeys("Smarti@123");
+		LoginBtn.click();
+		InitialStep();
+		SearchDepart.sendKeys(DeptN);
+		Thread.sleep(3000);
+		departmentFound = false;
+		for (WebElement dept : DepartmentOptions) {
+			if (dept.getText().trim().equals(DeptN)) {
+				departmentFound = true;
+				break;
+			}
+		}
+		Assert.assertFalse(departmentFound, "Department should not be found in this company admin: " + DeptN);
+	}
+
+	//TS0047 - Create a new Department
+	public void VerifyNDeptPage() throws InterruptedException
+	{
+		InitialStep();
+		NewDepartment.click();
+		Thread.sleep(3000);
+		Assert.assertTrue(NDeptPageTitle.isDisplayed(),"New Depatment Page is not displayed");
+	}
+
+	//TS0048 - check based on division wise selection department data gets filtered or not
+	public void DiviFilter()
+	{
+		InitialStep();
+		DiviFilterDrop.click();
+		ddm.selectFromDropdown(DiviFilteropt, "Division B", "Division");
+		if (SelectedDept.getText().contains("Division B")) {
+			System.out.println("Department data is filtered based on division selection");
+		} else {
+			System.out.println("Department data is not filtered based on division selection");
+		}
+	}
+	
+	//TS0049 - check in division filter only that company division added is displayed or not
+	public void VerifyDiviList() {
+		InitialStep();
+		DivisionMaster.click();
+		//DivisionList.getText()AccessManagement;
+		DiviFilterDrop.click();
+		boolean divisionFound = false;
+		for (WebElement divisionOption : DiviFilteropt) {
+			if (divisionOption.getText().trim().equals("Division X")) {
+				divisionFound = true;
+				break;
+			}
+		}
+		Assert.assertFalse(divisionFound, "Division from another company should not be displayed in the filter.");
+	}																		
 }

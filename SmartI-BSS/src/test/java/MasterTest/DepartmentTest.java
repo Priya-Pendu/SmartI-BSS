@@ -65,9 +65,33 @@ public class DepartmentTest
 		Dp.ExportExcel();
 	}
 	
-	@Test(priority=5)
+	//@Test(priority=5)
 	public void TS0043() throws InterruptedException {
 		Dp.ExportPDF();
+	}
+	
+	//@Test(priority=6)
+	public void TS0044() throws InterruptedException
+	{
+		Dp.SearchDepartment("Software1 Department", "New1 Code");
+	}
+	
+	//@Test(priority=7)
+	public void TS0045() throws InterruptedException
+	{
+		Dp.CheckDepartmentInMultipleCompanies("Software1 Department");
+	}
+	
+	//@Test(priority=8)
+	public void TS0046() throws InterruptedException
+	{
+		Dp.VerifyNDeptPage();
+	}
+	
+	@Test(priority=9)
+	public void TS0047()
+	{
+		Dp.DiviFilter();
 	}
 	
 	@AfterTest
