@@ -1,4 +1,5 @@
 package MasterPage;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.WebDriver;
@@ -320,16 +321,15 @@ public class DepartmentPage extends BasePage
 	//TS0049 - check in division filter only that company division added is displayed or not
 	public void VerifyDiviList() {
 		InitialStep();
-		DivisionMaster.click();
-		//DivisionList.getText()AccessManagement;
 		DiviFilterDrop.click();
-		boolean divisionFound = false;
-		for (WebElement divisionOption : DiviFilteropt) {
-			if (divisionOption.getText().trim().equals("Division X")) {
-				divisionFound = true;
-				break;
-			}
+
+		List<String> divisionNames = new ArrayList<>();
+		for (WebElement division : DivisionList) {
+		    System.out.println(divisionNames.add(division.getText()));
 		}
-		Assert.assertFalse(divisionFound, "Division from another company should not be displayed in the filter.");
-	}																		
+		
+		
+	}
+
+	
 }

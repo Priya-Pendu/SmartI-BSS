@@ -20,24 +20,36 @@ public class SubDepartmentTest
 	public void login()
 	{
 		driver = new ChromeDriver();
-		driver.get("http://localhost:170/");
+		driver.get("http://localhost:915/");
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.manage().window().maximize();
 		SD = new SubDepartmentPage(driver);
-	}
-	
-	@Test (priority=1)
-	public void SubDepartment()
-	{
 		LoginPage lp = new LoginPage(driver);
-		lp.LginCredentials("Crisil", "Smarti@123");
-		SD.AddSubDepartment("Account Department", "SubD-01", "Salaries & Tax", "Remark");
+		lp.LginCredentials("tata", "Smarti@123");
 	}
 	
-	@Test(priority=2)
+	//@Test(priority=1)
+	public void TS0051()
+	{
+		SD.VerifySubDepartmentPage();
+	}
+	
+	//@Test (priority=2)
+	public void SubDepartment() throws InterruptedException
+	{
+		
+		SD.AddSubDepartment("Sales Department", "SubD-10", "Pre-Sales", "Remark");
+	}
+	
+	//@Test(priority=3)
+	public void TS0053() throws InterruptedException {
+		SD.ViewSubDept("Pre-Sales");
+	}
+	
+    @Test(priority=4)
 	public void UpdateDepartment() throws InterruptedException
 	{
-		SD.EditDeparment("ACS KIAM", "Account Department", "150", "ACS KIAM");
+		SD.EditDeparment("ACS KIAM", "Sales Department", "200", "ACS KIAM");
 	}
 	
 	

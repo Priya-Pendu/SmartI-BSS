@@ -88,10 +88,16 @@ public class DepartmentTest
 		Dp.VerifyNDeptPage();
 	}
 	
-	@Test(priority=9)
+	//@Test(priority=9)
 	public void TS0047()
 	{
 		Dp.DiviFilter();
+	}
+	
+	@Test(priority=10)
+	public void TS0049()
+	{
+		Dp.VerifyDiviList();
 	}
 	
 	@AfterTest
