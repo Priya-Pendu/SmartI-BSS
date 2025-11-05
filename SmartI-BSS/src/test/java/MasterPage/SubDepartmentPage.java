@@ -1,7 +1,9 @@
 package MasterPage;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.List;
-
+import java.util.NoSuchElementException;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -76,6 +78,26 @@ public class SubDepartmentPage extends BasePage
 	WebElement ViewSubDName;
 	@FindBy(xpath="//textarea[@id='BuildingSolutionSuite_Master_SubDepartmentDialog8_AuditRemark']")
 	WebElement ViewAuditRemark;
+	@FindBy(xpath="//div[@title='Excel']//span[@class='button-inner']")
+	WebElement ExcelExport;
+	@FindBy(xpath="//div[@title='PDF']//span[@class='button-inner']")
+	WebElement PDFExport;
+	@FindBy(xpath="//div[@class=\"slick-cell l3 r3\"]")
+	WebElement SearchResultName;
+	@FindBy(xpath="//div[normalize-space()='200']")
+	WebElement SearchResultCode;
+	@FindBy(xpath="//a[@class='dropdown-toggle']")
+	WebElement Profile;
+	@FindBy(xpath="//a[normalize-space()='Logout']")
+	WebElement Logout;
+	@FindBy(id = "BuildingSolutionSuite_Membership_LoginPanel0_Username") 
+	WebElement User;
+	@FindBy(id="BuildingSolutionSuite_Membership_LoginPanel0_Password") 
+	WebElement Pass;
+	@FindBy(id ="BuildingSolutionSuite_Membership_LoginPanel0_LoginButton") 
+	WebElement Login;
+	@FindBy(xpath="//sup[@title=\"this field is required\"]")
+	List<WebElement> MandatoryFields;
 	DropDownMethod ddm = new DropDownMethod();
 	//Action Methods
 	
@@ -86,14 +108,14 @@ public class SubDepartmentPage extends BasePage
 		SubDepartment.click();
 	}
 	
-	
+	//TS0051 - Create a new Sub Department
 	public void VerifySubDepartmentPage() 
 	{
 		initialstep();
 		NewDept.click();
 		Assert.assertTrue(NewSubDepartPage.isDisplayed(), "New Sub Department page is not displayed");
 	}
-	
+	//TS0052 - Fill Sub Department Details
 	public void AddSubDepartment(String Department, String Code, String Name, String AuditRemark) throws InterruptedException
 	{
 		initialstep();
@@ -117,7 +139,8 @@ public class SubDepartmentPage extends BasePage
 		Thread.sleep(3000);
 		Assert.assertTrue(NewDept.isDisplayed(), "SubDepartment is not added successfully");
 	}
-
+	
+	//TS0053 - View existing Sub Department Details
 	public void ViewSubDept(String SubDName)
 	{
 		initialstep();
@@ -132,7 +155,7 @@ public class SubDepartmentPage extends BasePage
 			}
 		}		
 	}
-	
+	//TS0054 - Edit existing Sub Department Details
 	public void EditDeparment(String SubDName, String DeptName, String Code, String Name ) throws InterruptedException
 	{
 		initialstep();
@@ -157,9 +180,101 @@ public class SubDepartmentPage extends BasePage
 		Assert.assertTrue(NewDept.isDisplayed(), "Sub Department is not updated successfully");
 	}
 	
-	public void ExportExcel()
+	//TS0056 - Export SubDepartment list to Excel
+	public void ExportExcel() throws InterruptedException
 	{
 		initialstep();
-		
+		ExcelExport.click();
+		Thread.sleep(10000);
 	}
+	
+	//TS0057 - Export SubDepartment list to PDF
+	public void ExportPDF() throws InterruptedException {
+		initialstep();
+		PDFExport.click();
+		Thread.sleep(10000);
+	}
+	
+	//TS0058 - Search SubDepartment by Code or Name
+	public void VerifySearch(String SubDName, String SubCode)
+	{
+		initialstep();
+		EditSearchDepart.sendKeys(SubDName);
+		if(SearchResultName.getText().trim().equals(SubDName))
+        {
+            System.out.println("Search Successful - SubDepartment found: " +SearchResultName.getText());
+        }
+        else
+        {
+            System.out.println("Search Failed - SubDepartment not found");
+        }
+		
+		EditSearchDepart.clear();
+		EditSearchDepart.sendKeys(SubCode);
+		if (SearchResultCode.getText().trim().equals(SubDName)) {
+			System.out.println("Search Successful - SubDepartment found: " + SearchResultName.getText());
+		} else {
+			System.out.println("Search Failed - SubDepartment not found");
+		}
+	}
+	
+	//TS0059 - Check whether sub department added in one company admin should not get reflected in other company admin
+	public void VerifySubDeptAcrossCompanies(String SubDName) throws InterruptedException {
+	    initialstep();
+	    EditSearchDepart.sendKeys(SubDName);
+
+	    try {
+	        if (SearchResultName.getText().trim().equals(SubDName)) {
+	            System.out.println("SubDepartment found: " + SearchResultName.getText());
+	        } else {
+	            System.out.println("SubDepartment not found");
+	        }
+	    } catch (NoSuchElementException e) {
+	        System.out.println("SubDepartment not found (element not present)");
+	        // Do nothing — this is expected, so we let the test continue
+	    }
+
+	    Profile.click();
+	    Logout.click();
+
+	    // Login
+	    User.sendKeys("enviro");
+	    Pass.sendKeys("Smarti@123");
+	    Login.click();
+
+	    initialstep();
+	    EditSearchDepart.sendKeys(SubDName);
+
+	    try {
+	        if (SearchResultName.getText().trim().equals(SubDName)) {
+	            System.out.println("SubDepartment found: " + SearchResultName.getText());
+	            Assert.fail("SubDepartment should not be found in the second company, but it was.");
+	        } else {
+	            System.out.println("SubDepartment not found in second company as expected");
+	            Assert.assertTrue(true);
+	        }
+	    } catch (NoSuchElementException e) {
+	        System.out.println("SubDepartment not found in second company as expected (element not present)");
+	        Assert.assertTrue(true); // ✅ Pass the test because not found is expected
+	    }
+	}
+
+	//TS0060 - check if mandatory field is not provided then pop up message is displayed or not
+	public void MandatoryFieldCheck() throws InterruptedException {
+		initialstep();
+		NewDept.click();
+		Thread.sleep(2000);
+		List<String> FieldNames = Arrays.asList("Department", "Name","Code");
+		
+		int i=0;
+		for (WebElement AstrickSign : MandatoryFields) {
+		    if (AstrickSign.isDisplayed()) {
+		        System.out.println("Mandatory sign is displayed for: " + FieldNames.get(i));
+		    } else {
+		        System.out.println("Mandatory sign is NOT displayed for: " + FieldNames.get(i));
+		    }
+		    i++;
+		}
+	}
+
 }

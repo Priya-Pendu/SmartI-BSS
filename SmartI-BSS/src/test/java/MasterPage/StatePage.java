@@ -11,8 +11,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import Utilities.BasePage;
+import Utilities.DropDownMethod;
 
 
 
@@ -20,9 +22,10 @@ import Utilities.BasePage;
 public class StatePage extends BasePage
 {
 
-	WebDriver driver ;
+
 	//constructor
 	public StatePage(WebDriver driver) {
+		
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
@@ -42,8 +45,6 @@ public class StatePage extends BasePage
 	@FindBy(xpath="//div[@class='ui-dialog ui-corner-all ui-widget ui-widget-content ui-front s-MessageDialog s-AlertDialog ui-dialog-buttons ui-draggable']")
 	WebElement Alert;
 	@FindBy(xpath="//i[@class='fa fa-times']") WebElement Close;
-   
-	
 	//Edit State 
 	@FindBy(xpath="//input[@class='s-Serenity-QuickSearchInput s-QuickSearchInput']") WebElement EditSearchState;
     @FindBy(xpath="//div[@class='slick-cell l1 r1']/a") WebElement EditStateName;
@@ -58,22 +59,49 @@ public class StatePage extends BasePage
     @FindBy(id="s2id_autogen1_search") 
     WebElement EditCountrySearch;
     @FindBy(xpath="//ul[@class=\"select2-results\"]/*")
-    List <WebElement> EditCountryDrop;
+    List <WebElement> CountryList;
 	@FindBy(xpath="//div[@title='Apply Changes']//span[@class='button-inner']")
 	WebElement saveapply;
 	@FindBy(xpath="//i[@class='fa fa-times']")
 	WebElement close;
+	@FindBy(xpath="//span[@id='ui-id-2']")
+	WebElement EditStateTitle;
+	@FindBy(xpath="//input[@id='BuildingSolutionSuite_Master_StateMasterDialog8_StateName']")
+	WebElement Statefield;
+	@FindBy(xpath="//span[@id='select2-chosen-1']")
+	WebElement Countryfield;
+	@FindBy(xpath="//a[@class='dropdown-toggle']")
+	WebElement Profile;
+	@FindBy(xpath="//a[normalize-space()='Logout']")
+	WebElement Logout;
+	@FindBy(xpath="//input[@id='BuildingSolutionSuite_Membership_LoginPanel0_Username']") WebElement Username;
+	@FindBy(xpath="//input[@id='BuildingSolutionSuite_Membership_LoginPanel0_Password']") WebElement Password;
+	@FindBy(xpath="//button[@id='BuildingSolutionSuite_Membership_LoginPanel0_LoginButton']") WebElement LoginBtn;
+	DropDownMethod DM = new DropDownMethod();
 	
-	
-	
+
 	
 	//ActionMethod
-	
-	public void AddState(String StateName, String CountryName) throws InterruptedException
-	{
+	public void InitialStep() {
 		AccessManagement.click();
 		Master.click();
 		State.click();
+	}
+	
+	//TS0073 - Create a new State
+	public void VerifyNewStatePage() throws InterruptedException {
+		InitialStep();
+		NewState.click();
+		wait.until(ExpectedConditions.visibilityOf(DialoageBox));
+		if (Statefield.getText().equals("") && Countryfield.getText().contains("select") ) {
+			System.out.println("New State dialog box is displayed");
+		}
+	}
+	
+	//TS0074 - Fill State Details
+	public void AddState(String StateName, String CountryName) throws InterruptedException
+	{
+		InitialStep();
 		NewState.click();
 		
 		//WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -90,88 +118,67 @@ public class StatePage extends BasePage
 				break;
 			}
 		}
-		
 		Thread.sleep(3000);
 		Savebtn.click();
 		Thread.sleep(3000);
-		
-		System.out.println(Alert.getText());
-		Ok.click();
-		Close.click();
+		EditSearchState.sendKeys(StateName);
+		Assert.assertTrue(EditStateName.isDisplayed(), "New State dialog box is not closed");
 	}
 	
-	public void EditState(String EnterStateN, String NewStateN, String NewCountry) throws InterruptedException
+	//TS0075 - View an existing State
+	public void ViewState(String StateName) throws InterruptedException {
+		InitialStep();
+		EditSearchState.sendKeys(StateName);
+		Thread.sleep(2000);
+		if(EditStateName.getText().equals(StateName))
+		{
+			EditStateName.click();
+			System.out.println("Details of the state is : " +EditStateN.getAttribute("value")+"," +Countryfield.getText());
+			close.click();
+		}
+		Assert.assertTrue(NewState.isDisplayed(), "State details dialog box is not closed");
+	}
+	
+	//TS0076 - Edit an existing State
+	public void EditState(String EnterStateN, String NewStateN ) throws InterruptedException
 	{
+		InitialStep();
 		EditSearchState.sendKeys(EnterStateN);
-		
 		if(EditStateName.getText().equals(EnterStateN))
 		{
 			EditStateName.click();
+			EditStateN.clear();
+			EditStateN.sendKeys(NewStateN);
+			EditCountyDrop.click();
+			DM.selectFromDropdown(CountryList, "Indonesia", "Country");
+			saveapply.click();
+			Thread.sleep(2000);
+			close.click();
 		}
-		else
-		{
-			System.out.println("State name dose not match");
-		}
-		
-		//System.out.println(EditDialogBox.getText());;
-		Thread.sleep(3000);
-		EditStateN.clear();
-		EditStateN.sendKeys(NewStateN);
-		/*
-		EditCountyDrop.click();
-		EditCountrySearch.sendKeys(NewCountry);
-		
-		for(WebElement SelectCountry : EditCountryDrop)
-		{
-			if(SelectCountry.getText().trim().equals(NewCountry))
-			{
-				SelectCountry.click();
-				break;
-			}
-		}*/
-		
-		saveapply.click();
-		close.click();
+		Assert.assertTrue(NewState.isDisplayed(), "State not edited successfully");
 	}
-	/*
-	public void EditState(String EnterStateN, String NewStateN, String NewCountry) throws InterruptedException {
-	    EditSearchState.sendKeys(EnterStateN);
-
-	    if (EditStateName.getText().equals(EnterStateN)) {
-	        EditStateName.click();
-	    } else {
-	        System.out.println("State name does not match");
-	    }
-
-	    Thread.sleep(3000);
-	    
-	    // Explicit wait for the input field to be clickable
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	    wait.until(ExpectedConditions.elementToBeClickable(EditStateN));
-	    
-	    EditStateN.clear();
-	    EditStateN.sendKeys(NewStateN);
-
-	    // Wait for the country dropdown to be clickable
-	    wait.until(ExpectedConditions.elementToBeClickable(EditCountyDrop));
-	    EditCountyDrop.click();
-
-	    // Wait for the country search input to be visible and interactable
-	    wait.until(ExpectedConditions.visibilityOf(EditCountrySearch));
-	    EditCountrySearch.sendKeys(NewCountry);
-
-	    // Wait for the country options to be available and clickable
-	    wait.until(ExpectedConditions.visibilityOfAllElements(EditCountryDrop));
-	    for (WebElement SelectCountry : EditCountryDrop) {
-	        if (SelectCountry.getText().trim().equals(NewCountry)) {
-	            SelectCountry.click();
-	            break;
-	        }
-	    }
-
-	    saveapply.click();
-	    close.click();
-	}
-*/
 	 
+	//TS0077 - Search State
+	public void VerifySearch(String StateName) throws InterruptedException
+	{
+		InitialStep();
+		EditSearchState.sendKeys(StateName);
+		Thread.sleep(2000);
+		Assert.assertTrue(EditStateName.getText().equals(StateName), "Search functionality is not working");
+	}
+	
+	public void CheckStateAccrosCompanies(String StateName) throws InterruptedException
+	{
+		VerifySearch(StateName);
+		Profile.click();
+		Logout.click();
+		Username.sendKeys("enviro");
+		Password.sendKeys("Smarti@123");
+		LoginBtn.click();
+		InitialStep();
+		EditSearchState.sendKeys(StateName);
+		Thread.sleep(2000);
+		Assert.assertFalse(EditStateName.getText().equals(StateName), "Search functionality is not working");
+		
+	}
 }
