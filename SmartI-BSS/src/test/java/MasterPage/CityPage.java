@@ -6,8 +6,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 import Utilities.BasePage;
+import Utilities.DropDownMethod;
 
 
 
@@ -22,7 +24,7 @@ public class CityPage extends BasePage
 	}
 	
 	//Locators
-	@FindBy(xpath="//div[contains(@class,'row')]//div[2]//div[1]//div[1]//div[1]//div[1]//div[2]//div[1]") WebElement AccessManagment;
+	@FindBy(xpath="//p[normalize-space()='Access']") WebElement AccessManagment;
 	@FindBy(xpath="//i[@class='nav-icon fa fa-th-list']") WebElement Master;
 	@FindBy(xpath="//span[normalize-space()='City']") WebElement City;
 	@FindBy(xpath="//span[normalize-space()='New City Master']") WebElement NewCity;
@@ -41,7 +43,6 @@ public class CityPage extends BasePage
 	WebElement Ok;
 	@FindBy(xpath="//button[@title='Close']")
 	WebElement close;
-	
 	//Edit city locators
 	@FindBy(xpath="//input[@class='s-Serenity-QuickSearchInput s-QuickSearchInput']")
 	WebElement EditSearchCity;
@@ -49,20 +50,57 @@ public class CityPage extends BasePage
 	WebElement EditSelectCity;
 	@FindBy(xpath="//div[@class='ui-dialog ui-corner-all ui-widget ui-widget-content ui-front s-Dialog s-BuildingSolutionSuite-Master-CityMasterDialog s-Master-CityMasterDialog s-CityMasterDialog ui-draggable ui-resizable flex-layout']")
 	WebElement EditCityBox;
-	@FindBy(xpath="//input[@id='BuildingSolutionSuite_Master_CityMasterDialog17_CityName']")
+	@FindBy(xpath="//input[@id='BuildingSolutionSuite_Master_CityMasterDialog10_CityName']")
 	WebElement EditCityN;
 	@FindBy(xpath="//div[@title='Apply Changes']//span[@class='button-inner']")
 	WebElement saveapply;
 	@FindBy(xpath="//button[@title='Close']")
 	WebElement EditClose;
+	@FindBy(xpath="//input[@id='BuildingSolutionSuite_Master_CityMasterDialog10_CityName']")
+	WebElement CityField;
+	@FindBy(xpath="//span[@id='select2-chosen-2']")
+	WebElement CountryField;
+	@FindBy(xpath="//span[@id='select2-chosen-3']")
+	WebElement StateField;
+	@FindBy(xpath="//div[@id='s2id_BuildingSolutionSuite_Master_CityMasterDialog10_CountryId']//b[@role='presentation']")
+	WebElement CountryDropbtn;
+	@FindBy(xpath="//div[@id='s2id_BuildingSolutionSuite_Master_CityMasterDialog10_StateId']//b[@role='presentation']")
+	WebElement StateDropbtn;
+	@FindBy(xpath="//a[@class='dropdown-toggle']") WebElement Profile;
+	@FindBy(xpath="//a[normalize-space()='Logout']") WebElement Logout;
+	@FindBy(xpath="//input[@id='BuildingSolutionSuite_Membership_LoginPanel0_Username']") WebElement Username;
+	@FindBy(xpath="//input[@id='BuildingSolutionSuite_Membership_LoginPanel0_Password']") WebElement Password;
+	@FindBy(xpath="//button[@id='BuildingSolutionSuite_Membership_LoginPanel0_LoginButton']") WebElement LoginBtn;
+	@FindBy(xpath="//b[@role='presentation']") WebElement CountryFilterDrop;
+	@FindBy(xpath="//div[@class=\"slick-cell l0 r0\"]") WebElement FilterCountryResult;
+	DropDownMethod dd = new DropDownMethod();
 	
 	//ActionMethods
-	
-	public void AddCity(String CityN, String Country, String State) throws InterruptedException
+	public void InitialStep()
 	{
 		AccessManagment.click();
 		Master.click();
 		City.click();
+	}
+	//TS0081 - Create a new City
+	public void VerifyCityPg()
+	{
+		InitialStep();
+		NewCity.click();
+		wait.until(ExpectedConditions.visibilityOf(CityDialoageBox));
+		if (CityField.getText().isEmpty()&& CountryField.getText().contains("select") && StateField.getText().contains("select")) {
+			System.out.println("New City Page is displayed blank");
+			Assert.assertTrue(true);
+		} else {
+			System.out.println("New City Page is not displayed");
+			Assert.assertTrue(false);
+		}
+	}
+	
+	//TS0082 - Add New City
+	public void AddCity(String CityN, String Country, String State) throws InterruptedException
+	{
+		InitialStep();
 		NewCity.click();
 		
 		wait.until(ExpectedConditions.visibilityOf(CityDialoageBox));
@@ -93,15 +131,29 @@ public class CityPage extends BasePage
 		}
 		
 		Savebtn.click();
-		System.out.println(Alert.getText());
-		Ok.click();
-		close.click();
+		
 	}
 	
-	
-	public void EditState(String City,String NewCityN )
 
+	//TS0083 - View Existing City
+	public void ViewCity(String City) {
+		InitialStep();
+		EditSearchCity.sendKeys(City);
+
+		if (EditSelectCity.getText().equals(City)) {
+			EditSelectCity.click();
+			System.out.println("Details of the City is : " + EditCityN.getAttribute("value") + ","
+					+ CountryField.getText() + "," + StateField.getText());
+			close.click();
+		} else {
+			System.out.println("City dose not match");
+		}
+	}
+	
+	//TS0084 - Edit Existing City
+	public void EditState(String City,String NewCityN ) throws InterruptedException
 		{
+		    InitialStep();
 			EditSearchCity.sendKeys(City);
 			
 			if(EditSelectCity.getText().equals(City))
@@ -112,11 +164,59 @@ public class CityPage extends BasePage
 			{
 				System.out.println("City dose not match");
 			}
-			
+			EditCityN.clear();
 			EditCityN.sendKeys(NewCityN);
+			CountryDropbtn.click();
+			dd.selectFromDropdown(CountryOptions, "Indonesia", "Country");
+			StateDropbtn.click();
+			Thread.sleep(2000);
+			dd.selectFromDropdown(StateOptions, "AIO", "State");
 			saveapply.click();
 			EditClose.click();
 		}
 		
+	//TS0086  - Search City by Name
+	public void VerifySearch(String CityN)
+	{
+		InitialStep();
+		EditSearchCity.sendKeys(CityN);
+		if (EditSelectCity.getText().equals(CityN)) {
+			System.out.println("City found in search");
+		} else {
+			System.out.println("City not found in search");
+		}
+	}
 	
+	//TS0087 - Check whether city added in one company admin should not get reflected in other company admin
+	public void VerifyAccrossCompanies(String CityN) throws InterruptedException
+	{
+		InitialStep();
+		EditSearchCity.sendKeys(CityN);
+		Thread.sleep(2000);
+		Assert.assertTrue(EditSelectCity.getText().equals(CityN), "City found in search");
+		Profile.click();
+		Logout.click();
+		Username.sendKeys("enviro");
+		Password.sendKeys("Smarti@123");
+		LoginBtn.click();
+		InitialStep();
+		EditSearchCity.sendKeys(CityN);
+		Thread.sleep(2000);
+		Assert.assertFalse(EditSelectCity.getText().equals(CityN), "City found in search in other company");
+	}
+	
+	//TS0088 - check based on country filter selection wise city data gets filtered or not
+	public void VerifyCountryFilter()
+	{
+		InitialStep();
+		CountryFilterDrop.click();
+		dd.selectFromDropdown(CountryOptions, "Indonesia", "Country Filter");
+		if (FilterCountryResult.getText().contains("Indonesia")) {
+			System.out.println("City filtered based on country selection");
+			Assert.assertTrue(true);
+		} else {
+			System.out.println("City not filtered based on country selection");
+			Assert.assertTrue(false);
+		}
+	}
 }	
