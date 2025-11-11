@@ -40,7 +40,7 @@ public class OrganizationTest {
         driver.manage().window().maximize();  
         organizationPage = new OrganizationPage(driver);
         LoginPage lp = new LoginPage(driver);
-	    lp.LginCredentials("tata", "Smarti@123");
+	    lp.LginCredentials("tata", "Smarti@321");
     }
     
     //@Test(priority=0)
@@ -54,7 +54,7 @@ public class OrganizationTest {
     {
     	// public void AddOrganization(String Org, String OrgName, String OrgCode, String Location, String Address, String EmailId, String ContactNo, 
         //String StartDate, String EndDate, String EmployeeStrength, String TypeofService, String AuditRemark)
-        organizationPage.AddOrganization("OEM","Meclix", "WHO-10","Kalyan","Bhumi World", "priyapendu", "1234567889","01/16/2025", "01/16/2026", "15", "Cleaning", "Verified");  
+        organizationPage.AddOrganization("OEM","Meclix", "WHO-10","Kalyan","Bhumi World", "priyapendu", "1234567889","02-16-2025", "01-16-2026", "15", "Cleaning", "Verified");  
     
      }
     
@@ -64,12 +64,13 @@ public class OrganizationTest {
         organizationPage.viewOrg("Meclix");
     }
     
-  // @Test(priority=3) - pending
+     //@Test(priority=3) 
     public void TS0020() throws InterruptedException
     {
-    	// public void EditOrganization(String ORG, String NewORGType, String NewORGName, String NewORGCode, String NewLocation, 
+    	 //public void EditOrganization(String ORG, String NewORGType, String NewORGName, String NewORGCode, String NewLocation, 
 		//String NewAdd, String NewEmail, String Contact, String NStartD, String NEndD, String EmployeeS, String TypeofS, String NAudit)
-    	//organizationPage.EditOrganization("test", "Partner", "NewTest", "NewCode", "London", "Bhiwandi", "testemail", "565656656", "18-10-2025", "18-12-2025", "20", "NewTest", "TestAuditRemark");
+    	organizationPage.EditOrganization("test", "Partner", "NewTest", "NewCode", "London", "Bhiwandi", "testemail",
+    										"565656656", "18/10/2025", "18/12/2025", "20", "NewTest", "TestAuditRemark");
     }
     
     //@Test(priority=4)
@@ -91,7 +92,7 @@ public class OrganizationTest {
     	organizationPage.SearchBar("Meclix", "342");
     }
     
-    //@Test(priority=7)
+    @Test(priority=7)
     public void TS0025() throws InterruptedException
     {
     	organizationPage.LocationFilter("Mumbai");

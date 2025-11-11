@@ -12,6 +12,7 @@ import org.testng.Assert;
 
 import LoginTest.LoginPage;
 import Utilities.BasePage;
+import Utilities.DatePickerUtil;
 
 
 
@@ -157,6 +158,8 @@ public class OrganizationPage extends BasePage
 	    WebElement DefineNewBtn;
 	    @FindBy(xpath="//span[@class=\"ui-dialog-title\"]")
 	    WebElement NewOrgTypeForm;
+	    @FindBy(xpath="//div[@class='field StartDate col-lg-3 col-sm-6']//img[@title='...']") WebElement datePickerInputLocator;
+	    DatePickerUtil DP = new DatePickerUtil();
 	    
 	    
 	    //ActionMethod 
@@ -164,8 +167,7 @@ public class OrganizationPage extends BasePage
 	    
 	    public void InitialSteps()
 	    {
-	    	LoginPage lp = new LoginPage(driver);
-	    	AccessManagment.click();
+	        AccessManagment.click();
 	    	wait.until(ExpectedConditions.elementToBeClickable(Master)).click();
 	    	OrganizationMenubtn.click();;
 	    }
@@ -256,13 +258,6 @@ public class OrganizationPage extends BasePage
 	    	InitialSteps();
 	    	SearchOrganizationName.sendKeys(ORG);
 	    	Thread.sleep(3000);
-	    	
-	    	//Clicking on organization to edit
-	    	/*if(Organization.getText().equals(ORG))
-	    	{
-	    		Organization.click();
-	    		Thread.sleep(3000);
-	    	}*/
 	    	System.out.println(SelectedOrgType.getText());
 	    	System.out.println(EditOrgName.getAttribute("value"));
 	    	System.out.println(EditOrgCode.getAttribute("value"));
@@ -273,13 +268,13 @@ public class OrganizationPage extends BasePage
 	    	System.out.println(EditEDate.getAttribute("value"));
 	    	System.out.println(EditEmpStregnth.getAttribute("value"));
 	    	System.out.println(EditSeervice.getAttribute("value"));
-	    	System.out.println(EditRemark.getAttribute("value"));
-			
+	    	System.out.println(EditRemark.getAttribute("value"));			
 	    }
+	    
 	    
 	    //TS0020 - Edit an existing Organization
 	    public void EditOrganization(String orgName, String newOrgType, String newOrgName, String newOrgCode, String newLocation,
-                String newAddress, String newEmail, String contact, int newStartDate, int newEndDate,
+                String newAddress, String newEmail, String contact, String newStartDate, String newEndDate,
                 String employeeStrength, String typeOfService, String newAuditRemark) throws InterruptedException {
 
 		InitialSteps();
@@ -322,15 +317,16 @@ public class OrganizationPage extends BasePage
 		EditMailDomain.sendKeys("gmail.com");
 		
 		// Update contact number
-		Number.clear();
+		//Number.clear();
 		Number.sendKeys(contact);
-		
+		Thread.sleep(3000);
 		// Change start and end date
 		EditSDate.clear();
 		EditSDate.sendKeys(String.valueOf(newStartDate));
-		
+		Thread.sleep(3000);
 		EditEDate.clear();
 		EditEDate.sendKeys(String.valueOf(newEndDate));
+		Thread.sleep(3000); 
 		
 		// Update employee strength, type of service, audit remark
 		EditEmpStregnth.clear();
@@ -340,11 +336,11 @@ public class OrganizationPage extends BasePage
 		EditSeervice.sendKeys(typeOfService);
 		
 		EditRemark.clear();
-		EditRemark.sendKeys(newAuditRemark);
+		EditRemark.sendKeys(newAuditRemark); 
 		
 		// Save details
 		EditSaveDetails.click();
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 		
 		System.out.println("Organization details updated successfully for: " + newOrgName);
 		}

@@ -73,6 +73,8 @@ public class CityPage extends BasePage
 	@FindBy(xpath="//button[@id='BuildingSolutionSuite_Membership_LoginPanel0_LoginButton']") WebElement LoginBtn;
 	@FindBy(xpath="//b[@role='presentation']") WebElement CountryFilterDrop;
 	@FindBy(xpath="//div[@class=\"slick-cell l0 r0\"]") WebElement FilterCountryResult;
+	@FindBy(xpath="//input[@id='s2id_autogen1_search']") WebElement SearchCountryFilter;
+	@FindBy(xpath="//div[@class=\"select2-result-label\"]") List<WebElement> FilterCountryOption;
 	DropDownMethod dd = new DropDownMethod();
 	
 	//ActionMethods
@@ -206,17 +208,25 @@ public class CityPage extends BasePage
 	}
 	
 	//TS0088 - check based on country filter selection wise city data gets filtered or not
-	public void VerifyCountryFilter()
-	{
-		InitialStep();
-		CountryFilterDrop.click();
-		dd.selectFromDropdown(CountryOptions, "Indonesia", "Country Filter");
-		if (FilterCountryResult.getText().contains("Indonesia")) {
-			System.out.println("City filtered based on country selection");
-			Assert.assertTrue(true);
-		} else {
-			System.out.println("City not filtered based on country selection");
-			Assert.assertTrue(false);
-		}
+	public void verifyCountryFilter(String country) {
+	    InitialStep();
+	    CountryFilterDrop.click();
+	    SearchCountryFilter.sendKeys(country);
+
+	    for (WebElement option : FilterCountryOption) {
+	        if (option.getText().trim().equalsIgnoreCase(country)) {
+	            option.click();
+	            break;
+	        }
+	    }
+
+	    // Replace Thread.sleep() with explicit waits if possible
+	    wait.until(ExpectedConditions.textToBePresentInElement(FilterCountryResult, country));
+
+	    boolean isFiltered = FilterCountryResult.getText().contains(country);
+	    Assert.assertTrue(isFiltered, "City not filtered based on country selection");
+	    System.out.println(isFiltered ? "City filtered based on country selection"
+	                                  : "City not filtered based on country selection");
 	}
+
 }	

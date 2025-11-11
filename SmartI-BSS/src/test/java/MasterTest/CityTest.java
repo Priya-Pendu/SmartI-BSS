@@ -66,9 +66,9 @@ public class CityTest
     }
 	
 	@Test(priority=7)
-	public void TS0088()
+	public void TS0088() throws InterruptedException
 	{
-		cp.VerifyCountryFilter();
+		cp.verifyCountryFilter("India");
 	}
 	@AfterTest
 	public void teardown()
