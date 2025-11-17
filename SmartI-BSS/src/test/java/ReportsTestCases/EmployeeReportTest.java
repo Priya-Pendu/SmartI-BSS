@@ -13,11 +13,11 @@ import org.testng.annotations.Test;
 
 import LoginTest.LoginPage;
 import ReportsPageObject.CardPoolReportPage;
-import ReportsPageObject.DivisionReportPage;
+import ReportsPageObject.EmployeeReportPage;
 
-public class CardPoolReportTest {
+public class EmployeeReportTest {
 	WebDriver driver;
-	CardPoolReportPage CR;
+	EmployeeReportPage EP;
 	
 	@BeforeTest
 	public void Login()
@@ -35,54 +35,29 @@ public class CardPoolReportTest {
 		driver.get("http://192.168.0.42:915");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		CR = new CardPoolReportPage(driver);
+		EP = new EmployeeReportPage(driver);
 		LoginPage lp = new LoginPage(driver);
 		lp.LginCredentials("tata", "Smarti@321");
 		
 	}
-
+	
+	
 	//@Test(priority=1)
-	public void TS0118() throws InterruptedException {
-		CR.LocationFilterValidation();
+	public void TS0109() throws InterruptedException
+	{
+		EP.ExportExcel();
 	}
 	
 	//@Test(priority=2)
-	public void TS0119() throws InterruptedException {
-		CR.DepartmentFilterValidation();
-	}
-	
-	//@Test(priority=3)
-	public void TS0120() throws InterruptedException {
-		CR.DesignationFilterValidation();
-	}
-	
-	//@Test(priority=4)
-	public void TS0121() throws InterruptedException {
-		CR.EmployeeFilterValidation();
-	}
-	
-	//@Test(priority=5)
-	public void TS0122() throws InterruptedException
+	public void TS0110() throws InterruptedException
 	{
-		CR.CardStatusValidation();
+		EP.ExportPDF();
 	}
 	
-	//@Test(priority=6)
-	public void TS0123() throws InterruptedException
+	@Test(priority=3)
+	public void TS0112() throws InterruptedException
 	{
-		CR.CardTypeValidation();
-	}
-	
-	//@Test(priority=7)
-	public void TS0125() throws InterruptedException
-	{
-		CR.ExportExcel();
-	}
-	
-	@Test(priority=8)
-	public void TS0126() throws InterruptedException
-	{
-		CR.ExportPDF();
+		EP.LocationFilterValidation();
 	}
 	
 	@AfterTest
@@ -90,4 +65,5 @@ public class CardPoolReportTest {
 	{
 		driver.quit();
 	}
+
 }

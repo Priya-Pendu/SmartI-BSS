@@ -2,24 +2,24 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-11-12T15:53:04 IST" name="Default suite" finished-at="2025-11-12T15:53:14 IST" duration-ms="9866">
+  <suite started-at="2025-11-17T14:54:44 IST" name="Default suite" finished-at="2025-11-17T14:54:53 IST" duration-ms="8382">
     <groups>
     </groups>
-    <test started-at="2025-11-12T15:53:04 IST" name="Default test" finished-at="2025-11-12T15:53:14 IST" duration-ms="9866">
-      <class name="ReportsTestCases.CardPoolReportTest">
-        <test-method is-config="true" signature="Login()[pri:0, instance:ReportsTestCases.CardPoolReportTest@75437611]" started-at="2025-11-12T15:53:04 IST" name="Login" finished-at="2025-11-12T15:53:07 IST" duration-ms="2269" status="PASS">
+    <test started-at="2025-11-17T14:54:44 IST" name="Default test" finished-at="2025-11-17T14:54:53 IST" duration-ms="8382">
+      <class name="ReportsTestCases.EmployeeReportTest">
+        <test-method is-config="true" signature="Login()[pri:0, instance:ReportsTestCases.EmployeeReportTest@1c5920df]" started-at="2025-11-17T14:54:44 IST" name="Login" finished-at="2025-11-17T14:54:46 IST" duration-ms="2107" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Login -->
-        <test-method signature="TS0118()[pri:1, instance:ReportsTestCases.CardPoolReportTest@75437611]" started-at="2025-11-12T15:53:07 IST" name="TS0118" finished-at="2025-11-12T15:53:14 IST" duration-ms="7408" status="PASS">
+        <test-method signature="TS0111()[pri:3, instance:ReportsTestCases.EmployeeReportTest@1c5920df]" started-at="2025-11-17T14:54:46 IST" name="TS0111" finished-at="2025-11-17T14:54:52 IST" duration-ms="6114" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TS0118 -->
-        <test-method is-config="true" signature="teardown()[pri:0, instance:ReportsTestCases.CardPoolReportTest@75437611]" started-at="2025-11-12T15:53:14 IST" name="teardown" finished-at="2025-11-12T15:53:14 IST" duration-ms="156" status="PASS">
+        </test-method> <!-- TS0111 -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:ReportsTestCases.EmployeeReportTest@1c5920df]" started-at="2025-11-17T14:54:52 IST" name="teardown" finished-at="2025-11-17T14:54:53 IST" duration-ms="128" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->
-      </class> <!-- ReportsTestCases.CardPoolReportTest -->
+      </class> <!-- ReportsTestCases.EmployeeReportTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
