@@ -12,14 +12,15 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import LoginTest.LoginPage;
-import ReportsPageObject.CardPoolReportPage;
-import ReportsPageObject.DivisionReportPage;
+import ReportsPageObject.DesignationReportPage;
+import ReportsPageObject.EmployeeActiveStatusPage;
 
-public class CardPoolReportTest {
+public class EmployeeActiveStatusTest {
+
 	WebDriver driver;
-	CardPoolReportPage CR;
+	EmployeeActiveStatusPage EAS;
 	
-	@BeforeTest(groups="master")
+	@BeforeTest
 	public void Login()
 	{
 		 Map<String, Object> prefs = new HashMap<>();
@@ -35,59 +36,51 @@ public class CardPoolReportTest {
 		driver.get("http://192.168.0.42:915");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		CR = new CardPoolReportPage(driver);
+		EAS = new EmployeeActiveStatusPage(driver);
 		LoginPage lp = new LoginPage(driver);
 		lp.LginCredentials("tata", "Smarti@321");
+		}
+	
+	    //@Test(priority=1)
+		public void TS0127() throws InterruptedException {
+			EAS.ExportExcelFile();
+		}
+	    
+	    //@Test(priority=2)
+	    public void TS0128() throws InterruptedException {
+	    	EAS.ExportPDFFile();
+	    }
 		
-	}
-
-	//@Test(priority=1)
-	public void TS0118() throws InterruptedException {
-		CR.LocationFilterValidation();
-	}
-	
-	@Test(priority=2, groups ="Master")
-	public void TS0119() throws InterruptedException {
-		CR.DepartmentFilterValidation();
-	}
-	
-	//@Test(priority=3)
-	public void TS0120() throws InterruptedException {
-		CR.DesignationFilterValidation();
-	}
-	
-	//@Test(priority=4)
-	public void TS0121() throws InterruptedException {
-		CR.EmployeeFilterValidation();
-	}
-	
-	@Test(priority=5, groups ="Master")
-	public void TS0122() throws InterruptedException
-	{
-		CR.CardStatusValidation();
-	}
-	
-	//@Test(priority=6)
-	public void TS0123() throws InterruptedException
-	{
-		CR.CardTypeValidation();
-	}
-	
-	//@Test(priority=7)
-	public void TS0125() throws InterruptedException
-	{
-		CR.ExportExcel();
-	}
-	
-	@Test(priority=8)
-	public void TS0126() throws InterruptedException
-	{
-		CR.ExportPDF();
-	}
-	
-	@AfterTest (groups="master")
-	public void teardown()
-	{
-		driver.quit();
-	}
+	    //@Test(priority=3)
+		public void TS0129() throws InterruptedException {
+			EAS.LocationFilter();
+		}
+	    
+	    //@Test(priority=4)
+	    public void TS0130() throws InterruptedException {
+	    	 EAS.DepartmentFilter();
+	    }
+	    
+	    @Test(priority=5)
+		public void TS0131() throws InterruptedException {
+			EAS.DesignationFilter();
+		}
+	    
+	    //@Test(priority=6)
+		public void TS0132() throws InterruptedException {
+			EAS.DeviceFilter();
+		}
+	    
+	    //@Test(priority=7)
+	    public void TS0133() throws InterruptedException {
+	    	 EAS.StatusFilter();
+	    }
+		
+	   
+	    
+	    @AfterTest
+	    public void TearDown()
+	    {
+		  driver.quit();
+	    }
 }

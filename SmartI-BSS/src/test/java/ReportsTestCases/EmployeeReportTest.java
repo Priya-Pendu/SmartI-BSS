@@ -19,7 +19,7 @@ public class EmployeeReportTest {
 	WebDriver driver;
 	EmployeeReportPage EP;
 	
-	@BeforeTest
+	@BeforeTest(groups="master")
 	public void Login()
 	{
 		 Map<String, Object> prefs = new HashMap<>();
@@ -42,7 +42,7 @@ public class EmployeeReportTest {
 	}
 	
 	
-	//@Test(priority=1)
+	@Test(priority=1, groups="master")
 	public void TS0109() throws InterruptedException
 	{
 		EP.ExportExcel();
@@ -54,13 +54,31 @@ public class EmployeeReportTest {
 		EP.ExportPDF();
 	}
 	
-	@Test(priority=3)
+	@Test(priority=3,groups="master")
 	public void TS0112() throws InterruptedException
 	{
 		EP.LocationFilterValidation();
 	}
 	
-	@AfterTest
+	//@Test(priority=4)
+	public void TS0113() throws InterruptedException
+	{
+		EP.DivisionFilterValidation();
+	}
+	
+	//@Test(priority=5)
+	public void TS0114() throws InterruptedException
+	{
+		EP.DepartFilterValidation();
+	} 
+	
+	@Test(priority=6)
+	public void TS0115() throws InterruptedException
+	{
+		EP.DesigFlterValidation();
+	}
+	
+	@AfterTest(groups="master")
 	public void teardown()
 	{
 		driver.quit();
