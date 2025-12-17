@@ -1,0 +1,29 @@
+11:54:06.441 [main] INFO  MasterPage.LocationPage - Maximum character limit for Location Name is: 50
+11:54:08.641 [main] INFO  MasterPage.LocationPage - Maximum character limit for Location Name is :0
+11:54:52.455 [main] INFO  MasterPage.LocationPage - Maximum character limit for Location Name is: 50
+11:54:54.625 [main] INFO  MasterPage.LocationPage - Maximum character limit for Location Code is :50
+11:55:36.501 [main] INFO  MasterPage.LocationPage - Maximum character limit for Location Name is: 50
+11:55:38.658 [main] INFO  MasterPage.LocationPage - Maximum character limit for Location Code is :10
+12:19:31.055 [main] INFO  MasterPage.LocationPage - Location not found
+12:20:13.612 [main] INFO  MasterPage.LocationPage - Location not found
+10:51:37.329 [main] INFO  MasterPage.LocationPage - Caught InvalidElementStateException – field is not editable as expected.
+11:16:33.661 [main] INFO  MasterPage.LocationPage - Is Shared checkbox is clickable.
+11:17:05.551 [main] INFO  MasterPage.LocationPage - Is Shared checkbox is clickable.
+11:34:26.251 [main] INFO  MasterPage.LocationPage - Checkbox is not clickable – as expected.
+15:51:18.465 [main] INFO  ReportsPageObject.EmployeeEntityAccessPage - TS0147 - Location Filter Validation is completed
+16:00:04.500 [main] INFO  ReportsPageObject.EmployeeEntityAccessPage - TS0148 - Department Filter Validation is completed
+16:13:50.214 [main] INFO  ReportsPageObject.EmployeeEntityAccessPage - TS0149 - Employee Filter Validation is completed
+16:57:15.942 [main] INFO  ReportsPageObject.EmployeeEntityAccessPage - TS0136 - Export to Excel is completed
+17:04:50.462 [main] INFO  ReportsPageObject.EmployeeEntityAccessPage - TS0137 - Generate PDF Report is completed
+17:00:04.035 [main] INFO  ReportsPageObject.EmployeeEntityAccessPage - TS0140 - Designation Filter Validation is completed
+17:08:14.343 [main] INFO  ReportsPageObject.EmployeeEntityAccessPage - TS0141 - Entity Filter Validation is completed
+17:10:14.690 [main] INFO  ReportsPageObject.EmployeeEntityAccessPage - TS0149 - Employee Filter Validation is completed
+15:04:51.817 [main] INFO  AdministrationPage.RolesPage - Role found in search results: TestRole1
+15:08:05.381 [main] INFO  AdministrationPage.RolesPage - Role found in search results: TestRole1
+15:17:58.387 [main] INFO  AdministrationPage.RolesPage - Role found in search results: TestRole1
+15:19:04.940 [main] INFO  AdministrationPage.RolesPage - Role found in search results: TestRole1
+16:03:30.055 [main] INFO  AdministrationPage.RolesPage - Role found in search results: TestRole1
+16:04:05.894 [main] INFO  AdministrationPage.RolesPage - Role found in search results: TestRole1
+16:05:26.206 [main] INFO  AdministrationPage.RolesPage - Role found in search results: TestRole1
+16:38:46.147 [main] WARN  AdministrationPage.RolesPage - Normal click failed, using JavaScript click
+16:39:22.425 [main] WARN  AdministrationPage.RolesPage - Normal click failed, using JavaScript click
