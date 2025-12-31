@@ -303,3 +303,197 @@
 17:04:42.653 [main] INFO  AdministrationPage.UserPage - STEP 6: getting all information of user form | Username=Infosys | DisplayName=Infosys | Email=infosys123 | EmailDomain=smartisystems.com | Customer=--select-- | Company=--select--
 17:04:42.653 [main] INFO  AdministrationPage.UserPage - STEP 6: Clicking on 'Misc' option
 17:04:42.791 [main] INFO  AdministrationPage.UserPage - STEP 7: getting all information from misc option tab | PassExpiryDays=90 | PassExpiryDate=11/14/2025
+12:06:13.665 [main] INFO  AdministrationPage.UserPage - STEP 1: Initial step started
+12:06:15.854 [main] INFO  AdministrationPage.UserPage - STEP 2: Sending text on search bar
+12:06:18.055 [main] INFO  AdministrationPage.UserPage - STEP 3: Clicking searched User
+12:06:18.156 [main] INFO  AdministrationPage.UserPage - Actual searched user from UI: [Priya]
+12:06:18.156 [main] INFO  AdministrationPage.UserPage - Expected user: [Priya]
+12:06:18.384 [main] INFO  AdministrationPage.UserPage - STEP 5: User form opened successfully
+12:06:18.385 [main] INFO  AdministrationPage.UserPage - STEP 6: updating Username
+12:08:40.856 [main] INFO  AdministrationPage.UserPage - STEP 1: Initial step started
+12:08:43.811 [main] INFO  AdministrationPage.UserPage - STEP 2: Sending text on search bar
+12:08:46.012 [main] INFO  AdministrationPage.UserPage - STEP 3: Clicking searched User
+12:08:46.110 [main] INFO  AdministrationPage.UserPage - Actual searched user from UI: [Priya]
+12:08:46.110 [main] INFO  AdministrationPage.UserPage - Expected user: [Priya]
+12:08:46.352 [main] INFO  AdministrationPage.UserPage - STEP 5: User form opened successfully
+12:08:46.353 [main] INFO  AdministrationPage.UserPage - STEP 6: updating Username
+12:14:49.476 [main] INFO  AdministrationPage.UserPage - STEP 1: Initial step started
+12:14:51.766 [main] INFO  AdministrationPage.UserPage - STEP 2: Sending text on search bar
+12:14:53.983 [main] INFO  AdministrationPage.UserPage - STEP 3: Clicking searched User
+12:14:54.073 [main] INFO  AdministrationPage.UserPage - Actual searched user from UI: [Priya]
+12:14:54.073 [main] INFO  AdministrationPage.UserPage - Expected user: [Priya]
+12:14:54.255 [main] INFO  AdministrationPage.UserPage - STEP 5: User form opened successfully
+12:14:54.255 [main] INFO  AdministrationPage.UserPage - STEP 6: updating Username
+12:16:43.794 [main] INFO  AdministrationPage.UserPage - STEP 1: Initial step started
+12:16:46.070 [main] INFO  AdministrationPage.UserPage - STEP 2: Sending text on search bar
+12:16:48.261 [main] INFO  AdministrationPage.UserPage - STEP 3: Clicking searched User
+12:16:48.360 [main] INFO  AdministrationPage.UserPage - Actual searched user from UI: [Priya]
+12:16:48.360 [main] INFO  AdministrationPage.UserPage - Expected user: [Priya]
+12:16:48.576 [main] INFO  AdministrationPage.UserPage - STEP 5: User form opened successfully
+12:16:48.577 [main] INFO  AdministrationPage.UserPage - STEP 6: updating Username
+12:16:48.936 [main] INFO  AdministrationPage.UserPage - STEP 7: updating Display Name
+12:21:42.966 [main] INFO  AdministrationPage.UserPage - STEP 1: Initial step started
+12:21:46.101 [main] INFO  AdministrationPage.UserPage - STEP 2: Sending text on search bar
+12:21:48.318 [main] INFO  AdministrationPage.UserPage - STEP 3: Clicking searched User
+12:21:48.414 [main] INFO  AdministrationPage.UserPage - Actual searched user from UI: [Priya]
+12:21:48.414 [main] INFO  AdministrationPage.UserPage - Expected user: [Priya]
+12:21:48.644 [main] INFO  AdministrationPage.UserPage - STEP 5: User form opened successfully
+12:21:48.644 [main] INFO  AdministrationPage.UserPage - STEP 6: updating Username
+12:21:48.967 [main] INFO  AdministrationPage.UserPage - STEP 7: updating Display Name
+12:21:49.199 [main] INFO  AdministrationPage.UserPage - STEP 8: updating email
+12:21:49.491 [main] INFO  AdministrationPage.UserPage - STEP 9: updating password
+12:21:49.772 [main] INFO  AdministrationPage.UserPage - STEP 10: confirming updated password
+12:21:50.035 [main] INFO  AdministrationPage.UserPage - STEP 11: Clicking save button
+12:21:50.243 [main] INFO  AdministrationPage.UserPage - STEP 12: Reopening the updated user form to verify changes 
+12:22:55.959 [main] INFO  AdministrationPage.UserPage - STEP 1: Initial step started
+12:22:58.035 [main] INFO  AdministrationPage.UserPage - STEP 2: Sending text on search bar
+12:23:00.259 [main] INFO  AdministrationPage.UserPage - STEP 3: Clicking searched User
+12:23:00.353 [main] INFO  AdministrationPage.UserPage - Actual searched user from UI: [Priya]
+12:23:00.353 [main] INFO  AdministrationPage.UserPage - Expected user: [Priya]
+12:23:00.586 [main] INFO  AdministrationPage.UserPage - STEP 5: User form opened successfully
+12:23:00.587 [main] INFO  AdministrationPage.UserPage - STEP 6: updating Username
+12:23:00.895 [main] INFO  AdministrationPage.UserPage - STEP 7: updating Display Name
+12:23:01.157 [main] INFO  AdministrationPage.UserPage - STEP 8: updating email
+12:23:01.449 [main] INFO  AdministrationPage.UserPage - STEP 9: updating password
+12:23:01.723 [main] INFO  AdministrationPage.UserPage - STEP 10: confirming updated password
+12:23:02.001 [main] INFO  AdministrationPage.UserPage - STEP 11: Clicking save button
+12:23:02.216 [main] INFO  AdministrationPage.UserPage - STEP 12: Reopening the updated user form to verify changes 
+12:23:28.900 [main] INFO  AdministrationPage.UserPage - STEP 1: Initial step started
+12:23:31.155 [main] INFO  AdministrationPage.UserPage - STEP 2: Sending text on search bar
+12:23:33.341 [main] INFO  AdministrationPage.UserPage - STEP 3: Clicking searched User
+12:23:33.442 [main] INFO  AdministrationPage.UserPage - Actual searched user from UI: [Priya]
+12:23:33.443 [main] INFO  AdministrationPage.UserPage - Expected user: [Priya]
+12:23:33.633 [main] INFO  AdministrationPage.UserPage - STEP 5: User form opened successfully
+12:23:33.634 [main] INFO  AdministrationPage.UserPage - STEP 6: updating Username
+12:23:33.932 [main] INFO  AdministrationPage.UserPage - STEP 7: updating Display Name
+12:23:34.242 [main] INFO  AdministrationPage.UserPage - STEP 8: updating email
+12:23:34.523 [main] INFO  AdministrationPage.UserPage - STEP 9: updating password
+12:23:34.814 [main] INFO  AdministrationPage.UserPage - STEP 10: confirming updated password
+12:23:35.099 [main] INFO  AdministrationPage.UserPage - STEP 11: Clicking save button
+12:23:35.320 [main] INFO  AdministrationPage.UserPage - STEP 12: Reopening the updated user form to verify changes 
+12:26:08.670 [main] INFO  AdministrationPage.UserPage - STEP 1: Initial step started
+12:26:10.711 [main] INFO  AdministrationPage.UserPage - STEP 2: Sending text on search bar
+12:26:12.902 [main] INFO  AdministrationPage.UserPage - STEP 3: Clicking searched User
+12:26:13.001 [main] INFO  AdministrationPage.UserPage - Actual searched user from UI: [Priya]
+12:26:13.002 [main] INFO  AdministrationPage.UserPage - Expected user: [Priya]
+12:26:13.246 [main] INFO  AdministrationPage.UserPage - STEP 5: User form opened successfully
+12:26:13.246 [main] INFO  AdministrationPage.UserPage - STEP 6: updating Username
+12:26:13.569 [main] INFO  AdministrationPage.UserPage - STEP 7: updating Display Name
+12:26:13.859 [main] INFO  AdministrationPage.UserPage - STEP 8: updating email
+12:26:14.145 [main] INFO  AdministrationPage.UserPage - STEP 9: updating email domain
+12:26:14.413 [main] INFO  AdministrationPage.UserPage - STEP 9: updating password
+12:26:14.691 [main] INFO  AdministrationPage.UserPage - STEP 10: confirming updated password
+12:26:14.966 [main] INFO  AdministrationPage.UserPage - STEP 11: Clicking save button
+12:26:15.165 [main] INFO  AdministrationPage.UserPage - STEP 12: Reopening the updated user form to verify changes 
+12:31:45.668 [main] INFO  AdministrationPage.UserPage - STEP 1: Initial step started
+12:31:48.788 [main] INFO  AdministrationPage.UserPage - STEP 2: Sending text on search bar
+12:31:50.999 [main] INFO  AdministrationPage.UserPage - STEP 3: Clicking searched User
+12:36:00.576 [main] INFO  AdministrationPage.UserPage - STEP 1: Initial step started
+12:36:02.886 [main] INFO  AdministrationPage.UserPage - STEP 2: Sending text on search bar
+12:36:05.101 [main] INFO  AdministrationPage.UserPage - STEP 3: Clicking searched User
+12:36:05.197 [main] INFO  AdministrationPage.UserPage - Actual searched user from UI: [UserTestEdit]
+12:36:05.197 [main] INFO  AdministrationPage.UserPage - Expected user: [UserTestEdit]
+12:36:05.407 [main] INFO  AdministrationPage.UserPage - STEP 5: User form opened successfully
+12:36:05.408 [main] INFO  AdministrationPage.UserPage - STEP 6: updating Username
+12:36:06.242 [main] INFO  AdministrationPage.UserPage - STEP 7: updating Display Name
+12:36:06.546 [main] INFO  AdministrationPage.UserPage - STEP 8: updating email
+12:36:06.828 [main] INFO  AdministrationPage.UserPage - STEP 9: updating email domain
+12:36:07.090 [main] INFO  AdministrationPage.UserPage - STEP 9: updating password
+12:36:07.347 [main] INFO  AdministrationPage.UserPage - STEP 10: confirming updated password
+12:36:07.653 [main] INFO  AdministrationPage.UserPage - STEP 11: Clicking save button
+12:36:09.875 [main] INFO  AdministrationPage.UserPage - STEP 12: Reopening the updated user form to verify changes 
+12:36:32.362 [main] INFO  AdministrationPage.UserPage - STEP 1: Initial step started
+12:36:34.631 [main] INFO  AdministrationPage.UserPage - STEP 2: Sending text on search bar
+12:36:36.819 [main] INFO  AdministrationPage.UserPage - STEP 3: Clicking searched User
+12:36:36.921 [main] INFO  AdministrationPage.UserPage - Actual searched user from UI: [UserTestEdit]
+12:36:36.921 [main] INFO  AdministrationPage.UserPage - Expected user: [UserTestEdit]
+12:36:37.141 [main] INFO  AdministrationPage.UserPage - STEP 5: User form opened successfully
+12:36:37.141 [main] INFO  AdministrationPage.UserPage - STEP 6: updating Username
+12:36:37.487 [main] INFO  AdministrationPage.UserPage - STEP 7: updating Display Name
+12:36:37.723 [main] INFO  AdministrationPage.UserPage - STEP 8: updating email
+12:36:38.001 [main] INFO  AdministrationPage.UserPage - STEP 9: updating email domain
+12:36:38.265 [main] INFO  AdministrationPage.UserPage - STEP 9: updating password
+12:36:38.540 [main] INFO  AdministrationPage.UserPage - STEP 10: confirming updated password
+12:36:38.809 [main] INFO  AdministrationPage.UserPage - STEP 11: Clicking save button
+12:36:41.020 [main] INFO  AdministrationPage.UserPage - STEP 12: Reopening the updated user form to verify changes 
+12:36:43.221 [main] INFO  AdministrationPage.UserPage - STEP 13: Clicking searched User
+12:38:23.722 [main] INFO  AdministrationPage.UserPage - STEP 1: Initial step started
+12:38:25.915 [main] INFO  AdministrationPage.UserPage - STEP 2: Sending text on search bar
+12:38:28.144 [main] INFO  AdministrationPage.UserPage - STEP 3: Clicking searched User
+12:38:28.247 [main] INFO  AdministrationPage.UserPage - Actual searched user from UI: [UpdateUserN]
+12:38:28.248 [main] INFO  AdministrationPage.UserPage - Expected user: [UpdateUserN]
+12:38:28.474 [main] INFO  AdministrationPage.UserPage - STEP 5: User form opened successfully
+12:38:28.475 [main] INFO  AdministrationPage.UserPage - STEP 6: updating Username
+12:38:28.770 [main] INFO  AdministrationPage.UserPage - STEP 7: updating Display Name
+12:38:29.077 [main] INFO  AdministrationPage.UserPage - STEP 8: updating email
+12:38:29.367 [main] INFO  AdministrationPage.UserPage - STEP 9: updating email domain
+12:38:29.651 [main] INFO  AdministrationPage.UserPage - STEP 9: updating password
+12:38:29.920 [main] INFO  AdministrationPage.UserPage - STEP 10: confirming updated password
+12:38:30.184 [main] INFO  AdministrationPage.UserPage - STEP 11: Clicking save button
+12:38:32.389 [main] INFO  AdministrationPage.UserPage - STEP 12: Reopening the updated user form to verify changes 
+12:38:34.689 [main] INFO  AdministrationPage.UserPage - STEP 13: Clicking searched User
+12:38:34.770 [main] INFO  AdministrationPage.UserPage - Actual searched user from UI: [UpdateUserName]
+12:38:34.770 [main] INFO  AdministrationPage.UserPage - Expected user: [UpdateUserN]
+12:38:34.971 [main] INFO  AdministrationPage.UserPage - STEP 5: User form opened successfully
+12:56:38.470 [main] INFO  AdministrationPage.UserPage - STEP 1: Initial step started
+12:56:40.730 [main] INFO  AdministrationPage.UserPage - STEP 2: Sending text on search bar
+12:56:42.936 [main] INFO  AdministrationPage.UserPage - STEP 3: Clicking searched User
+12:56:43.031 [main] INFO  AdministrationPage.UserPage - Actual searched user from UI: [UpdateUserName]
+12:56:43.032 [main] INFO  AdministrationPage.UserPage - Expected user: [UpdateUserName]
+12:56:43.246 [main] INFO  AdministrationPage.UserPage - STEP 5: User form opened successfully
+12:56:43.248 [main] INFO  AdministrationPage.UserPage - STEP 6: updating Username
+12:56:43.564 [main] INFO  AdministrationPage.UserPage - STEP 7: updating Display Name
+12:56:43.859 [main] INFO  AdministrationPage.UserPage - STEP 8: updating email
+12:56:44.144 [main] INFO  AdministrationPage.UserPage - STEP 9: updating email domain
+12:56:44.406 [main] INFO  AdministrationPage.UserPage - STEP 9: updating password
+12:56:44.685 [main] INFO  AdministrationPage.UserPage - STEP 10: confirming updated password
+12:56:44.972 [main] INFO  AdministrationPage.UserPage - STEP 11: Clicking save button
+12:56:47.188 [main] INFO  AdministrationPage.UserPage - STEP 12: Reopening the updated user form to verify changes 
+12:56:49.477 [main] INFO  AdministrationPage.UserPage - STEP 13: Clicking searched User
+12:56:49.570 [main] INFO  AdministrationPage.UserPage - Actual searched user from UI: [UpdatedUser]
+12:56:49.570 [main] INFO  AdministrationPage.UserPage - Expected user: [UpdateUserName]
+12:56:49.747 [main] INFO  AdministrationPage.UserPage - STEP 5: User form opened successfully
+12:57:49.118 [main] INFO  AdministrationPage.UserPage - STEP 1: Initial step started
+12:57:51.264 [main] INFO  AdministrationPage.UserPage - STEP 2: Sending text on search bar
+12:57:53.449 [main] INFO  AdministrationPage.UserPage - STEP 3: Clicking searched User
+12:57:53.541 [main] INFO  AdministrationPage.UserPage - Actual searched user from UI: [UpdatedUser]
+12:57:53.541 [main] INFO  AdministrationPage.UserPage - Expected user: [UpdatedUser]
+12:57:53.770 [main] INFO  AdministrationPage.UserPage - STEP 5: User form opened successfully
+12:57:53.770 [main] INFO  AdministrationPage.UserPage - STEP 6: updating Username
+12:57:54.116 [main] INFO  AdministrationPage.UserPage - STEP 7: updating Display Name
+12:57:54.342 [main] INFO  AdministrationPage.UserPage - STEP 8: updating email
+12:57:54.619 [main] INFO  AdministrationPage.UserPage - STEP 9: updating email domain
+12:57:54.884 [main] INFO  AdministrationPage.UserPage - STEP 9: updating password
+12:57:55.163 [main] INFO  AdministrationPage.UserPage - STEP 10: confirming updated password
+12:57:55.442 [main] INFO  AdministrationPage.UserPage - STEP 11: Clicking save button
+12:57:57.659 [main] INFO  AdministrationPage.UserPage - STEP 12: Reopening the updated user form to verify changes 
+12:58:14.562 [main] INFO  AdministrationPage.UserPage - STEP 1: Initial step started
+12:58:16.391 [main] INFO  AdministrationPage.UserPage - STEP 2: Sending text on search bar
+12:58:18.637 [main] INFO  AdministrationPage.UserPage - STEP 3: Clicking searched User
+12:58:18.736 [main] INFO  AdministrationPage.UserPage - Actual searched user from UI: [UpdatedUser]
+12:58:18.736 [main] INFO  AdministrationPage.UserPage - Expected user: [UpdatedUser]
+12:58:18.965 [main] INFO  AdministrationPage.UserPage - STEP 5: User form opened successfully
+12:58:18.965 [main] INFO  AdministrationPage.UserPage - STEP 6: updating Username
+12:58:19.312 [main] INFO  AdministrationPage.UserPage - STEP 7: updating Display Name
+12:58:19.608 [main] INFO  AdministrationPage.UserPage - STEP 8: updating email
+12:58:19.907 [main] INFO  AdministrationPage.UserPage - STEP 9: updating email domain
+12:58:20.176 [main] INFO  AdministrationPage.UserPage - STEP 9: updating password
+12:58:20.450 [main] INFO  AdministrationPage.UserPage - STEP 10: confirming updated password
+12:58:20.720 [main] INFO  AdministrationPage.UserPage - STEP 11: Clicking save button
+12:58:22.946 [main] INFO  AdministrationPage.UserPage - STEP 12: Reopening the updated user form to verify changes 
+12:58:25.257 [main] INFO  AdministrationPage.UserPage - STEP 13: Clicking searched User
+12:58:25.328 [main] INFO  AdministrationPage.UserPage - Actual searched user from UI: [UpdatedUserN]
+12:58:25.328 [main] INFO  AdministrationPage.UserPage - Expected user: [UpdatedUser]
+12:58:25.458 [main] INFO  AdministrationPage.UserPage - STEP 5: User form opened successfully
+14:38:20.794 [main] INFO  AdministrationPage.UserPage - STEP 1: Initial step started
+14:38:22.467 [main] INFO  AdministrationPage.UserPage - STEP 2: Sending text on search bar
+14:38:24.604 [main] INFO  AdministrationPage.UserPage - STEP 3: Clicking searched User
+14:38:24.677 [main] INFO  AdministrationPage.UserPage - Actual searched user from UI: [adf]
+14:38:24.677 [main] INFO  AdministrationPage.UserPage - Expected user: [adf]
+14:38:24.832 [main] INFO  AdministrationPage.UserPage - STEP 5: User form opened successfully
+14:38:24.832 [main] INFO  AdministrationPage.UserPage - STEP 6: Clicking Delete button
+14:38:25.039 [main] INFO  AdministrationPage.UserPage - STEP 7: Confirming delete action
+14:38:27.142 [main] INFO  AdministrationPage.UserPage - STEP 3: Clicking searched User
+15:23:56.391 [main] INFO  AdministrationPage.UserPage - STEP 1: Initial step started
+15:46:36.963 [main] INFO  AdministrationPage.UserPage - STEP 1: Initial step started
+16:15:21.063 [main] INFO  AdministrationPage.UserPage - STEP 1: Initial step started

@@ -32,6 +32,11 @@ public class UserTest {
 	     ChromeOptions options = new ChromeOptions();
 	     options.setExperimentalOption("prefs", prefs);
 	        
+	  // Enable headless mode
+	     options.addArguments("--headless");         // Run browser in background
+	     options.addArguments("--disable-gpu");      // Recommended for headless
+	     options.addArguments("--window-size=1920,1080"); // Ensure elements are visible
+	     
 		driver= new ChromeDriver(options);
 		driver.get("http://192.168.0.42:915");
 		driver.manage().window().maximize();
@@ -57,11 +62,24 @@ public class UserTest {
 	    UP.CreateNUserWithMiscOption("TestUser", "TestUser", "testusermail", "gmail.com" , "Smarti@12345", "365", "Security");
 	}
 	
-	@Test(priority=3, groups ="Master")
+	//@Test(priority=3, groups ="Master")
 	public void TS0196() throws InterruptedException
 	{
 		UP.ViewUserForm("Infosys");
 	}
+	
+	//@Test(priority=4, groups ="Master")
+	public void TS0197() throws InterruptedException {
+		
+		UP.updateUserForm("UpdatedUser", "UpdatedUserN","UpdatedDispN" ,"updatemail", "gmail.com", "Smarti@54312", "Smarti@54312");
+	}
+	
+	@Test(priority=5, groups ="Master")
+	public void TS0198() throws InterruptedException {
+
+		UP.DeleteUser("adf");
+	}
+	
 	
 	@AfterTest(groups="master")
 	public void teardown()

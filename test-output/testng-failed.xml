@@ -7,7 +7,7 @@
         <methods>
           <include name="Login"/>
           <include name="teardown"/>
-          <include name="TS0196"/>
+          <include name="TS0198"/>
         </methods>
       </class> <!-- AdministrationTest.UserTest -->
     </classes>

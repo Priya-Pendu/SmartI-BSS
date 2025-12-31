@@ -42,15 +42,16 @@ public class UserPage extends BasePage {
 		@FindBy(xpath = "//input[@id='BuildingSolutionSuite_Administration_UserDialog8_LoginType']") WebElement LoginTypeInput;
 		@FindBy(xpath="//input[@class='s-Serenity-QuickSearchInput s-QuickSearchInput']") WebElement SearchBar;
 		@FindBy(xpath="//div[@class=\"slick-cell l1 r1\"]/a") WebElement SearchedUserResult;
-		@FindBy(xpath="//input[@id='BuildingSolutionSuite_Administration_UserDialog28_Username']") WebElement EditUsername;
-		@FindBy(xpath="//input[@id='BuildingSolutionSuite_Administration_UserDialog28_DisplayName']") WebElement EditDisplayName;
-		@FindBy(xpath="//input[@id='BuildingSolutionSuite_Administration_UserDialog28_Email']") WebElement EditEmail;
+		@FindBy(xpath="//input[@name=\"Username\"]") WebElement EditUsername;
+		@FindBy(xpath="//input[@name=\"DisplayName\"]") WebElement EditDisplayName;
+		@FindBy(xpath="//input[@name=\"Email\"]") WebElement EditEmail;
 		@FindBy(xpath="//input[@class='emaildomain']") WebElement EditEmailDomain;
 		@FindBy(xpath="//span[@class=\"select2-chosen\"]") WebElement EditCustomer;
 		@FindBy(xpath="//div[@id='s2id_BuildingSolutionSuite_Administration_UserDialog8_CompanyMasterId']//a[@class='select2-choice select2-default']") WebElement EditCompany;
 		@FindBy(xpath="//input[@class=\"editor s-Serenity-IntegerEditor s-IntegerEditor integerQ\"]") WebElement EditPassExpiryDays;
 		@FindBy(xpath = "//input[@class=\"editor s-Serenity-DateEditor s-DateEditor hasDatepicker customValidate readonly\"]") WebElement EditPassExpiryDate;
-		
+		@FindBy(xpath="//span[normalize-space()='Delete']") WebElement DeleteButton;
+		@FindBy(xpath="//button[normalize-space()='Yes']") WebElement YesButton;
 		
 		DropDownMethod DD = new DropDownMethod();
 		ReadData RD = new ReadData();
@@ -61,9 +62,9 @@ public class UserPage extends BasePage {
 		
 		public void InitialStep()
 		{
-			AccessManagment.click();
-			Administration.click();
-			User.click();
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//p[normalize-space()='Access']"))).click();
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[normalize-space()='Administration']"))).click();
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[normalize-space()='User']"))).click();
 		}
 		
 		//TS0194 - Create a new user
@@ -227,11 +228,107 @@ public class UserPage extends BasePage {
 		}
 
 		//TS0197 - Update  user Form
-		public void updateUserForm()
+		public void updateUserForm(String User, String UpdatedUsername, String UpdatedDisplayname, String UpdatedUserMail, String UpdatedDomain, String UpdatedPass, String ConfirmPass) throws InterruptedException
 		{
 		    logger.info("STEP 1: Initial step started");
 		    InitialStep();
 		    
+		    logger.info("STEP 2: Sending text on search bar");
+		    wait.until(ExpectedConditions.visibilityOf(SearchBar)).sendKeys(User);
+
+		    Thread.sleep(2000);
+		    logger.info("STEP 3: Clicking searched User");
+		    wait.until(ExpectedConditions.visibilityOf(SearchedUserResult));
+
+		    String searchedUserName = SearchedUserResult.getText().trim();
+		    logger.info("Actual searched user from UI: [" + searchedUserName + "]");
+		    logger.info("Expected user: [" + User + "]");
+
+		    SearchedUserResult.click();
+		    logger.info("STEP 5: User form opened successfully");
+		   
+		    logger.info("STEP 6: updating Username");
+		    wait.until(ExpectedConditions.visibilityOf(EditUsername)).clear();
+		    EditUsername.sendKeys(UpdatedUsername);
 		    
+		    logger.info("STEP 7: updating Display Name");
+		    wait.until(ExpectedConditions.visibilityOf(EditDisplayName)).clear();
+		    EditDisplayName.sendKeys( UpdatedDisplayname);
+		    
+		    logger.info("STEP 8: updating email");
+		    wait.until(ExpectedConditions.visibilityOf(EditEmail)).clear();
+		    EditEmail.sendKeys(UpdatedUserMail);
+		    
+		    logger.info("STEP 9: updating email domain");
+		    wait.until(ExpectedConditions.visibilityOf(EditEmailDomain)).clear();
+		    EditEmailDomain.sendKeys(UpdatedDomain);
+		    
+		    logger.info("STEP 9: updating password");
+		    wait.until(ExpectedConditions.visibilityOf(Password)).clear();
+		    Password.sendKeys(UpdatedPass);
+
+		    logger.info("STEP 10: confirming updated password");
+		    wait.until(ExpectedConditions.visibilityOf(ConfirmPassword)).clear();
+		    ConfirmPassword.sendKeys(ConfirmPass);
+		    
+		    logger.info("STEP 11: Clicking save button");
+		    wait.until(ExpectedConditions.visibilityOf(SaveButton)).click();
+		    
+		    Thread.sleep(2000);
+		    logger.info("STEP 12: Reopening the updated user form to verify changes ");
+		    wait.until(ExpectedConditions.visibilityOf(SearchBar)).clear();
+		    SearchBar.sendKeys(UpdatedUsername);
+
+		    Thread.sleep(2000);
+		    logger.info("STEP 13: Clicking searched User");
+		    wait.until(ExpectedConditions.visibilityOf(SearchedUserResult));
+
+		    String searchupdatedname = SearchedUserResult.getText().trim();
+		    logger.info("Actual searched user from UI: [" + searchupdatedname + "]");
+		    logger.info("Expected user: [" + User + "]");
+
+		    SearchedUserResult.click();
+		    logger.info("STEP 5: User form opened successfully");
+		    
+		    Assert.assertEquals(RD.readValue(EditUsername), UpdatedUsername, "Username update failed");
+		    Assert.assertEquals(RD.readValue(EditDisplayName), UpdatedDisplayname, "Display Name update failed");
+		    Assert.assertEquals(RD.readValue(EditEmail),  UpdatedUserMail, "Email update failed");
+		    
+		    logger.info("STEP 14: User details updated successfully");
+		    
+		}
+		
+		//TS0198 - Delete user
+		public void DeleteUser(String User) throws InterruptedException
+		{
+			 logger.info("STEP 1: Initial step started");
+			    InitialStep();
+			    
+			    logger.info("STEP 2: Sending text on search bar");
+			    wait.until(ExpectedConditions.visibilityOf(SearchBar)).sendKeys(User);
+
+			    Thread.sleep(2000);
+			    logger.info("STEP 3: Clicking searched User");
+			    wait.until(ExpectedConditions.visibilityOf(SearchedUserResult));
+
+			    String searchedUserName = SearchedUserResult.getText().trim();
+			    logger.info("Actual searched user from UI: [" + searchedUserName + "]");
+			    logger.info("Expected user: [" + User + "]");
+
+			    SearchedUserResult.click();
+			    logger.info("STEP 5: User form opened successfully");
+			    
+			    logger.info("STEP 6: Clicking Delete button");
+			    wait.until(ExpectedConditions.elementToBeClickable(DeleteButton)).click();
+			    
+			    logger.info("STEP 7: Confirming delete action");
+			    wait.until(ExpectedConditions.elementToBeClickable(YesButton)).click();
+			    
+			    Thread.sleep(2000);
+			    logger.info("STEP 3: Clicking searched User");
+			    wait.until(ExpectedConditions.visibilityOf(SearchedUserResult));
+			    
+			    Assert.assertFalse(SearchedUserResult.isDisplayed(), "User deletion failed");
+			    
 		}
 }
