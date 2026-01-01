@@ -28,7 +28,7 @@ public class UserTest
 		UP = new UserPageObject(driver);
 	}
 	
-	@Test(priority=1)
+	@Test(priority=1, groups="master")
 	public void AddUser() throws InterruptedException
 	{
 		LoginPage lp = new LoginPage(driver);
@@ -36,7 +36,7 @@ public class UserTest
 		UP.AddUser("Test", "Priya", "priyapendu", "Priya@12345");
 	}
 	
-	@Test(priority=2)
+	@Test(priority=2, groups="master")
 	public void UpdateUser() throws InterruptedException
 	{
 		UP.EditUser("Test", "Test1", "Test1", "50");

@@ -42,17 +42,17 @@ public class RolesTest {
 		}
 	
 	
-	    //@Test(priority=1)
+	    @Test(priority=1, groups="master")
 		public void TS0191() throws InterruptedException {
 			RP.AddNewRole("TestRole1");
 		}
 		
-	   //@Test(priority=2)
+	   @Test(priority=2, groups="master")
 	   public void TS0192() throws InterruptedException {
 		   RP.ViewRolesForm("TestRole1");
 	   }
 	    
-	   @Test(priority=3)
+	   @Test(priority=3, groups="master")
 	   public void TS0193() throws InterruptedException {
 		   RP.UpdateRolesData("TestRole1", "UpdatedTestRole1");
 	   }

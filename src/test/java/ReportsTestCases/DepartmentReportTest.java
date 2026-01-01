@@ -41,25 +41,25 @@ public class DepartmentReportTest {
 		
 	}
 	
-	//@Test(priority=1)
+	@Test(priority=1, groups="master")
 	public void TS0100() throws InterruptedException
 	{
 		DR.ExportExcel();
 	}
 	
-	//@Test(priority=2)
+	@Test(priority=2, groups="master")
 	public void TS0101() throws InterruptedException 
 	{
 		DR.ExportPDF();
 	}
 	
-	//@Test(priority=3)
+	@Test(priority=3, groups="master")
 	public void TS0102() throws InterruptedException 
 	{
 		DR.VerifySearch("Sales", "New1 Code");
 	}
 	
-	@Test(priority=4)
+	@Test(priority=4, groups="master")
 	public void TS0103() throws InterruptedException {
 		 DR.VerifyDivisionFilter();
 	}

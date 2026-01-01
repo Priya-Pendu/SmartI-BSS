@@ -48,7 +48,7 @@ public class EmployeeReportTest {
 		EP.ExportExcel();
 	}
 	
-	//@Test(priority=2)
+	@Test(priority=2, groups="master")
 	public void TS0110() throws InterruptedException
 	{
 		EP.ExportPDF();
@@ -60,19 +60,19 @@ public class EmployeeReportTest {
 		EP.LocationFilterValidation();
 	}
 	
-	//@Test(priority=4)
+	@Test(priority=4, groups="master")
 	public void TS0113() throws InterruptedException
 	{
 		EP.DivisionFilterValidation();
 	}
 	
-	//@Test(priority=5)
+	@Test(priority=5, groups="master")
 	public void TS0114() throws InterruptedException
 	{
 		EP.DepartFilterValidation();
 	} 
 	
-	@Test(priority=6)
+	@Test(priority=6, groups="master")
 	public void TS0115() throws InterruptedException
 	{
 		EP.DesigFlterValidation();

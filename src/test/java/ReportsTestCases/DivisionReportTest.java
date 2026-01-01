@@ -42,17 +42,17 @@ public class DivisionReportTest {
 		
 	}
 	
-	//@Test(priority=1)
+	@Test(priority=1, groups="master")
 	public void TS0105() throws InterruptedException {
 		DR.ExportExcel();
 	}
 	
-	//@Test(priority=2)
+	@Test(priority=2, groups="master")
 	public void TS0106() throws InterruptedException {
 		DR.ExportPDF();
 	}
 	
-	@Test(priority=3)
+	@Test(priority=3, groups="master")
 	public void TS0107() throws InterruptedException {
 		DR.VerifySearch("Division Test", "Divi-B" );
 	}

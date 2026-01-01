@@ -48,27 +48,27 @@ public class UserTest {
 	}
 	
 	
-	//@Test(priority=1, groups ="Master")
+	@Test(priority=1, groups ="Master")
 	public void TS0194() throws InterruptedException
 	{
 		//String User, String DisplayN, String Mail, String EmailDomainData,String Pass
 		UP.AddUser("UserTest", "UserTest", "testmail", "gmail.com", "Smarti@12345");
 	}
 	
-	//@Test(priority=2, groups ="Master")
+	@Test(priority=2, groups ="Master")
 	public void TS0195() throws InterruptedException
 	{
 		
 	    UP.CreateNUserWithMiscOption("TestUser", "TestUser", "testusermail", "gmail.com" , "Smarti@12345", "365", "Security");
 	}
 	
-	//@Test(priority=3, groups ="Master")
+	@Test(priority=3, groups ="Master")
 	public void TS0196() throws InterruptedException
 	{
 		UP.ViewUserForm("Infosys");
 	}
 	
-	//@Test(priority=4, groups ="Master")
+	@Test(priority=4, groups ="Master")
 	public void TS0197() throws InterruptedException {
 		
 		UP.updateUserForm("UpdatedUser", "UpdatedUserN","UpdatedDispN" ,"updatemail", "gmail.com", "Smarti@54312", "Smarti@54312");

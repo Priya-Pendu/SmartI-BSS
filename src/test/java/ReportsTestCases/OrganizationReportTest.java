@@ -44,24 +44,24 @@ public class OrganizationReportTest
 		
 	}
 	
-	//@Test(priority=1)
+	@Test(priority=1, groups="master")
 	public void TS0090 () throws InterruptedException
 	{
 		MR.VerifySearchBar("dfd", "WHO-05");
 	}
 	
-	//@Test(priority=2)
+	@Test(priority=2, groups="master")
 	public void TS0091() throws InterruptedException {
 		MR.ExportExcel();
 	}
 	
-	//@Test(priority=3)
+	@Test(priority=3, groups="master")
 	public void TS0092() throws InterruptedException
 	{
 		MR.ExportPDF();
 	}
 	
-	@Test(priority=4)
+	@Test(priority=4, groups="master")
 	public void ReportOrganization() throws InterruptedException
 	{
 		MR.VerifyLockationDrop("Mumbai");	

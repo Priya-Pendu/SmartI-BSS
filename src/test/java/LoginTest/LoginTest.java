@@ -22,7 +22,7 @@ public class LoginTest {
 		 lp = new LoginPage(driver);
 	}
 		
-	@Test(priority=1)
+	@Test(priority=1, groups="master")
 	void testLogin()
 	{
 		lp.LginCredentials("admin","admin");

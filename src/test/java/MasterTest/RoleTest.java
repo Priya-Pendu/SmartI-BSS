@@ -28,7 +28,7 @@ public class RoleTest
 	}
 
 	
-	@Test(priority =1)
+	@Test(priority =1, groups="master")
 	public void NewRole() throws InterruptedException
 	{
 		LoginPage lp = new LoginPage(driver);
@@ -36,7 +36,7 @@ public class RoleTest
 		RP.AddRole("Recipients");
 	}
 	
-	@Test(priority=2)
+	@Test(priority=2, groups="master")
 	public void UpdateRole() throws InterruptedException
 	{
 		RP.EditRole("Recipients", "Recipients2");

@@ -28,44 +28,44 @@ public class CityTest
 		lp.LginCredentials("tata", "Smarti@321");
 	}
 	
-	//@Test(priority=1)
+	@Test(priority=1, groups="master")
 	public void TS0081()
 	{
 		cp.VerifyCityPg();
 	}
 	
-	//@Test(priority=2)
+	@Test(priority=2, groups="master")
 	public void TS0082() throws InterruptedException
 	{
 		
 		cp.AddCity("Bhiwandi", "India", "Maharashtra");
 	}
 	
-	//@Test(priority=3)
+	@Test(priority=3, groups="master")
 	public void TS0083()
 	{
 		cp.ViewCity("Bhiwandi");
 	}
 	
-	//@Test(priority=4)
+	@Test(priority=4, groups="master")
 	public void TS0084() throws InterruptedException
 	{
 		cp.EditState("Bhiwandi", "Bhiwandi2");
 	}
 	
-	//@Test(priority=5)
+	@Test(priority=5, groups="master")
 	public void TS0086()
 	{
 		cp.VerifySearch("Bhiwandi2");
 	}
 	
-	//@Test(priority=6)
+	@Test(priority=6, groups="master")
 	public void TS0087() throws InterruptedException
     {
 		cp.VerifyAccrossCompanies("Mumbai");
     }
 	
-	@Test(priority=7)
+	@Test(priority=7, groups="master")
 	public void TS0088() throws InterruptedException
 	{
 		cp.verifyCountryFilter("India");

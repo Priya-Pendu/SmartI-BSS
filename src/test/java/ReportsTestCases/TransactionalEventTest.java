@@ -40,12 +40,12 @@ public class TransactionalEventTest {
 		lp.LginCredentials("tata", "Smarti@321");
 		}
 	
-	    //@Test(priority=1)
+	    @Test(priority=1, groups="master")
 		public void TS0157() throws InterruptedException {
 			TranEnt.ExportToExcel();
 		}
 	   
-	    @Test(priority=2)
+	    @Test(priority=2, groups="master")
 	    public void TS0158() throws InterruptedException {
 	    	TranEnt.GeneratePDFReport();
 	    }

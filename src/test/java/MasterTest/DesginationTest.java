@@ -40,41 +40,41 @@ public class DesginationTest
 		lp.LginCredentials("tata", "Smarti@123");
 	}
 	
-	//@Test(priority=1)
+	@Test(priority=1, groups="master")
 	public void TS0062()
 	{
 		DP.VerifyDesignationPage();
 	}
 	
-	//@Test(priority=2)
+	@Test(priority=2, groups="master")
 	void TS0063() throws InterruptedException
 	{
 		DP.AddDesignation("sales-01", "Sales", "Add");	
 	}
 	
-	//@Test(priority=3)
+	@Test(priority=3, groups="master")
 	public void TS0064() throws InterruptedException {
 		DP.ViewDesignation("Developer");
 	}
 	
-	//@Test(priority=4)
+	@Test(priority=4, groups="master")
 	public void updateDesignation() throws InterruptedException
 	{
 		DP.EditDesignation("Software Developer", "0003", "Software Developer");
 	}
 	
-	//@Test(priority=5)
+	@Test(priority=5, groups="master")
 	public void TS0067() throws InterruptedException
 	{
 		DP.VerifyExcelbtn();
 	}
 	
-	//@Test(priority=6)
+	@Test(priority=6, groups="master")
 	public void TS0068() throws InterruptedException {
 		DP.VerifyPDFbtn();
 	}
 	
-	@Test(priority=7)
+	@Test(priority=7, groups="master")
 	public void TS0069() throws InterruptedException{
 		DP.VerifySearch("HOD","Soft-05");
 	}

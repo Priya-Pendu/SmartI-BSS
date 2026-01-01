@@ -40,52 +40,52 @@ public class SubDepartmentTest
 		lp.LginCredentials("tata", "Smarti@123");
 	}
 	
-	//@Test(priority=1)
+	@Test(priority=1, groups="master")
 	public void TS0051()
 	{
 		SD.VerifySubDepartmentPage();
 	}
 	
-	//@Test (priority=2)
+	@Test (priority=2, groups="master")
 	public void SubDepartment() throws InterruptedException
 	{
 		
 		SD.AddSubDepartment("Sales Department", "SubD-10", "Pre-Sales", "Remark");
 	}
 	
-	//@Test(priority=3)
+	@Test(priority=3, groups="master")
 	public void TS0053() throws InterruptedException {
 		SD.ViewSubDept("Pre-Sales");
 	}
 	
-    //@Test(priority=4)
+    @Test(priority=4, groups="master")
 	public void UpdateDepartment() throws InterruptedException
 	{
 		SD.EditDeparment("ACS KIAM", "Sales Department", "200", "ACS KIAM");
 	}
 	
-	//@Test(priority=5)
+	@Test(priority=5, groups="master")
 	public void TS0056() throws InterruptedException
 	{
 		SD.ExportExcel();
 	}
 	
-	//@Test(priority=6)
+	@Test(priority=6, groups="master")
 	public void TS0057() throws InterruptedException {
 		SD.ExportPDF();
 	}
 	
-	//@Test(priority=7)
+	@Test(priority=7, groups="master")
 	public void TS0058() throws InterruptedException {
 		SD.VerifySearch("Automation Testing", "SubD-01");
 	}
 	
-	//@Test(priority=8)
+	@Test(priority=8, groups="master")
 	public void TS0059() throws InterruptedException {
 		SD.VerifySubDeptAcrossCompanies("Automation Testing");
 	}
 	
-	@Test(priority=9)
+	@Test(priority=9, groups="master")
 	public void TS0060() throws InterruptedException {
 		SD.MandatoryFieldCheck();
 	}

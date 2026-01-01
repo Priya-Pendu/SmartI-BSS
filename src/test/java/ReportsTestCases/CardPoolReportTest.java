@@ -41,7 +41,7 @@ public class CardPoolReportTest {
 		
 	}
 
-	//@Test(priority=1)
+	@Test(priority=1, groups="master")
 	public void TS0118() throws InterruptedException {
 		CR.LocationFilterValidation();
 	}
@@ -51,12 +51,12 @@ public class CardPoolReportTest {
 		CR.DepartmentFilterValidation();
 	}
 	
-	//@Test(priority=3)
+	@Test(priority=3, groups="master")
 	public void TS0120() throws InterruptedException {
 		CR.DesignationFilterValidation();
 	}
 	
-	//@Test(priority=4)
+	@Test(priority=4, groups="master")
 	public void TS0121() throws InterruptedException {
 		CR.EmployeeFilterValidation();
 	}
@@ -67,19 +67,19 @@ public class CardPoolReportTest {
 		CR.CardStatusValidation();
 	}
 	
-	//@Test(priority=6)
+	@Test(priority=6, groups="master")
 	public void TS0123() throws InterruptedException
 	{
 		CR.CardTypeValidation();
 	}
 	
-	//@Test(priority=7)
+	@Test(priority=7, groups="master")
 	public void TS0125() throws InterruptedException
 	{
 		CR.ExportExcel();
 	}
 	
-	@Test(priority=8)
+	@Test(priority=8, groups="master")
 	public void TS0126() throws InterruptedException
 	{
 		CR.ExportPDF();

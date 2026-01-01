@@ -28,35 +28,35 @@ public class StateTest
 		LP.LginCredentials("tata", "Smarti@123");
 	}
 	
-	//@Test(priority=1)
+	@Test(priority=1, groups="master")
 	public void TS0073() throws InterruptedException
 	{
 		SP.VerifyNewStatePage();
 	}
 	
-	//@Test(priority=2)
+	@Test(priority=2, groups="master")
 	void TS0074() throws InterruptedException
 	{
 		SP.AddState("TEst123", "India");
 	}
 	
-	//@Test(priority=3)
+	@Test(priority=3, groups="master")
 	public void TS0075() throws InterruptedException {
 		SP.ViewState("TEst123");
 	}
 	
-	//@Test(priority=4)
+	@Test(priority=4, groups="master")
 	void TS0076() throws InterruptedException
 	{
 		SP.EditState("ABC", "TEst321");
 	}
 	
-	//@Test(priority=5)
+	@Test(priority=5, groups="master")
 	public void TS0077() throws InterruptedException {
 		SP.VerifySearch("TEst321");
 	}
 	
-	@Test(priority=6)
+	@Test(priority=6, groups="master")
 	public void TS0078() throws InterruptedException
 	{
 		SP.CheckStateAccrosCompanies("Test");

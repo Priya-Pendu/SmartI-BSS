@@ -43,19 +43,19 @@ public class DesignationReportTest {
 		
 	}
 	
-	//@Test(priority=1)
+	@Test(priority=1, groups="master")
 	public void TS0095() throws InterruptedException 
 	{
 		DR.VerifySearch("HOD");
 	}
 	
-	//@Test(priority=2)
+	@Test(priority=2, groups="master")
 	public void TS0096() throws InterruptedException
 	{
 		DR.ExportExcel();
 	}
 	
-	@Test(priority=3)
+	@Test(priority=3, groups="master")
 	public void TS0097() throws InterruptedException 
 	{
 		DR.ExportPDF();

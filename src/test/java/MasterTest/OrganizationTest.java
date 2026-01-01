@@ -43,13 +43,13 @@ public class OrganizationTest {
 	    lp.LginCredentials("tata", "Smarti@321");
     }
     
-    //@Test(priority=0)
+    @Test(priority=0, groups="master")
     public void TS0017() throws InterruptedException
     {
     	organizationPage.VerifyNewOrganizationPage();
     }
 
-    //@Test(priority=1)
+    @Test(priority=1, groups="master")
     public void TS0018() throws InterruptedException 
     {
     	// public void AddOrganization(String Org, String OrgName, String OrgCode, String Location, String Address, String EmailId, String ContactNo, 
@@ -58,13 +58,13 @@ public class OrganizationTest {
     
      }
     
-    //@Test(priority=2)
+    @Test(priority=2, groups="master")
     public void TS0019() throws InterruptedException
     {
         organizationPage.viewOrg("Meclix");
     }
     
-     //@Test(priority=3) 
+     @Test(priority=3, groups="master") 
     public void TS0020() throws InterruptedException
     {
     	 //public void EditOrganization(String ORG, String NewORGType, String NewORGName, String NewORGCode, String NewLocation, 
@@ -73,44 +73,44 @@ public class OrganizationTest {
     										"565656656", "18/10/2025", "18/12/2025", "20", "NewTest", "TestAuditRemark");
     }
     
-    //@Test(priority=4)
+    @Test(priority=4, groups="master")
     public void TS0022() throws InterruptedException
     {
     	organizationPage.ExportToExcel();
     }
 
-    //@Test(priority=5)
+    @Test(priority=5, groups="master")
     public void TS0023() throws InterruptedException
     {
     	organizationPage.PdfExport();
     }
     
     
-    //@Test(priority=6)
+    @Test(priority=6, groups="master")
     public void TS0024() throws InterruptedException
     {
     	organizationPage.SearchBar("Meclix", "342");
     }
     
-    @Test(priority=7)
+    @Test(priority=7, groups="master")
     public void TS0025() throws InterruptedException
     {
     	organizationPage.LocationFilter("Mumbai");
     }
     
-   // @Test(priority=8)
+   @Test(priority=8, groups="master")
     public void TS0026() throws InterruptedException
     {
     	organizationPage.CheckOrgINDiffComp();
     }
     
-    //@Test(priority=9)
+    @Test(priority=9, groups="master")
 	public void TS0027() throws InterruptedException 
     {
 		organizationPage.MandatorySign();
 	}
     
-    //@Test(priority=10)
+    @Test(priority=10, groups="master")
     public void TS0028() throws InterruptedException
     {
     	organizationPage.VerifyNOrgTypeForm();

@@ -40,45 +40,45 @@ public class DivisionTest
 		    lp.LginCredentials("tata", "Smarti@123");
 		}
 		
-		//@Test(priority=1)
+		@Test(priority=1, groups="master")
 		public void TS0030() throws InterruptedException
 		{
 			DP.VerifyNewDivisionPage();
 			
 		}
 		
-		//@Test (priority=2)
+		@Test (priority=2, groups="master")
 		public void TS0031() throws InterruptedException
 		{
 		    DP.AddDivision("Kalyan", "New-Divi05", "R&D05", "Testing Purpose"); 
 		}
 		
 		
-		//@Test(priority=3)
+		@Test(priority=3, groups="master")
 		public void TS0032() throws InterruptedException
 		{
 			DP.ViewExistDivi("Marketing");
 		}
 		
-		//@Test(priority=4)
+		@Test(priority=4, groups="master")
 		public void TS0033() throws InterruptedException
 		{
 			DP.EditDivision("Software-01", "Mumbai	", "New-Divi02", "Software-01");
 		}
 		
-		//@Test(priority=5)
+		@Test(priority=5, groups="master")
 		public void TS0034() throws InterruptedException
 		{
 			DP.ExportExcel();
 		}
 		
-		//@Test(priority=6)
+		@Test(priority=6, groups="master")
 		public void TS0035() throws InterruptedException
 		{
 			DP.ExportPDF();
 		}
 		
-		@Test(priority=7)
+		@Test(priority=7, groups="master")
 		public void TS0036() throws InterruptedException
 		{
 			DP.VerifySearchBar("Division C", "Divi-B");

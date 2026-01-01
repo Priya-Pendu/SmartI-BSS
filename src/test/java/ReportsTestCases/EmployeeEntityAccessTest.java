@@ -41,39 +41,39 @@ public class EmployeeEntityAccessTest {
 		lp.LginCredentials("tata", "Smarti@321");
 		}
 	
-	    //@Test(priority=1)
+	    @Test(priority=1, groups="master")
 		public void TS0136() throws InterruptedException
 		{
 			EEAP.ExportToExcel();
 		}
 		
-	    //@Test(priority=2)
+	    @Test(priority=2, groups="master")
 	    public void TS0137() throws InterruptedException
 	    {
 	    	EEAP.GeneratePDFReport();
 	    }
 	    
-	   //@Test(priority=3)
+	   @Test(priority=3, groups="master")
 	   public void TS0138() throws InterruptedException {
 		EEAP.LocationFilterValidation();
 	   }
 	
-	   //@Test(priority=4)
+	   @Test(priority=4, groups="master")
 	   public void TS0139() throws InterruptedException {
 		   EEAP.DepartmentFilterValidation();
 	   }
 	   
-	    //@Test(priority=5)
+	    @Test(priority=5, groups="master")
 		public void TS0140() throws InterruptedException {
 			EEAP.DesignationFilterValidation();
 		}
 	   
-	    //@Test(priority=6)
+	    @Test(priority=6, groups="master")
 	   	public void TS0141() throws InterruptedException {
 	   		EEAP.EntityFilterValidation();
 	   	}
 	   	
-	    @Test(priority=7)
+	    @Test(priority=7, groups="master")
 		public void TS0142() throws InterruptedException {
 			EEAP.EmployeeFilterValidation();
 		 }

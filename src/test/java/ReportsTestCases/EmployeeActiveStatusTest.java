@@ -41,37 +41,37 @@ public class EmployeeActiveStatusTest {
 		lp.LginCredentials("tata", "Smarti@321");
 		}
 	
-	    //@Test(priority=1)
+	    @Test(priority=1, groups="master")
 		public void TS0127() throws InterruptedException {
 			EAS.ExportExcelFile();
 		}
 	    
-	    //@Test(priority=2)
+	    @Test(priority=2, groups="master")
 	    public void TS0128() throws InterruptedException {
 	    	EAS.ExportPDFFile();
 	    }
 		
-	    //@Test(priority=3)
+	    @Test(priority=3, groups="master")
 		public void TS0129() throws InterruptedException {
 			EAS.LocationFilter();
 		}
 	    
-	    //@Test(priority=4)
+	    @Test(priority=4, groups="master")
 	    public void TS0130() throws InterruptedException {
 	    	 EAS.DepartmentFilter();
 	    }
 	    
-	    @Test(priority=5)
+	    @Test(priority=5, groups="master")
 		public void TS0131() throws InterruptedException {
 			EAS.DesignationFilter();
 		}
 	    
-	    //@Test(priority=6)
+	    @Test(priority=6, groups="master")
 		public void TS0132() throws InterruptedException {
 			EAS.DeviceFilter();
 		}
 	    
-	    //@Test(priority=7)
+	    @Test(priority=7, groups="master")
 	    public void TS0133() throws InterruptedException {
 	    	 EAS.StatusFilter();
 	    }
