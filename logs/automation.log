@@ -497,3 +497,85 @@
 15:23:56.391 [main] INFO  AdministrationPage.UserPage - STEP 1: Initial step started
 15:46:36.963 [main] INFO  AdministrationPage.UserPage - STEP 1: Initial step started
 16:15:21.063 [main] INFO  AdministrationPage.UserPage - STEP 1: Initial step started
+11:47:45.539 [main] INFO  ReportsPageObject.TransactionalAccessPage - Initial step started
+11:47:49.070 [main] INFO  ReportsPageObject.TransactionalAccessPage - Location Drop down clicked
+11:47:49.161 [main] INFO  ReportsPageObject.TransactionalAccessPage - Selecting location from the drop down
+11:47:49.263 [main] INFO  ReportsPageObject.TransactionalAccessPage - Verify the result of choosing location.
+12:05:07.413 [main] INFO  ReportsPageObject.TransactionalAccessPage - Initial step started
+12:05:09.663 [main] INFO  ReportsPageObject.TransactionalAccessPage - Department Drop down clicked
+12:05:09.764 [main] INFO  ReportsPageObject.TransactionalAccessPage - Selecting department from the drop down
+12:05:09.863 [main] INFO  ReportsPageObject.TransactionalAccessPage - Verify the result of choosing department.
+14:08:33.794 [main] INFO  ReportsPageObject.TransactionalAccessPage - Initial step started
+14:08:36.251 [main] INFO  ReportsPageObject.TransactionalAccessPage - Employee Drop down clicked
+14:08:36.354 [main] INFO  ReportsPageObject.TransactionalAccessPage - Selecting employee from the drop down
+14:08:36.458 [main] INFO  ReportsPageObject.TransactionalAccessPage - Verify the result of choosing employee.
+14:09:28.364 [main] INFO  ReportsPageObject.TransactionalAccessPage - Initial step started
+14:09:29.600 [main] INFO  ReportsPageObject.TransactionalAccessPage - Employee Drop down clicked
+14:09:29.698 [main] INFO  ReportsPageObject.TransactionalAccessPage - Selecting employee from the drop down
+14:09:29.817 [main] INFO  ReportsPageObject.TransactionalAccessPage - Verify the result of choosing employee.
+14:11:26.279 [main] INFO  ReportsPageObject.TransactionalAccessPage - Initial step started
+14:11:27.701 [main] INFO  ReportsPageObject.TransactionalAccessPage - Employee Drop down clicked
+14:11:27.797 [main] INFO  ReportsPageObject.TransactionalAccessPage - Selecting employee from the drop down
+14:11:27.923 [main] INFO  ReportsPageObject.TransactionalAccessPage - Verify the result of choosing employee.
+14:34:41.351 [main] INFO  ReportsPageObject.TransactionalAccessPage - Initial step started
+14:34:43.626 [main] INFO  ReportsPageObject.TransactionalAccessPage - Device Location Drop down clicked
+14:34:43.735 [main] INFO  ReportsPageObject.TransactionalAccessPage - Selecting device location from the drop down
+14:34:43.888 [main] INFO  ReportsPageObject.TransactionalAccessPage - Verify the result of choosing device location.
+14:35:45.510 [main] INFO  ReportsPageObject.TransactionalAccessPage - Initial step started
+14:35:46.883 [main] INFO  ReportsPageObject.TransactionalAccessPage - Device Location Drop down clicked
+14:35:46.996 [main] INFO  ReportsPageObject.TransactionalAccessPage - Selecting device location from the drop down
+14:35:47.152 [main] INFO  ReportsPageObject.TransactionalAccessPage - Verify the result of choosing device location.
+14:36:35.741 [main] INFO  ReportsPageObject.TransactionalAccessPage - Initial step started
+14:36:37.045 [main] INFO  ReportsPageObject.TransactionalAccessPage - Device Location Drop down clicked
+14:36:39.153 [main] INFO  ReportsPageObject.TransactionalAccessPage - Selecting device location from the drop down
+14:36:39.298 [main] INFO  ReportsPageObject.TransactionalAccessPage - Verify the result of choosing device location.
+14:37:27.841 [main] INFO  ReportsPageObject.TransactionalAccessPage - Initial step started
+14:37:29.219 [main] INFO  ReportsPageObject.TransactionalAccessPage - Device Location Drop down clicked
+14:37:31.331 [main] INFO  ReportsPageObject.TransactionalAccessPage - Selecting device location from the drop down
+14:37:31.436 [main] INFO  ReportsPageObject.TransactionalAccessPage - Verify the result of choosing device location.
+14:41:12.695 [main] INFO  ReportsPageObject.TransactionalAccessPage - Initial step started
+14:41:14.983 [main] INFO  ReportsPageObject.TransactionalAccessPage - Device Location Drop down clicked
+14:41:17.096 [main] INFO  ReportsPageObject.TransactionalAccessPage - Selecting device location from the drop down
+14:41:17.196 [main] INFO  ReportsPageObject.TransactionalAccessPage - Verify the result of choosing device location.
+14:42:14.532 [main] INFO  ReportsPageObject.TransactionalAccessPage - Initial step started
+14:42:16.005 [main] INFO  ReportsPageObject.TransactionalAccessPage - Device Location Drop down clicked
+14:42:18.117 [main] INFO  ReportsPageObject.TransactionalAccessPage - Selecting device location from the drop down
+14:42:18.370 [main] INFO  ReportsPageObject.TransactionalAccessPage - Verify the result of choosing device location.
+16:01:12.028 [main] INFO  ReportsPageObject.TransactionalAccessPage - Initial step started
+16:01:15.687 [main] INFO  ReportsPageObject.TransactionalAccessPage - Device Drop down clicked
+16:02:23.613 [main] INFO  ReportsPageObject.TransactionalAccessPage - Initial step started
+16:02:26.142 [main] INFO  ReportsPageObject.TransactionalAccessPage - Device Drop down clicked
+16:05:41.980 [main] INFO  ReportsPageObject.TransactionalAccessPage - Initial step started
+16:05:44.373 [main] INFO  ReportsPageObject.TransactionalAccessPage - Device Drop down clicked
+16:25:31.285 [main] INFO  ReportsPageObject.TransactionalAccessPage - Initial step started
+16:25:33.606 [main] INFO  ReportsPageObject.TransactionalAccessPage - Device Drop down clicked
+16:31:39.379 [main] INFO  ReportsPageObject.TransactionalAccessPage - Initial step started
+16:31:41.663 [main] INFO  ReportsPageObject.TransactionalAccessPage - Device Drop down clicked
+16:32:53.455 [main] INFO  ReportsPageObject.TransactionalAccessPage - Initial step started
+16:32:55.875 [main] INFO  ReportsPageObject.TransactionalAccessPage - Device Drop down clicked
+16:32:55.966 [main] INFO  ReportsPageObject.TransactionalAccessPage - Selecting device from the drop down
+16:32:56.133 [main] INFO  ReportsPageObject.TransactionalAccessPage - Verify the result of choosing device.
+16:45:19.473 [main] INFO  ReportsPageObject.TransactionalAccessPage - Initial step started
+16:45:21.827 [main] INFO  ReportsPageObject.TransactionalAccessPage - Reader Drop down clicked
+16:45:21.918 [main] INFO  ReportsPageObject.TransactionalAccessPage - Selecting reader from the drop down
+16:45:22.009 [main] INFO  ReportsPageObject.TransactionalAccessPage - Verify the result of choosing reader.
+16:46:03.678 [main] INFO  ReportsPageObject.TransactionalAccessPage - Initial step started
+16:46:04.960 [main] INFO  ReportsPageObject.TransactionalAccessPage - Reader Drop down clicked
+16:46:05.053 [main] INFO  ReportsPageObject.TransactionalAccessPage - Selecting reader from the drop down
+16:46:05.151 [main] INFO  ReportsPageObject.TransactionalAccessPage - Verify the result of choosing reader.
+16:47:33.898 [main] INFO  ReportsPageObject.TransactionalAccessPage - Initial step started
+16:47:35.259 [main] INFO  ReportsPageObject.TransactionalAccessPage - Reader Drop down clicked
+16:47:35.351 [main] INFO  ReportsPageObject.TransactionalAccessPage - Selecting reader from the drop down
+16:47:35.448 [main] INFO  ReportsPageObject.TransactionalAccessPage - Verify the result of choosing reader.
+16:48:17.492 [main] INFO  ReportsPageObject.TransactionalAccessPage - Initial step started
+16:48:18.779 [main] INFO  ReportsPageObject.TransactionalAccessPage - Reader Drop down clicked
+16:48:18.872 [main] INFO  ReportsPageObject.TransactionalAccessPage - Selecting reader from the drop down
+16:48:18.977 [main] INFO  ReportsPageObject.TransactionalAccessPage - Verify the result of choosing reader.
+16:49:22.617 [main] INFO  ReportsPageObject.TransactionalAccessPage - Initial step started
+16:49:24.066 [main] INFO  ReportsPageObject.TransactionalAccessPage - Reader Drop down clicked
+16:49:24.156 [main] INFO  ReportsPageObject.TransactionalAccessPage - Selecting reader from the drop down
+16:49:24.267 [main] INFO  ReportsPageObject.TransactionalAccessPage - Verify the result of choosing reader.
+16:50:09.065 [main] INFO  ReportsPageObject.TransactionalAccessPage - Initial step started
+16:50:10.378 [main] INFO  ReportsPageObject.TransactionalAccessPage - Reader Drop down clicked
+16:50:10.486 [main] INFO  ReportsPageObject.TransactionalAccessPage - Selecting reader from the drop down
+16:50:10.583 [main] INFO  ReportsPageObject.TransactionalAccessPage - Verify the result of choosing reader.
