@@ -35,21 +35,29 @@ public class DesignationReportPage extends BasePage {
 	//TS0095 - Search Designation
 	public void VerifySearch(String Desig) throws InterruptedException
 	{
+		logger.info("Initial Steps started");
 		InitialStep();
+		
+		logger.info("Designation sent on search bar");
 		Searchbar.sendKeys(Desig);
+		
 		Thread.sleep(2000);
 		Assert.assertTrue(SearchResultDesig.getText().contains(Desig), "Search Designation Failed");
 	}
 	
 	//TS0096 - Export to Excel Report
 	public void ExportExcel() throws InterruptedException {
+		logger.info("Initial Steps started");
 		InitialStep();
+		
+		logger.info("Clicking on Excel Button");
 		Excelbtn.click();
 		Thread.sleep(10000);
 	}
 	
 	//TS0097 - Export to PDF Report
 	public void ExportPDF() throws InterruptedException {
+		logger.info("Initial Steps started");
 		InitialStep();
 		PDFbtn.click();
 		Thread.sleep(10000);

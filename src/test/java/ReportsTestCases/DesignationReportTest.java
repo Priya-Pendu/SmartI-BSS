@@ -24,22 +24,28 @@ public class DesignationReportTest {
 	@BeforeTest
 	public void Login()
 	{
-		 Map<String, Object> prefs = new HashMap<>();
-	     prefs.put("download.default_directory", "D:\\Priya\\BSS_Automation_Files\\Eclipse-Workspace\\SmartISystems-BSS\\SmartI-BSS\\SmartI-BSS\\download");
-	     prefs.put("download.prompt_for_download", false);
-	     prefs.put("download.directory_upgrade", true);
-	     prefs.put("plugins.always_open_pdf_externally", true); // auto-download PDFs
+		Map<String, Object> prefs = new HashMap<>();
+		prefs.put("download.default_directory", "D:\\Priya\\BSS_Automation_Files\\Eclipse-Workspace\\SmartISystems-BSS\\SmartI-BSS\\SmartI-BSS\\download");
+		prefs.put("download.prompt_for_download", false);
+		prefs.put("download.directory_upgrade", true);
+		prefs.put("plugins.always_open_pdf_externally", true); // auto-download PDFs
 
-	     ChromeOptions options = new ChromeOptions();
-	     options.setExperimentalOption("prefs", prefs);
-	        
-		driver= new ChromeDriver(options);
+		ChromeOptions options = new ChromeOptions();
+		options.setExperimentalOption("prefs", prefs);
+		options.addArguments("--headless"); // headless mode
+		options.addArguments("--window-size=1920,1080"); // necessary in headless
+		options.addArguments("--disable-gpu"); // sometimes needed on Windows
+
+		driver = new ChromeDriver(options);
+
 		driver.get("http://192.168.0.42:915");
-		driver.manage().window().maximize();
+
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
 		DR = new DesignationReportPage(driver);
 		LoginPage lp = new LoginPage(driver);
 		lp.LginCredentials("tata", "Smarti@321");
+
 		
 	}
 	
