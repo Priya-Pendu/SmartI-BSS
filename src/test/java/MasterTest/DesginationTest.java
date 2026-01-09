@@ -7,7 +7,9 @@ import java.util.Map;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -19,67 +21,74 @@ public class DesginationTest
 	WebDriver driver;
 	DesignationPage DP;
 	
-	@BeforeTest
-	void login()
+	@BeforeMethod
+	public void Login()
 	{
 		Map<String, Object> prefs = new HashMap<>();
-        prefs.put("download.default_directory", "D:\\Priya\\BSS_Automation_Files\\Eclipse-Workspace\\SmartISystems-BSS\\SmartI-BSS\\SmartI-BSS\\download");
-        prefs.put("download.prompt_for_download", false);
-        prefs.put("download.directory_upgrade", true);
-        prefs.put("plugins.always_open_pdf_externally", true); // auto-download PDFs
+		prefs.put("download.default_directory", "D:\\Priya\\BSS_Automation_Files\\Eclipse-Workspace\\SmartISystems-BSS\\SmartI-BSS\\SmartI-BSS\\download");
+		prefs.put("download.prompt_for_download", false);
+		prefs.put("download.directory_upgrade", true);
+		prefs.put("plugins.always_open_pdf_externally", true); // auto-download PDFs
 
-        ChromeOptions options = new ChromeOptions();
-        options.setExperimentalOption("prefs", prefs);
-        
+		ChromeOptions options = new ChromeOptions();
+		options.setExperimentalOption("prefs", prefs);
+		options.addArguments("--headless"); // headless mode
+		options.addArguments("--window-size=1920,1080"); // necessary in headless
+		options.addArguments("--disable-gpu"); // sometimes needed on Windows
+
 		driver = new ChromeDriver(options);
-		driver.get("http://localhost:915/");
-		driver.manage().window().maximize();
+
+		driver.get("http://192.168.0.42:915");
+
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
 		DP = new DesignationPage(driver);
 		LoginPage lp = new LoginPage(driver);
-		lp.LginCredentials("tata", "Smarti@123");
+		lp.LginCredentials("tata", "Smarti@321");
+
+		
 	}
 	
-	@Test(priority=1, groups="master")
+	@Test(groups="master")
 	public void TS0062()
 	{
 		DP.VerifyDesignationPage();
 	}
 	
-	@Test(priority=2, groups="master")
+	@Test(groups="master")
 	void TS0063() throws InterruptedException
 	{
 		DP.AddDesignation("sales-01", "Sales", "Add");	
 	}
 	
-	@Test(priority=3, groups="master")
+	@Test(groups="master")
 	public void TS0064() throws InterruptedException {
 		DP.ViewDesignation("Developer");
 	}
 	
-	@Test(priority=4, groups="master")
+	@Test(groups="master")
 	public void updateDesignation() throws InterruptedException
 	{
 		DP.EditDesignation("Software Developer", "0003", "Software Developer");
 	}
 	
-	@Test(priority=5, groups="master")
+	@Test(groups="master")
 	public void TS0067() throws InterruptedException
 	{
 		DP.VerifyExcelbtn();
 	}
 	
-	@Test(priority=6, groups="master")
+	@Test(groups="master")
 	public void TS0068() throws InterruptedException {
 		DP.VerifyPDFbtn();
 	}
 	
-	@Test(priority=7, groups="master")
+	@Test(groups="master")
 	public void TS0069() throws InterruptedException{
 		DP.VerifySearch("HOD","Soft-05");
 	}
 	
-	@AfterTest
+	@AfterMethod
 	void logut()
 	{
 		driver.quit();

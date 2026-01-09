@@ -7,10 +7,13 @@ import java.util.Map;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import AdministrationPage.RolesPage;
 import AdministrationPage.UserPage;
 import LoginTest.LoginPage;
 import ReportsPageObject.CardPoolReportPage;
@@ -20,68 +23,68 @@ public class UserTest {
 	WebDriver driver;
 	UserPage UP;
 	
-	@BeforeTest(groups="master")
+	@BeforeMethod
 	public void Login()
 	{
-		 Map<String, Object> prefs = new HashMap<>();
-	     prefs.put("download.default_directory", "D:\\Priya\\BSS_Automation_Files\\Eclipse-Workspace\\SmartISystems-BSS\\SmartI-BSS\\SmartI-BSS\\download");
-	     prefs.put("download.prompt_for_download", false);
-	     prefs.put("download.directory_upgrade", true);
-	     prefs.put("plugins.always_open_pdf_externally", true); // auto-download PDFs
+		Map<String, Object> prefs = new HashMap<>();
+		prefs.put("download.default_directory", "D:\\Priya\\BSS_Automation_Files\\Eclipse-Workspace\\SmartISystems-BSS\\SmartI-BSS\\SmartI-BSS\\download");
+		prefs.put("download.prompt_for_download", false);
+		prefs.put("download.directory_upgrade", true);
+		prefs.put("plugins.always_open_pdf_externally", true); // auto-download PDFs
 
-	     ChromeOptions options = new ChromeOptions();
-	     options.setExperimentalOption("prefs", prefs);
-	        
-	  // Enable headless mode
-	     options.addArguments("--headless");         // Run browser in background
-	     options.addArguments("--disable-gpu");      // Recommended for headless
-	     options.addArguments("--window-size=1920,1080"); // Ensure elements are visible
-	     
-		driver= new ChromeDriver(options);
+		ChromeOptions options = new ChromeOptions();
+		options.setExperimentalOption("prefs", prefs);
+		options.addArguments("--headless"); // headless mode
+		options.addArguments("--window-size=1920,1080"); // necessary in headless
+		options.addArguments("--disable-gpu"); // sometimes needed on Windows
+
+		driver = new ChromeDriver(options);
+
 		driver.get("http://192.168.0.42:915");
-		driver.manage().window().maximize();
+
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
 		UP = new UserPage(driver);
 		LoginPage lp = new LoginPage(driver);
 		lp.LginCredentials("tata", "Smarti@321");
-		
 	}
+
+	// smoke , regression , functional , negative
 	
-	
-	@Test(priority=1, groups ="Master")
+	@Test(groups ={"regression" , "functional"})
 	public void TS0194() throws InterruptedException
 	{
 		//String User, String DisplayN, String Mail, String EmailDomainData,String Pass
 		UP.AddUser("UserTest", "UserTest", "testmail", "gmail.com", "Smarti@12345");
 	}
 	
-	@Test(priority=2, groups ="Master")
+	@Test(groups ={"regression" , "functional"})
 	public void TS0195() throws InterruptedException
 	{
 		
 	    UP.CreateNUserWithMiscOption("TestUser", "TestUser", "testusermail", "gmail.com" , "Smarti@12345", "365", "Security");
 	}
 	
-	@Test(priority=3, groups ="Master")
+	@Test(groups ="regression")
 	public void TS0196() throws InterruptedException
 	{
 		UP.ViewUserForm("Infosys");
 	}
 	
-	@Test(priority=4, groups ="Master")
+	@Test(groups = {"functional","regression"})
 	public void TS0197() throws InterruptedException {
 		
 		UP.updateUserForm("UpdatedUser", "UpdatedUserN","UpdatedDispN" ,"updatemail", "gmail.com", "Smarti@54312", "Smarti@54312");
 	}
 	
-	@Test(priority=5, groups ="Master")
+	@Test(groups ={"functional","regression"})
 	public void TS0198() throws InterruptedException {
 
 		UP.DeleteUser("adf");
 	}
 	
 	
-	@AfterTest(groups="master")
+	@AfterMethod(groups="master")
 	public void teardown()
 	{
 		driver.quit();

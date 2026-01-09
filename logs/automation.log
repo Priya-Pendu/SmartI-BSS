@@ -579,3 +579,41 @@
 16:50:10.378 [main] INFO  ReportsPageObject.TransactionalAccessPage - Reader Drop down clicked
 16:50:10.486 [main] INFO  ReportsPageObject.TransactionalAccessPage - Selecting reader from the drop down
 16:50:10.583 [main] INFO  ReportsPageObject.TransactionalAccessPage - Verify the result of choosing reader.
+17:16:54.507 [main] INFO  ReportsPageObject.DesignationReportPage - Initial Steps started
+17:17:01.826 [main] INFO  ReportsPageObject.DesignationReportPage - Designation sent on search bar
+17:17:06.225 [main] INFO  ReportsPageObject.DesignationReportPage - Initial Steps started
+17:17:09.494 [main] INFO  ReportsPageObject.DesignationReportPage - Clicking on Excel Button
+17:17:21.984 [main] INFO  ReportsPageObject.DesignationReportPage - Initial Steps started
+14:00:27.518 [main] INFO  AdministrationPage.RolesPage - Role updated successfully
+14:04:23.744 [main] INFO  AdministrationPage.RolesPage - Role updated successfully
+16:14:10.071 [main] INFO  ReportsPageObject.EmployeeEntityAccessPage - TS0136 - Export to Excel is completed
+16:14:26.036 [main] INFO  ReportsPageObject.EmployeeEntityAccessPage - TS0137 - Generate PDF Report is completed
+16:14:35.699 [main] INFO  ReportsPageObject.EmployeeEntityAccessPage - TS0147 - Location Filter Validation is completed
+16:14:41.680 [main] INFO  ReportsPageObject.EmployeeEntityAccessPage - TS0148 - Department Filter Validation is completed
+16:14:47.921 [main] INFO  ReportsPageObject.EmployeeEntityAccessPage - TS0140 - Designation Filter Validation is completed
+16:14:54.178 [main] INFO  ReportsPageObject.EmployeeEntityAccessPage - TS0141 - Entity Filter Validation is completed
+16:15:00.285 [main] INFO  ReportsPageObject.EmployeeEntityAccessPage - TS0149 - Employee Filter Validation is completed
+16:31:21.079 [main] INFO  ReportsPageObject.TransactionalAccessPage - Initial step started
+16:31:23.484 [main] INFO  ReportsPageObject.TransactionalAccessPage - Location Drop down clicked
+16:31:23.593 [main] INFO  ReportsPageObject.TransactionalAccessPage - Selecting location from the drop down
+16:31:23.668 [main] INFO  ReportsPageObject.TransactionalAccessPage - Verify the result of choosing location.
+16:31:25.087 [main] INFO  ReportsPageObject.TransactionalAccessPage - Initial step started
+16:31:27.208 [main] INFO  ReportsPageObject.TransactionalAccessPage - Department Drop down clicked
+16:31:27.313 [main] INFO  ReportsPageObject.TransactionalAccessPage - Selecting department from the drop down
+16:31:27.401 [main] INFO  ReportsPageObject.TransactionalAccessPage - Verify the result of choosing department.
+16:31:28.866 [main] INFO  ReportsPageObject.TransactionalAccessPage - Initial step started
+16:31:30.115 [main] INFO  ReportsPageObject.TransactionalAccessPage - Employee Drop down clicked
+16:31:30.208 [main] INFO  ReportsPageObject.TransactionalAccessPage - Selecting employee from the drop down
+16:31:30.320 [main] INFO  ReportsPageObject.TransactionalAccessPage - Verify the result of choosing employee.
+16:31:31.782 [main] INFO  ReportsPageObject.TransactionalAccessPage - Initial step started
+16:31:32.990 [main] INFO  ReportsPageObject.TransactionalAccessPage - Device Location Drop down clicked
+16:31:35.097 [main] INFO  ReportsPageObject.TransactionalAccessPage - Selecting device location from the drop down
+16:31:35.245 [main] INFO  ReportsPageObject.TransactionalAccessPage - Verify the result of choosing device location.
+16:31:36.743 [main] INFO  ReportsPageObject.TransactionalAccessPage - Initial step started
+16:31:38.369 [main] INFO  ReportsPageObject.TransactionalAccessPage - Device Drop down clicked
+16:31:38.481 [main] INFO  ReportsPageObject.TransactionalAccessPage - Selecting device from the drop down
+16:31:38.641 [main] INFO  ReportsPageObject.TransactionalAccessPage - Verify the result of choosing device.
+16:31:40.060 [main] INFO  ReportsPageObject.TransactionalAccessPage - Initial step started
+16:31:41.456 [main] INFO  ReportsPageObject.TransactionalAccessPage - Reader Drop down clicked
+16:31:41.571 [main] INFO  ReportsPageObject.TransactionalAccessPage - Selecting reader from the drop down
+16:31:41.658 [main] INFO  ReportsPageObject.TransactionalAccessPage - Verify the result of choosing reader.

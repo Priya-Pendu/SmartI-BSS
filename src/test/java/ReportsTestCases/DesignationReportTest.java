@@ -7,7 +7,9 @@ import java.util.Map;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -21,7 +23,7 @@ public class DesignationReportTest {
 	WebDriver driver;
 	DesignationReportPage DR;
 	
-	@BeforeTest
+	@BeforeMethod
 	public void Login()
 	{
 		Map<String, Object> prefs = new HashMap<>();
@@ -49,27 +51,29 @@ public class DesignationReportTest {
 		
 	}
 	
-	@Test(priority=1, groups="master")
+	@Test(groups="master")
 	public void TS0095() throws InterruptedException 
 	{
 		DR.VerifySearch("HOD");
 	}
 	
-	@Test(priority=2, groups="master")
+	@Test(groups="master")
 	public void TS0096() throws InterruptedException
 	{
 		DR.ExportExcel();
 	}
 	
-	@Test(priority=3, groups="master")
+	@Test(groups="master")
 	public void TS0097() throws InterruptedException 
 	{
 		DR.ExportPDF();
 	}
 	
-	@AfterTest
+	@AfterMethod
 	public void TearDown()
 	{
-		driver.quit();
+		if (driver != null) {
+            driver.quit();
+        }
 	}
 }

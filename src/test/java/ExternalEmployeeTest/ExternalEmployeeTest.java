@@ -1,13 +1,18 @@
 package ExternalEmployeeTest;
 
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import AdministrationPage.UserPage;
 import ExternalEmployeePage.ExternalEmoployees;
 import LoginTest.LoginPage;
 import LoginTest.LoginTest;
@@ -17,17 +22,35 @@ public class ExternalEmployeeTest
 	WebDriver driver;
 	ExternalEmoployees EP;
 	
-	@BeforeTest
+	@BeforeMethod
 	public void Login()
 	{
-		driver = new ChromeDriver();
-		driver.get("http://192.168.0.4:5292/Account/Login?ReturnUrl=%2f");
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		EP = new ExternalEmoployees(driver);
-	}
+		Map<String, Object> prefs = new HashMap<>();
+		prefs.put("download.default_directory", "D:\\Priya\\BSS_Automation_Files\\Eclipse-Workspace\\SmartISystems-BSS\\SmartI-BSS\\SmartI-BSS\\download");
+		prefs.put("download.prompt_for_download", false);
+		prefs.put("download.directory_upgrade", true);
+		prefs.put("plugins.always_open_pdf_externally", true); // auto-download PDFs
 
-	@Test (priority =1 )
+		ChromeOptions options = new ChromeOptions();
+		options.setExperimentalOption("prefs", prefs);
+		options.addArguments("--headless"); // headless mode
+		options.addArguments("--window-size=1920,1080"); // necessary in headless
+		options.addArguments("--disable-gpu"); // sometimes needed on Windows
+
+		driver = new ChromeDriver(options);
+
+		driver.get("http://192.168.0.42:915");
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+		EP = new ExternalEmoployees(driver);
+		LoginPage lp = new LoginPage(driver);
+		lp.LginCredentials("tata", "Smarti@321");
+	}
+	
+	// smoke , regression , functional , negative
+
+	@Test (groups ={"regression" , "functional"} )
 	public void AddExternalEmp() throws Exception
 	{					
 		
