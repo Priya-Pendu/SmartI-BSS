@@ -49,40 +49,39 @@ public class DashboardTest
 		
 	}
 
-
-	@Test(groups="master")
+	// smoke , regression , functional , negative
+	
+	@Test(groups={"smoke"})
 	public void InActiveEmpCheck()
 	{
-		LoginPage lp = new LoginPage(driver);
-		lp.LginCredentials("Smarti", "Smarti@123");
 		DP.InActiveEmp();
 	}
 	
-	@Test(groups="master")
+	@Test(groups={"smoke"})
 	public void CriticalEventCheck()
 	{
 		DP.CriticalEvent();
 	}
 	
-	@Test (groups="master")
+	@Test(groups={"smoke"})
 	public void EmoloyeeInCheck()
 	{
 		DP.EmployeeIN();
 	}
 	
-	@Test(groups="master")
+	@Test(groups={"smoke"})
 	public void Tailgatingcount()
 	{
 		DP.CriticalEvent();
 	}
 	
-	@Test(groups="master")
+	@Test(groups={"smoke"})
 	public void UserHourlyAccess()
 	{
 		DP.UHAccess();
 	}
 	
-	@Test(groups="master")
+	@Test(groups={"smoke"})
 	public void Top5MostAccessDevices()
 	{
 		DP.Top5MAD();

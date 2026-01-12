@@ -49,12 +49,14 @@ public class TransactionalEventTest {
 		
 	}
 	
-	    @Test(groups="master")
+	// smoke , regression , functional , negative
+	
+	    @Test(groups={"regression , functional"})
 		public void TS0157() throws InterruptedException {
 			TranEnt.ExportToExcel();
 		}
 	   
-	    @Test(groups="master")
+	    @Test(groups={"regression , functional"})
 	    public void TS0158() throws InterruptedException {
 	    	TranEnt.GeneratePDFReport();
 	    }

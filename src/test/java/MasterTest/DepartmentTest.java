@@ -45,66 +45,66 @@ public class DepartmentTest
 		Dp = new DepartmentPage(driver);
 		LoginPage lp = new LoginPage(driver);
 		lp.LginCredentials("tata", "Smarti@321");
-
 		
 	}
 
-
-	@Test(groups="master")
+	// smoke , regression , functional , negative
+	
+	@Test(groups={"regression , functional"})
 	public void TS0039() throws InterruptedException
 	{
 		
 		Dp.AddDepartment("Thane", "Division B", "Sales-02", "Sales Department", "Test");
 	}
 	
-	@Test(groups="master")
+	@Test(groups={"regression , functional"})
 	public void TS0040() throws InterruptedException 
 	{
 		Dp.ViewExistDepa("Sales Department");
 	}
 	
-	@Test(groups="master")
+	@Test(groups={"regression , functional"})
 	public void TS0041() throws InterruptedException
 	{
 		Dp.EditDepartment("Account Department", "Thane", "Division C", "New1 Code", "Software1 Department");
 	}
 	
-	@Test(groups="master")
+	@Test(groups={"regression , functional"})
 	public void TS0042() throws InterruptedException 
 	{
 		Dp.ExportExcel();
 	}
 	
-	@Test(groups="master")
+	@Test(groups={"regression , functional"})
 	public void TS0043() throws InterruptedException {
 		Dp.ExportPDF();
 	}
 	
-	@Test(groups="master")
+	@Test(groups={"regression, smoke"})
 	public void TS0044() throws InterruptedException
 	{
 		Dp.SearchDepartment("Software1 Department", "New1 Code");
 	}
 	
-	@Test(groups="master")
+	@Test(groups={"functional , negative"})
 	public void TS0045() throws InterruptedException
 	{
 		Dp.CheckDepartmentInMultipleCompanies("Software1 Department");
 	}
 	
-	@Test(groups="master")
+	@Test(groups={"smoke, regression"})
 	public void TS0046() throws InterruptedException
 	{
 		Dp.VerifyNDeptPage();
 	}
 	
-	@Test(groups="master")
+	@Test(groups={"regression , functional"})
 	public void TS0047()
 	{
 		Dp.DiviFilter();
 	}
 	
-	@Test(groups="master")
+	@Test(groups={"regression, negative"})
 	public void TS0049()
 	{
 		Dp.VerifyDiviList();

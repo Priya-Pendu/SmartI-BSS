@@ -49,46 +49,47 @@ public class DivisionTest
 			
 		}
 
+		// smoke , regression , functional , negative
 		
-		@Test(groups="master")
+		@Test(groups="smoke")
 		public void TS0030() throws InterruptedException
 		{
 			DP.VerifyNewDivisionPage();
 			
 		}
 		
-		@Test (groups="master")
+		@Test (groups={"regression , functional"})
 		public void TS0031() throws InterruptedException
 		{
 		    DP.AddDivision("Kalyan", "New-Divi05", "R&D05", "Testing Purpose"); 
 		}
 		
 		
-		@Test(groups="master")
+		@Test(groups={"regression"})
 		public void TS0032() throws InterruptedException
 		{
 			DP.ViewExistDivi("Marketing");
 		}
 		
-		@Test(groups="master")
+		@Test(groups={"regression , functional"})
 		public void TS0033() throws InterruptedException
 		{
 			DP.EditDivision("Software-01", "Mumbai	", "New-Divi02", "Software-01");
 		}
 		
-		@Test(groups="master")
+		@Test(groups={"regression , functional"})
 		public void TS0034() throws InterruptedException
 		{
 			DP.ExportExcel();
 		}
 		
-		@Test(groups="master")
+		@Test(groups={"regression , functional"})
 		public void TS0035() throws InterruptedException
 		{
 			DP.ExportPDF();
 		}
 		
-		@Test(groups="master")
+		@Test(groups="smoke")
 		public void TS0036() throws InterruptedException
 		{
 			DP.VerifySearchBar("Division C", "Divi-B");

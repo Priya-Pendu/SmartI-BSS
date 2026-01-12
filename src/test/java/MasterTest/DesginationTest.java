@@ -49,41 +49,43 @@ public class DesginationTest
 		
 	}
 	
-	@Test(groups="master")
+	// smoke , regression , functional , negative
+	
+	@Test(groups="smoke")
 	public void TS0062()
 	{
 		DP.VerifyDesignationPage();
 	}
 	
-	@Test(groups="master")
+	@Test(groups={"regression,functional"})
 	void TS0063() throws InterruptedException
 	{
 		DP.AddDesignation("sales-01", "Sales", "Add");	
 	}
 	
-	@Test(groups="master")
+	@Test(groups="regression")
 	public void TS0064() throws InterruptedException {
 		DP.ViewDesignation("Developer");
 	}
 	
-	@Test(groups="master")
+	@Test(groups={"regression , functional"})
 	public void updateDesignation() throws InterruptedException
 	{
 		DP.EditDesignation("Software Developer", "0003", "Software Developer");
 	}
 	
-	@Test(groups="master")
+	@Test(groups={"regression, functional"})
 	public void TS0067() throws InterruptedException
 	{
 		DP.VerifyExcelbtn();
 	}
 	
-	@Test(groups="master")
+	@Test(groups={"regression, functional"})
 	public void TS0068() throws InterruptedException {
 		DP.VerifyPDFbtn();
 	}
 	
-	@Test(groups="master")
+	@Test(groups="smoke")
 	public void TS0069() throws InterruptedException{
 		DP.VerifySearch("HOD","Soft-05");
 	}

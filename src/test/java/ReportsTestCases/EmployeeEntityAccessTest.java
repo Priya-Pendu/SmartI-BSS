@@ -50,39 +50,41 @@ public class EmployeeEntityAccessTest {
 		
 	}
 	
-	    @Test(groups="master")
+	// smoke , regression , functional , negative
+	
+	    @Test(groups={"regression , functional "})
 		public void TS0136() throws InterruptedException
 		{
 			EEAP.ExportToExcel();
 		}
 		
-	    @Test(groups="master")
+	    @Test(groups={"regression, functional"})
 	    public void TS0137() throws InterruptedException
 	    {
 	    	EEAP.GeneratePDFReport();
 	    }
 	    
-	   @Test(groups="master")
+	   @Test(groups={"regression, functional"})
 	   public void TS0138() throws InterruptedException {
 		EEAP.LocationFilterValidation();
 	   }
 	
-	   @Test(groups="master")
+	   @Test(groups={"regression, functional"})
 	   public void TS0139() throws InterruptedException {
 		   EEAP.DepartmentFilterValidation();
 	   }
 	   
-	    @Test(groups="master")
+	    @Test(groups={"regression, functional"})
 		public void TS0140() throws InterruptedException {
 			EEAP.DesignationFilterValidation();
 		}
 	   
-	    @Test(groups="master")
+	    @Test(groups={"regression, functional"})
 	   	public void TS0141() throws InterruptedException {
 	   		EEAP.EntityFilterValidation();
 	   	}
 	   	
-	    @Test(groups="master")
+	    @Test(groups={"regression, functional"})
 		public void TS0142() throws InterruptedException {
 			EEAP.EmployeeFilterValidation();
 		 }

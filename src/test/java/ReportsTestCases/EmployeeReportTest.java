@@ -49,44 +49,45 @@ public class EmployeeReportTest {
 		
 	}
 	
+	// smoke , regression , functional , negative
 	
-	@Test(groups="master")
+	@Test(groups={"regression , functional"})
 	public void TS0109() throws InterruptedException
 	{
 		EP.ExportExcel();
 	}
 	
-	@Test(groups="master")
+	@Test(groups={"regression , functional"})
 	public void TS0110() throws InterruptedException
 	{
 		EP.ExportPDF();
 	}
 	
-	@Test(groups="master")
+	@Test(groups={"regression , functional"})
 	public void TS0112() throws InterruptedException
 	{
 		EP.LocationFilterValidation();
 	}
 	
-	@Test(groups="master")
+	@Test(groups={"regression , functional"})
 	public void TS0113() throws InterruptedException
 	{
 		EP.DivisionFilterValidation();
 	}
 	
-	@Test(groups="master")
+	@Test(groups={"regression , functional"})
 	public void TS0114() throws InterruptedException
 	{
 		EP.DepartFilterValidation();
 	} 
 	
-	@Test(groups="master")
+	@Test(groups={"regression , functional"})
 	public void TS0115() throws InterruptedException
 	{
 		EP.DesigFlterValidation();
 	}
 	
-	@AfterMethod(groups="master")
+	
 	public void teardown()
 	{
 		driver.quit();

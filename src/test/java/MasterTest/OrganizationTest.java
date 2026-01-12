@@ -49,6 +49,8 @@ public class OrganizationTest {
 
 		
 	}
+    
+    // smoke , regression , functional , negative
 
     
     @Test(groups="master")

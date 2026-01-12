@@ -52,24 +52,26 @@ public class OrganizationReportTest
 		
 	}
 	
-	@Test(groups="master")
+	// smoke , regression , functional , negative
+	
+	@Test(groups="smoke")
 	public void TS0090 () throws InterruptedException
 	{
 		MR.VerifySearchBar("dfd", "WHO-05");
 	}
 	
-	@Test(groups="master")
+	@Test(groups={"regression , functional"})
 	public void TS0091() throws InterruptedException {
 		MR.ExportExcel();
 	}
 	
-	@Test(groups="master")
+	@Test(groups={"regression , functional"})
 	public void TS0092() throws InterruptedException
 	{
 		MR.ExportPDF();
 	}
 	
-	@Test(groups="master")
+	@Test(groups={"regression , functional"})
 	public void ReportOrganization() throws InterruptedException
 	{
 		MR.VerifyLockationDrop("Mumbai");	
