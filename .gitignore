@@ -1,2 +1,15 @@
+# TestNG / automation output
+test-output/
+logs/
+*.log
 
-/target/
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Maven
+target/
+
+# OS
+.DS_Store
