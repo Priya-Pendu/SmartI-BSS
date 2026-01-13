@@ -53,13 +53,13 @@ public class OrganizationTest {
     // smoke , regression , functional , negative
 
     
-    @Test(groups="master")
+    @Test(groups="smoke")
     public void TS0017() throws InterruptedException
     {
     	organizationPage.VerifyNewOrganizationPage();
     }
 
-    @Test(groups="master")
+    @Test(groups={"regression , functional"})
     public void TS0018() throws InterruptedException 
     {
     	// public void AddOrganization(String Org, String OrgName, String OrgCode, String Location, String Address, String EmailId, String ContactNo, 
@@ -68,13 +68,13 @@ public class OrganizationTest {
     
      }
     
-    @Test(groups="master")
+    @Test(groups="regression")
     public void TS0019() throws InterruptedException
     {
         organizationPage.viewOrg("Meclix");
     }
     
-     @Test(groups="master") 
+     @Test(groups={"regression , functional"}) 
     public void TS0020() throws InterruptedException
     {
     	 //public void EditOrganization(String ORG, String NewORGType, String NewORGName, String NewORGCode, String NewLocation, 
@@ -83,44 +83,44 @@ public class OrganizationTest {
     										"565656656", "18/10/2025", "18/12/2025", "20", "NewTest", "TestAuditRemark");
     }
     
-    @Test(groups="master")
+    @Test(groups={"regression , functional"})
     public void TS0022() throws InterruptedException
     {
     	organizationPage.ExportToExcel();
     }
 
-    @Test(groups="master")
+    @Test(groups={"regression , functional"})
     public void TS0023() throws InterruptedException
     {
     	organizationPage.PdfExport();
     }
     
     
-    @Test(groups="master")
+    @Test(groups="smoke")
     public void TS0024() throws InterruptedException
     {
     	organizationPage.SearchBar("Meclix", "342");
     }
     
-    @Test(groups="master")
+    @Test(groups={"regression , functional"})
     public void TS0025() throws InterruptedException
     {
     	organizationPage.LocationFilter("Mumbai");
     }
     
-   @Test(groups="master")
+   @Test(groups={"regression , functional, negative"})
     public void TS0026() throws InterruptedException
     {
     	organizationPage.CheckOrgINDiffComp();
     }
     
-    @Test(groups="master")
+    @Test(groups="regression")
 	public void TS0027() throws InterruptedException 
     {
 		organizationPage.MandatorySign();
 	}
     
-    @Test(groups="master")
+    @Test(groups="smoke")
     public void TS0028() throws InterruptedException
     {
     	organizationPage.VerifyNOrgTypeForm();

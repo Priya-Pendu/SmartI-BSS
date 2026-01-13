@@ -52,16 +52,15 @@ public class RoleTest
 	}
 
 
+	// smoke , regression , functional , negative
 	
-	@Test(groups="master")
+	@Test(groups={"regression , functional"})
 	public void NewRole() throws InterruptedException
 	{
-		LoginPage lp = new LoginPage(driver);
-		lp.LginCredentials("Smarti", "Smarti@123");
 		RP.AddRole("Recipients");
 	}
 	
-	@Test(groups="master")
+	@Test(groups={"regression , functional"})
 	public void UpdateRole() throws InterruptedException
 	{
 		RP.EditRole("Recipients", "Recipients2");
