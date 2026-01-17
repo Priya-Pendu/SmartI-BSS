@@ -1,4 +1,4 @@
-	package MasterPage;
+package MasterPage;
 import java.util.List;
 
 import org.openqa.selenium.InvalidElementStateException;
@@ -13,12 +13,12 @@ import Utilities.BasePage;
 import Utilities.MaxCharacterLenght;
 
 public class LocationPage extends BasePage {
-    WebDriver driver;
+    
     LoginPage lp;
     
     public LocationPage(WebDriver driver) {
         super(driver);
-        this.driver = driver;
+       
     }
 
     // Locators
@@ -52,12 +52,12 @@ public class LocationPage extends BasePage {
     @FindBy(xpath="//a[@class='dropdown-toggle']") WebElement UserProfile;
     @FindBy(xpath="//a[normalize-space()='Logout']") WebElement Logout;
     @FindBy(xpath="//input[@class='s-Serenity-QuickSearchInput s-QuickSearchInput']") WebElement SearchLocation;
-	@FindBy(xpath = "//input[@id='BuildingSolutionSuite_Membership_LoginPanel0_Username']") WebElement Username;
-	@FindBy(xpath ="//input[@id='BuildingSolutionSuite_Membership_LoginPanel0_Password']") WebElement Password;
-	@FindBy(xpath = "//button[@id='BuildingSolutionSuite_Membership_LoginPanel0_LoginButton']") WebElement LoginButton;
+	@FindBy(xpath= "//input[@id='BuildingSolutionSuite_Membership_LoginPanel0_Username']") WebElement Username;
+	@FindBy(xpath="//input[@id='BuildingSolutionSuite_Membership_LoginPanel0_Password']") WebElement Password;
+	@FindBy(xpath= "//button[@id='BuildingSolutionSuite_Membership_LoginPanel0_LoginButton']") WebElement LoginButton;
 	@FindBy(xpath="//input[@id='BuildingSolutionSuite_Master_LocationMasterDialog8_IsShared']") WebElement IsShared;
 	@FindBy(xpath="//div[@class='panel-titlebar-text']") WebElement NewLocTitle;
-	@FindBy(xpath = "//div[@class='slick-cell l0 r0']/a") WebElement SLocationResult;
+	@FindBy(xpath= "//div[@class='slick-cell l0 r0']/a") WebElement SLocationResult;
 	@FindBy(xpath="//div[@title='Excel']//div[@class='button-outer']") WebElement Excelbtn;
 	@FindBy(xpath="//div[@title='PDF']") WebElement PDFbtn;
 	@FindBy(xpath="//div[@class='slick-cell l1 r1']") WebElement SearchResultCode;
@@ -70,7 +70,7 @@ public class LocationPage extends BasePage {
     //ActionMethods
     public void InitialSteps()
     {
-    	LoginPage lp = new LoginPage(driver);
+    	
     	AccessManagment.click();
     	wait.until(ExpectedConditions.elementToBeClickable(Master)).click();
     	Location.click();

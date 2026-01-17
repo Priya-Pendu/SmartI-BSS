@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite">
+
+<suite name="regression Test Suite">
 
     <groups>
         <run>
-            <include name="Master"/>
+            <include name="regression"/>
         </run>
     </groups>
 
-    <test name="Run Master Group">
-        <classes>
-            <class name="MasterTest.*"/>
-        </classes>
+    <test name="Run All regression Tests">
+        <packages>
+            <!-- add all root packages where your tests exist -->
+            <package name="AdministrationTest"/>
+            <package name="DashboardTest"/>
+            <package name="ExternalEmployeeTest"/>
+            <package name="MasterTest"/>
+            <package name="ReportsTestCases"/>
+        </packages>
     </test>
 
 </suite>
+

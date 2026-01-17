@@ -18,7 +18,7 @@ import Utilities.DatePickerUtil;
 
 public class OrganizationPage extends BasePage
 {
-	   WebDriver driver;
+	   
 	 
 	   
 	   public OrganizationPage (WebDriver driver)

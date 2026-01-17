@@ -17,7 +17,7 @@ import Utilities.BasePage;
 public class DivisionPage extends BasePage
 
 {
-	WebDriver driver;
+	//WebDriver driver;
 	
 	public DivisionPage(WebDriver driver) {
 		super(driver);
@@ -117,7 +117,7 @@ public class DivisionPage extends BasePage
 	 
 		//TS0031 - Fill Division Details
 	   public void AddDivision(String Location, String Code, String DivisionName, String AuditRemark) throws InterruptedException
-	  {
+	   {
 		//open the division page
 		InitialSteps();
 		NewDivision.click();

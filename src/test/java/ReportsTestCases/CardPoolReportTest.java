@@ -1,101 +1,68 @@
 package ReportsTestCases;
 
-import java.time.Duration;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import LoginTest.LoginPage;
 import ReportsPageObject.CardPoolReportPage;
-import ReportsPageObject.DivisionReportPage;
+import Utilities.BaseTest;
 
-public class CardPoolReportTest {
-	WebDriver driver;
+public class CardPoolReportTest extends BaseTest {
 	CardPoolReportPage CR;
+	LoginPage lp;
 	
-	@BeforeMethod
+	@BeforeMethod (alwaysRun = true)
 	public void Setup()
 	{
-		Map<String, Object> prefs = new HashMap<>();
-		prefs.put("download.default_directory", "D:\\Priya\\BSS_Automation_Files\\Eclipse-Workspace\\SmartISystems-BSS\\SmartI-BSS\\SmartI-BSS\\download");
-		prefs.put("download.prompt_for_download", false);
-		prefs.put("download.directory_upgrade", true);
-		prefs.put("plugins.always_open_pdf_externally", true); // auto-download PDFs
-
-		ChromeOptions options = new ChromeOptions();
-		options.setExperimentalOption("prefs", prefs);
-		options.addArguments("--headless"); // headless mode
-		options.addArguments("--window-size=1920,1080"); // necessary in headless
-		options.addArguments("--disable-gpu"); // sometimes needed on Windows
-
-		driver = new ChromeDriver(options);
-
-		driver.get("http://192.168.0.42:915");
-
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
 		CR = new CardPoolReportPage(driver);
 		LoginPage lp = new LoginPage(driver);
-		lp.LginCredentials("tata", "Smarti@321");
-
-		
+		lp.LginCredentials("tata", "Smarti@321");		
 	}
+	
+	// smoke , regression , functional , negative
 
-	@Test(groups="master")
+	@Test(groups={"regression , functional"})
 	public void TS0118() throws InterruptedException {
 		CR.LocationFilterValidation();
 	}
 	
-	@Test(groups ="Master")
+	@Test(groups={"regression , functional"})
 	public void TS0119() throws InterruptedException {
 		CR.DepartmentFilterValidation();
 	}
 	
-	@Test(groups="master")
+	@Test(groups={"regression , functional"})
 	public void TS0120() throws InterruptedException {
 		CR.DesignationFilterValidation();
 	}
 	
-	@Test(groups="master")
+	@Test(groups={"regression , functional"})
 	public void TS0121() throws InterruptedException {
 		CR.EmployeeFilterValidation();
 	}
 	
-	@Test(groups ="Master")
+	@Test(groups={"regression , functional"})
 	public void TS0122() throws InterruptedException
 	{
 		CR.CardStatusValidation();
 	}
 	
-	@Test(groups="master")
+	@Test(groups={"regression , functional"})
 	public void TS0123() throws InterruptedException
 	{
 		CR.CardTypeValidation();
 	}
 	
-	@Test(groups="master")
+	@Test(groups={"regression , functional"})
 	public void TS0125() throws InterruptedException
 	{
 		CR.ExportExcel();
 	}
 	
-	@Test(groups="master")
+	@Test(groups={"regression , functional"})
 	public void TS0126() throws InterruptedException
 	{
 		CR.ExportPDF();
 	}
 	
-	@AfterMethod (groups="master")
-	public void teardown()
-	{
-		driver.quit();
-	}
 }

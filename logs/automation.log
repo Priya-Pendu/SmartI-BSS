@@ -617,3 +617,69 @@
 16:31:41.456 [main] INFO  ReportsPageObject.TransactionalAccessPage - Reader Drop down clicked
 16:31:41.571 [main] INFO  ReportsPageObject.TransactionalAccessPage - Selecting reader from the drop down
 16:31:41.658 [main] INFO  ReportsPageObject.TransactionalAccessPage - Verify the result of choosing reader.
+15:40:02.463 [main] INFO  MasterPage.LocationPage - New Location Page is displayed
+16:24:34.676 [main] INFO  AdministrationPage.UserPage - STEP 1: Initial step started
+16:24:36.000 [main] INFO  AdministrationPage.UserPage - STEP 2: Clicking New User button
+16:24:36.284 [main] INFO  AdministrationPage.UserPage - STEP 3: Entering Username
+16:24:36.371 [main] INFO  AdministrationPage.UserPage - STEP 4: Entering Display Name
+16:24:36.460 [main] INFO  AdministrationPage.UserPage - STEP 5: Entering Email
+16:24:36.541 [main] INFO  AdministrationPage.UserPage - STEP 6: Entering Email Domain
+16:24:36.599 [main] INFO  AdministrationPage.UserPage - STEP 7: Uploading profile image
+16:24:36.726 [main] INFO  AdministrationPage.UserPage - STEP 8: Entering Password
+16:24:36.849 [main] INFO  AdministrationPage.UserPage - STEP 9: Confirming Password
+16:24:36.908 [main] INFO  AdministrationPage.UserPage - STEP 10: Clicking Customer dropdown
+16:24:36.994 [main] INFO  AdministrationPage.UserPage - STEP 11: Selecting Customer = Paytm
+16:24:37.097 [main] INFO  AdministrationPage.UserPage - STEP 12: Clicking Company dropdown
+16:24:37.250 [main] INFO  AdministrationPage.UserPage - STEP 11: Selecting Company = tata
+16:24:37.358 [main] INFO  AdministrationPage.UserPage - STEP 13: Clicking Save button
+16:24:47.491 [main] INFO  AdministrationPage.UserPage - STEP 14: User created successfully
+16:24:49.148 [main] INFO  AdministrationPage.UserPage - STEP 1: Initial step started
+16:24:50.499 [main] INFO  AdministrationPage.UserPage - STEP 2: Clicking New User button
+16:24:50.755 [main] INFO  AdministrationPage.UserPage - STEP 3: Entering Username
+16:24:50.843 [main] INFO  AdministrationPage.UserPage - STEP 4: Entering Display Name
+16:24:50.922 [main] INFO  AdministrationPage.UserPage - STEP 5: Entering Email
+16:24:50.990 [main] INFO  AdministrationPage.UserPage - STEP 6: Entering Email Domain
+16:24:51.061 [main] INFO  AdministrationPage.UserPage - STEP 7: Uploading profile image
+16:24:51.095 [main] INFO  AdministrationPage.UserPage - STEP 8: Entering Password
+16:24:51.199 [main] INFO  AdministrationPage.UserPage - STEP 9: Confirming Password
+16:24:51.301 [main] INFO  AdministrationPage.UserPage - STEP 10: Clicking Customer dropdown
+16:24:51.429 [main] INFO  AdministrationPage.UserPage - STEP 11: Selecting Customer = Paytm
+16:24:51.530 [main] INFO  AdministrationPage.UserPage - STEP 12: Clicking Company dropdown
+16:24:51.666 [main] INFO  AdministrationPage.UserPage - STEP 13: Selecting Company = tata
+16:24:51.783 [main] INFO  AdministrationPage.UserPage - STEP 14: Clicking on 'Misc' option
+16:24:51.909 [main] INFO  AdministrationPage.UserPage - STEP 15: Entering Password Expiry Days
+16:24:52.530 [main] INFO  AdministrationPage.UserPage - STEP 16: Entering login type
+16:24:52.595 [main] INFO  AdministrationPage.UserPage - STEP 13: Clicking Save button
+16:25:02.695 [main] INFO  AdministrationPage.UserPage - STEP 14: User created successfully
+16:25:05.137 [main] INFO  AdministrationPage.UserPage - STEP 1: Initial step started
+16:25:06.559 [main] INFO  AdministrationPage.UserPage - STEP 2: Sending text on search bar
+16:25:08.651 [main] INFO  AdministrationPage.UserPage - STEP 3: Clicking searched User
+16:25:08.695 [main] INFO  AdministrationPage.UserPage - Actual searched user from UI: [Infosys]
+16:25:08.695 [main] INFO  AdministrationPage.UserPage - Expected user: [Infosys]
+16:25:08.853 [main] INFO  AdministrationPage.UserPage - STEP 5: User form opened successfully
+16:25:09.056 [main] INFO  AdministrationPage.UserPage - STEP 6: getting all information of user form | Username=null | DisplayName=null | Email=infosys123 | EmailDomain=smartisystems.com | Customer=--select-- | Company=--select--
+16:25:09.056 [main] INFO  AdministrationPage.UserPage - STEP 6: Clicking on 'Misc' option
+16:25:09.170 [main] INFO  AdministrationPage.UserPage - STEP 7: getting all information from misc option tab | PassExpiryDays=90 | PassExpiryDate=11/14/2025
+16:25:10.763 [main] INFO  AdministrationPage.UserPage - STEP 1: Initial step started
+16:25:12.237 [main] INFO  AdministrationPage.UserPage - STEP 2: Sending text on search bar
+16:25:14.356 [main] INFO  AdministrationPage.UserPage - STEP 3: Clicking searched User
+16:25:14.414 [main] INFO  AdministrationPage.UserPage - Actual searched user from UI: [UpdatedUserN]
+16:25:14.415 [main] INFO  AdministrationPage.UserPage - Expected user: [UpdatedUser]
+16:25:14.528 [main] INFO  AdministrationPage.UserPage - STEP 5: User form opened successfully
+16:25:14.528 [main] INFO  AdministrationPage.UserPage - STEP 6: updating Username
+16:25:14.732 [main] INFO  AdministrationPage.UserPage - STEP 7: updating Display Name
+16:25:14.825 [main] INFO  AdministrationPage.UserPage - STEP 8: updating email
+16:25:14.998 [main] INFO  AdministrationPage.UserPage - STEP 9: updating email domain
+16:25:15.112 [main] INFO  AdministrationPage.UserPage - STEP 9: updating password
+16:25:15.207 [main] INFO  AdministrationPage.UserPage - STEP 10: confirming updated password
+16:25:15.294 [main] INFO  AdministrationPage.UserPage - STEP 11: Clicking save button
+16:25:17.367 [main] INFO  AdministrationPage.UserPage - STEP 12: Reopening the updated user form to verify changes 
+16:25:19.037 [main] INFO  AdministrationPage.UserPage - STEP 1: Initial step started
+16:25:20.482 [main] INFO  AdministrationPage.UserPage - STEP 2: Sending text on search bar
+16:25:22.607 [main] INFO  AdministrationPage.UserPage - STEP 3: Clicking searched User
+16:25:22.650 [main] INFO  AdministrationPage.UserPage - Actual searched user from UI: [adf]
+16:25:22.651 [main] INFO  AdministrationPage.UserPage - Expected user: [adf]
+16:25:22.745 [main] INFO  AdministrationPage.UserPage - STEP 5: User form opened successfully
+16:25:22.745 [main] INFO  AdministrationPage.UserPage - STEP 6: Clicking Delete button
+16:25:22.929 [main] INFO  AdministrationPage.UserPage - STEP 7: Confirming delete action
+16:25:25.042 [main] INFO  AdministrationPage.UserPage - STEP 3: Clicking searched User

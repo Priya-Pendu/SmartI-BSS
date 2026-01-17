@@ -13,13 +13,14 @@ public class BasePage {
     protected WebDriverWait wait;
     protected Logger logger;
 
+    // Constructor does not need driver
     public BasePage(WebDriver driver) {
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-        // Logger should be created before anything else
-        this.logger = LogManager.getLogger(this.getClass());
-
-        PageFactory.initElements(driver, this);
+    	 this.driver = driver;
+         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+         this.logger = LogManager.getLogger(this.getClass());
+         PageFactory.initElements(driver, this);  // initialize @FindBy
     }
+
+    
 }
+
