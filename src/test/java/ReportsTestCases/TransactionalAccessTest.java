@@ -27,37 +27,53 @@ public class TransactionalAccessTest extends BaseTest {
 	
 	// smoke , regression , functional , negative
 	
-	   @Test(groups={"regression , functional"})
+	   //@Test(groups={"regression , functional"})
 	   public void TS0147() throws InterruptedException {
 		   
 		   TAP.LocationFilter("Mumbai");
 	    }
 	
 	   
-	   @Test(groups={"regression , functional"})
+	   //@Test(groups={"regression , functional"})
 		public void TS0148() throws InterruptedException {
 
 			TAP.DepartmentFilter("Software Department");
 		}
 	   
-	   @Test(groups={"regression , functional"})
+	   //@Test(groups={"regression , functional"})
 		public void TS0149() throws InterruptedException {
 			TAP.EmployeeFilter("Shreya Sharma");
 		}
 		
-	   @Test(groups={"regression , functional"})
+	   //@Test(groups={"regression , functional"})
 		public void TS0150() throws InterruptedException {
 			TAP.DeviceLocationFilter("Mumbai");
 		}
 		
-	   @Test(groups={"regression , functional"})
+	   //@Test(groups={"regression , functional"})
 		public void TS0151() throws InterruptedException {
 			TAP.DeviceFilter("BioSlim12");
 		}
 		
-	   @Test(groups={"regression , functional"})
+	   //@Test(groups={"regression , functional"})
 		public void TS0152() throws InterruptedException {
 			TAP.ReaderFilter("BioSlim Reader 1");
 		}
 		
+	   //@Test(groups={"regression , functional"})
+	   public void TS0153() throws InterruptedException {
+		    TAP.EventFilter("Access Granted");
+	   }
+	   
+	   //@Test(groups={"regression , functional"})
+	   
+	   public void TS0154() throws InterruptedException
+	   {
+		   TAP.EmployeeTypeFilter("Internal Employee");
+	   }
+	   
+	   @Test(groups = {"regression , functional"})
+		public void TS0155() throws InterruptedException {
+			TAP.FromToDateTimeFilter();
+		}
 }

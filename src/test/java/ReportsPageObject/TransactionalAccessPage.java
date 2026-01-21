@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
 import Utilities.BasePage;
+import Utilities.DatePickerUtil;
 import Utilities.DropDownMethod;
 
 public class TransactionalAccessPage extends BasePage {
@@ -42,9 +43,23 @@ public class TransactionalAccessPage extends BasePage {
 	@FindBy(xpath="//div[@id='s2id_BuildingSolutionSuite_Reports_AccessReportGrid0_QuickFilter_ReaderID']//b[@role='presentation']") WebElement ReaderDrop;
 	@FindBy(xpath="//div[@class=\"select2-result-label\"]") List<WebElement> ReaderOptions;
 	@FindBy(xpath="//div[@class=\"slick-cell l10 r10\"]") WebElement ReaderResult;
+	@FindBy(xpath="//div[@id='s2id_BuildingSolutionSuite_Reports_AccessReportGrid0_QuickFilter_EventMessageID']//b[@role='presentation']") WebElement EventDrop;
+	@FindBy(xpath="//div[@class=\"select2-result-label\"]") List<WebElement> EventOptions;
+	@FindBy(xpath="//div[@class=\"slick-cell l11 r11\"]") WebElement EventResult;
+	@FindBy(xpath="//div[@id='s2id_BuildingSolutionSuite_Reports_AccessReportGrid0_QuickFilter_EmployeesType']//b[@role='presentation']") WebElement EmpTypeDrop;
+	@FindBy(xpath="//div[@class=\"select2-result-label\"]") List<WebElement> EmpTypeOptions;
+	@FindBy(xpath="//div[@class=\"slick-cell l1 r1\"]") WebElement EmpTypeResult;
+	@FindBy(xpath="//@select[@class=\"editor s-DateTimeEditor time\"]/*") List<WebElement> TimeOptions;
+	@FindBy(xpath="//div[@class='grid-toolbar s-Serenity-Toolbar s-Toolbar clearfix']//select[1]") WebElement fromtimepicker;
+	@FindBy(xpath="//div[@class='content-wrapper']//img[1]") WebElement FromDatePicker;
+	@FindBy(xpath="//img[2]") WebElement ToDatePicker;
+	@FindBy(xpath="//select[2]") WebElement totimepicker;
 	
 	
 	DropDownMethod ddm = new DropDownMethod();
+	JavascriptExecutor js = (JavascriptExecutor) driver;
+	DatePickerUtil dtp = new DatePickerUtil();
+	
 	//Action Method
 	public void InitialStep()
 	{
@@ -155,4 +170,90 @@ public class TransactionalAccessPage extends BasePage {
 
 		Assert.assertTrue(ReaderResult.getText().contains(reader), "Reader Filter not working");
 	}
+	
+	
+	//TS0153 - Event Filter Validation
+	public void EventFilter(String event) throws InterruptedException
+    {
+        logger.info("Initial step started");
+        InitialStep();
+        
+        logger.info("Event Drop down clicked");
+        EventDrop.click();
+        
+        logger.info("Selecting event from the drop down");
+        ddm.selectFromDropdown(EventOptions, "ACCESS GRANTED", event);
+        
+        logger.info("scroll to right"); 
+        js.executeScript("window.scrollBy(5000,0)");
+        
+        logger.info("Verify the result of choosing event.");
+        Assert.assertTrue(EventResult.getText().contains("ACCESS GRANTED"), "Event Filter not working");  
+        
+    }
+
+
+	//TS0154 - Employee type Filter Validation
+	public void EmployeeTypeFilter(String EmpType) throws InterruptedException
+	{
+		logger.info("Initial step started");
+		InitialStep();
+
+		logger.info("Employee Type Drop down clicked");
+		wait.until(ExpectedConditions.visibilityOf(EmpTypeDrop));
+		EmpTypeDrop.click();
+
+		logger.info("Selecting Employee Type from the drop down");
+		ddm.selectFromDropdown(EmpTypeOptions, "Internal Employee", "Employee Type");
+
+		logger.info("Verify the result of choosing Employee Type.");
+		Assert.assertTrue(EmpTypeResult.getText().contains(EmpType), "Employee Type Filter not working");
+	}
+	
+	//TS0155 - from date & time and to date & time filter validation
+	public void FromToDateTimeFilter() throws InterruptedException 
+	{
+			
+		logger.info("Initial step started");
+		InitialStep();
+
+		logger.info("Click on From Date picker");
+		FromDatePicker.click();
+		
+		logger.info("From Date selection started");
+		DatePickerUtil.selectDate(
+		        driver,
+		        By.id("BuildingSolutionSuite_Reports_AccessReportGrid0_QuickFilter_TransactionDate"),
+		        "1",
+		        "Jan",
+		        "2026"
+		);
+    
+
+		logger.info("click on from time picker");
+		fromtimepicker.click();
+		
+		logger.info("From Time selection started");
+		ddm.selectFromDropdown(TimeOptions , "12:00", "Date");
+
+		logger.info("Click on To Date picker");
+		ToDatePicker.click();
+		
+		logger.info("To Date selection started");
+		DatePickerUtil.selectDate(
+		        driver,
+		        By.id("BuildingSolutionSuite_Reports_AccessReportGrid0_QuickFilter_TransactionDate"),
+		        "1",
+		        "Jan",
+		        "2026"
+		);
+		
+		logger.info("Click on To Time picker");
+		totimepicker.click();
+		
+		logger.info("From Date & Time and To Date & Time filter applied successfully");
+		ddm.selectFromDropdown(DeptOptions, "22:00", "Date");
+	}
+
+	
 }
